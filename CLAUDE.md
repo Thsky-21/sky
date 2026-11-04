@@ -6,7 +6,48 @@ Film project folder for **"Did We Make It?"**: a 180 s portfolio film for the Wi
 with Lemo-Opuscar, style `cel-anime-80s`. The workspace-level `../CLAUDE.md` covers the library, the page contract
 and the build commands; this file only covers what is specific to this film.
 
-## State v3 (2026-11-04 night): RESUME HERE — the sections below this one are HISTORY (v1 / clip 01 era)
+## State v4 (2026-11-05, ~00:30 IST): RESUME HERE — website live; v3 below is still the film's state
+
+Sky skipped Layers 3–4 to submit: the website was built from the CURRENT temp-voice preview and is LIVE.
+Everything is committed and pushed (`main` = `origin/main`, last commit "Website: bigger Bengaluru / coordinates
+stamp in the nav"). Don't regenerate any film output; the site doesn't need it.
+
+- **Live:** https://sky-flax-five.vercel.app (Vercel project `sky`, id `prj_JY2HkOCh9GbLeZJ3OA5UbadKwzyr`, team
+  `team_IURVhrl4zJjR8e7i9VcZmvTR`; auto-deploys on every push to `main`, ~1 min). The Vercel MCP can read/deploy but
+  gets 403 on project settings, so the site folder is chosen by the repo-root `vercel.json`
+  (`outputDirectory: "web"`, no-op install/build). Don't delete it.
+- **Site = `web/`** (static, no build): `index.html`, `style.css` (later rules appended at the end override earlier
+  ones), `app.js`, `fonts/` (Barlow, Caveat; Kannada from Google Fonts Noto Sans Kannada), `film/` = `film.mp4`
+  (8.9 MB re-encode of `preview/film_preview.mp4`, crf 26, AAC 128k — audio verified), `film.vtt` (copy of
+  `preview/film_preview.vtt`), `poster.jpg` (frame at 7 s). Voice swap later = replace these three files and push.
+  The old `site/` folder is superseded (not deployed).
+- **Page, top to bottom:** fixed nav (DID WE MAKE IT? · big ಬೆಂಗಳೂರು · 12.97° N 77.59° E · live IST) → hero (title,
+  Caveat subline, runtime from the film, PLAY FILM lamp button, line-drawn skyline + metro viaduct/train; `.city` has
+  pointer-events:none — it used to cover the button) → route band (Namma Metro / Koramangala / HSR Layout /
+  Indiranagar / Outer Ring Road / MG Road, English + Kannada, sliding, train shuttle) → café band (steel filter-coffee
+  tumbler with steam, "In this city, companies start at café tables.", "So, filter coffee? It's on me ☕" mailto,
+  overheard-table marquee) → stations on a centre metro line, zigzag left/right, numbered by JS from VISIBLE sections
+  (01 The film / 02 The page (VTT lines write themselves in Caveat, click = seek) / 03 Your turn (hidden until the film
+  ends: Speak via Web Speech + Type → napkin card + Copy, exact privacy line) / The traction slide (3 products, 10→1,
+  50→0 dot grids, ₹0, exploring physical AI) / How it was made (Akash's note signed "— ಆಕಾಶ್", mentions Claude Code)),
+  each with a Kannada sub-name and a faint Kannada numeral → end card + LinkedIn
+  (https://www.linkedin.com/in/akash-melavanki-40a14a349) + email (akashmelavanki943@gmail.com).
+- **Player:** PLAY → `body.cinema` + document-level fullscreen; the film fills the screen, scrolling down shrinks it
+  to a mini player bottom-right (YouTube-style; tap = back up). Custom controls: lamp play/pause, metro-line scrubber
+  with chapter stations (draggable train), time, CC (own caption overlay with FIRST/THIRD YEAR labels), SOUND, ⤢,
+  ✕; "ಮುಂದಿನ ನಿಲ್ದಾಣ · NEXT STATION" top-left; keys space/K, M, C, F, ←/→, Esc. Film always starts unmuted.
+- **Sky's removals (keep them out):** no Kannada line in the hero, none under "Not yet. Still building.".
+- **Last open issue:** Sky heard sound on his phone but not his laptop. Verified in his laptop Chrome on the live
+  site: playing, unmuted, captureStream peak 0.82 → the site outputs audio; told him to check tab mute, Ctrl+Shift+R,
+  Windows volume mixer / output device, YouTube test. Waiting on his answer (and which browser if it persists).
+- **Checks:** screenshot locally with headless Chrome from PowerShell
+  (`chrome.exe --headless=new --screenshot=… --window-size=1280,4400 file:///…/web/_shot.html`; for a full-page
+  view copy index.html to `_shot.html` with `.hero{min-height:800px}` and delete it after). Claude-in-Chrome works for
+  live tests on the laptop.
+- **Film pipeline next (only when Sky asks):** Layer 3 paper inserts → 4 light + sound → voice swap
+  (`npm run film:final`), then refresh `web/film/`. Kannada wording: Sky is the authority; ask before adding more.
+
+## State v3 (2026-11-04 night): film state — the sections below this one are HISTORY (v1 / clip 01 era)
 
 Sky's instruction: follow `CLAUDE_CODE_PROMPT_V3.md` exactly; `SCRIPT_V2.md` + `dialogue.json` v2 replace everything
 before (SCRIPT_TIMELINE, SHOT_LIST, dialogue v1 = `dialogue_v1.json`, the old clip 01 timing, the one-frame-only rule:
