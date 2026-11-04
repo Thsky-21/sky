@@ -39,7 +39,7 @@ export function cutList(T) {
   push('W', LAMP, 'VN01');
   for (const id of order.slice(1)) {
     const l = L[id], gap = l.start - L[T.prev(id)].end;
-    const lead = Math.min(.25, gap * .5);
+    const lead = Math.min(.25, Math.max(.05, gap * .5));   // turns can overlap in their silent padding (gap < 0)
     if (id === 'Y01') { push('FY', at('Y01', 'start', -.1), id); continue; }          // W held 0.6 s after the lamp click
     if (id === 'Y05') {                                                                // FY holds 0.5 s on the dare, then W + title
       push('W', at('Y04', 'end', .5), id); push('FY', at('Y05', 'start', -.05), id); continue;

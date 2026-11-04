@@ -18,7 +18,7 @@ keep going without stopping.
   `npm run film:tmp` (regenerate Kokoro takes first), `npm run film:final` (1080p exports + swap report + verify;
   see `VOICE_SWAP.md`). Orchestrator `tools/film.mjs`.
 - **Timing:** `tools/voices.py` = temp Kokoro takes (`voices/tmp/`, am_liam, FY .94 / TY .79 / VN01 .90 → measured
-  FY 174, TY 147, VN01 194 wpm; slower pushed the runtime past 3:00) → resolver (`voices/clone/` first) →
+  FY 174, TY 147, VN01 194 wpm). Turn gaps tightened after Sky's review (TURN 0.5, story pauses ≥1.0 s kept) → 2:42.8 → resolver (`voices/clone/` first) →
   `voices/final/<ID>.wav` → `timeline.json` (generated) → `voices/mouth.json` → `subs/film.srt|vtt`.
 - **Picture:** `src/film.js` (page) · `src/tl.js` (anchors `at(id, anchor, off)` / `frac(id, f)` + cut list) ·
   `src/acting.js` (poses, mouths, blinks, eyelines, page path, lamp) · `src/stage.js` (the room under camera setups;

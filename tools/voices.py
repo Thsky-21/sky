@@ -29,6 +29,12 @@ SR = 48000
 PAD = 0.1            # silence kept at each end of every part
 TARGET_DB = -20.0    # loudness target: RMS of the voiced frames, dBFS
 MAX_RUNTIME = 180.0
+# Sky's review of the animatic (2026-11-04): "there's a lag between dialogue delivery; it must be like a real
+# conversation". Ordinary turns: the silence from one voice to the next = max(0.15 s, TURN × gap_before_s) (gaps under
+# 0.15 s, e.g. T12 cutting Y12 off, stay as written). Gaps of PAUSE_KEEP or more are the script's deliberate pauses
+# (Y01's clicks, Y02's gag, Y05's title, the silences before Y12 and T14, Y14, Y15, Y20's hold, T22) and are kept
+# exactly. dialogue.json is not changed.
+TURN, PAUSE_KEEP = 0.5, 1.0
 
 # ——— temp casting (Kokoro). Same voice, two performances: the difference is speed, never pitch. ———
 VOICE = 'am_liam'
@@ -149,9 +155,13 @@ def resolve(D):
 def build_timeline(D, R):
     t = D['preroll']['seconds']
     lines = {}
-    for l in D['lines']:
+    for i, l in enumerate(D['lines']):
         r = R[l['id']]
-        t0 = round(t + l['gap_before_s'], 3)
+        gap = l['gap_before_s']
+        if i == 0 or gap >= PAUSE_KEEP:   # story pauses (clicks, gag, title, silences, holds): exactly as written
+            t0 = round(t + gap, 3)
+        else:                             # an ordinary turn: real-conversation handover, measured voice to voice
+            t0 = round(t - 2 * PAD + (gap if gap < .15 else max(.15, TURN * gap)), 3)
         t1 = round(t0 + r['dur'], 3)
         lines[l['id']] = {'start': t0, 'end': t1, 'dur': r['dur'], 'speaker': l['speaker'], 'shot': l['shot'],
                           'on_camera': l['on_camera'], 'src': r['src'],
