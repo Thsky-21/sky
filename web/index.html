@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Did We Make It? — a short film by Sky</title>
+<meta name="description" content="A short film by Sky. My first year asks my third year: did we make it?">
+<meta property="og:title" content="Did We Make It?">
+<meta property="og:description" content="My first year asks my third year.">
+<meta property="og:image" content="film/poster.jpg">
+<meta name="theme-color" content="#111820">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="lamp-glow" aria-hidden="true"></div>
+
+<header class="hero" id="top">
+  <div class="hero-text">
+    <p class="eyebrow">A SHORT FILM BY SKY</p>
+    <h1>DID WE MAKE IT?</h1>
+    <p class="subline">My first year asks my third year. <span class="runtime" id="runtime">· 2:32</span></p>
+    <button class="play" id="playBtn" type="button" aria-controls="film">
+      <span class="bulb" aria-hidden="true"></span>
+      <span>PLAY FILM</span>
+    </button>
+    <p class="hint">Click the lamp. Sound on.</p>
+  </div>
+</header>
+
+<main>
+  <section class="screen" aria-label="The film">
+    <div class="frame" id="frame">
+      <video id="film" preload="metadata" playsinline controls poster="film/poster.jpg">
+        <source src="film/film.mp4" type="video/mp4">
+        <track kind="captions" src="film/film.vtt" srclang="en" label="English" default>
+      </video>
+    </div>
+  </section>
+
+  <section class="page-wrap" aria-labelledby="pageTitle">
+    <div class="paper" id="paper">
+      <h2 id="pageTitle" class="paper-title">The page</h2>
+      <p class="paper-note" id="paperNote">It's blank. Press play — the page fills in as they talk. Click any line to jump there.</p>
+      <ol class="lines" id="lines"></ol>
+    </div>
+  </section>
+
+  <section class="ask" id="ask" aria-labelledby="askTitle" hidden>
+    <h2 id="askTitle">What would your first-year self ask you today?</h2>
+    <div class="modes" role="group" aria-label="Answer by">
+      <button type="button" class="mode" id="speakBtn">● Speak</button>
+      <button type="button" class="mode" id="typeBtn">✎ Type</button>
+    </div>
+    <p class="status" id="speakStatus" aria-live="polite"></p>
+    <div class="typebox" id="typebox" hidden>
+      <label for="answer" class="sr">Your question</label>
+      <textarea id="answer" rows="3" placeholder="So… did we…"></textarea>
+      <button type="button" class="mode small" id="makeCard">Put it on paper</button>
+    </div>
+    <figure class="card" id="card" hidden>
+      <blockquote id="cardText"></blockquote>
+      <figcaption>— my first-year self, today</figcaption>
+      <button type="button" class="copy" id="copyBtn">Copy</button>
+    </figure>
+    <p class="privacy">Your browser's speech service turns your voice into text. This site stores nothing.</p>
+  </section>
+
+  <section class="numbers" aria-labelledby="numTitle">
+    <h2 id="numTitle">The real numbers</h2>
+    <ul class="tally">
+      <li><b data-count="3">3</b><span>products</span></li>
+      <li><b><i data-count="10">10</i> → <i data-count="1">1</i></b><span>emails → reply</span></li>
+      <li><b><i data-count="50">50</i> → <i data-count="0">0</i></b><span>emails → replies</span></li>
+      <li class="rust"><b>zero</b><span>revenue</span></li>
+      <li class="teal"><b>now</b><span>exploring physical AI</span></li>
+    </ul>
+    <p class="still">Not yet. Still building.</p>
+  </section>
+
+  <section class="made" aria-labelledby="madeTitle">
+    <h2 id="madeTitle">How it was made</h2>
+    <p class="placeholder">[Sky writes 2–3 lines here.]</p>
+    <p class="fine">Every frame is drawn in code — characters, light, paper and camera — and rendered at 24 fps. Temporary voices, original sound. Made for the Wispr Flow hiring challenge.</p>
+  </section>
+</main>
+
+<footer>
+  <p class="end">DID WE MAKE IT? <span>NOT YET. STILL BUILDING.</span></p>
+  <p class="links">
+    <a href="#" id="linkedin">LinkedIn</a>
+    <a href="mailto:your@email" id="email">Email</a>
+  </p>
+  <p class="credits">Fonts: Barlow Semi Condensed &amp; Caveat (SIL OFL).</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
