@@ -40,8 +40,9 @@ def voice(lid, fx=None, who='FY'):
     x = compress(norm(x, .9), thr=.3, ratio=2.5)
     if fx != 'phone':
         from scipy.signal import fftconvolve
-        wet = fftconvolve(x, room_ir())[:len(x) + int(.38 * SR)]
-        x = np.concatenate([x, np.zeros(int(.38 * SR), 'float32')]) + wet * 10 ** (-17 / 20)
+        n = len(x) + len(room_ir())
+        wet = np.zeros(n); c = fftconvolve(x, room_ir()); wet[:len(c)] = c
+        x = np.concatenate([x, np.zeros(n - len(x))]) + wet * 10 ** (-17 / 20)
     if fx == 'phone':   # a small phone speaker on a wooden desk
         x = bp(x, 300, 3400, 4); x = np.tanh(x * 2.2) * .6
         y = x.copy()

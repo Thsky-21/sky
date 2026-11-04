@@ -11,7 +11,7 @@ and the build commands; this file only covers what is specific to this film.
 Sky's instruction: follow `CLAUDE_CODE_PROMPT_V3.md` exactly; `SCRIPT_V2.md` + `dialogue.json` v2 replace everything
 before (SCRIPT_TIMELINE, SHOT_LIST, dialogue v1 = `dialogue_v1.json`, the old clip 01 timing, the one-frame-only rule:
 v3 cuts between W / FY / TY / TY_CU / PAPER / PHONE). Never edit `dialogue.json` or `SCRIPT_V2.md`.
-Layers: 0 audit ✓ · 1 temp voices + animatic ✓ (ONE review stop: wait for Sky) · 2 performance · 3 paper inserts ·
+Layers: 0 audit ✓ · 1 temp voices + animatic ✓ (reviewed: turns tightened, two distinct voices, smooth line ends) · 2 performance ✓ · 3 paper inserts ·
 4 light + sound · 5 website · then the voice swap. Commit after each layer ("Layer N: …"). After the Layer 1 review,
 keep going without stopping.
 - **Build:** from PowerShell in this folder: `npm run film` (720p preview + `preview/film_CONTACT.jpg`, ~7 min),
