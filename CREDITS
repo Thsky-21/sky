@@ -12,3 +12,11 @@ Reference
 - assets/Screenshot 2026-11-04 075435.png — hairstyle reference supplied by Sky (hair shape only; not drawn as a likeness).
 
 Drawings, backgrounds and characters: drawn in code for this film. No stock art, no logos.
+
+Temporary voices (placeholders until Sky records the lines; see VOICE_REPLACEMENT.md)
+- Kokoro-82M TTS model (kokoro-v1.0.onnx, voices-v1.0.bin), voice am_liam — hexgrad, Apache License 2.0,
+  run offline through kokoro-onnx (MIT) via Lemo-Opuscar core/tts/tts.py.
+
+Sound
+- Ambience, foley and the e-piano note in clip 01 are synthesised in tools/mix.py with Lemo-Opuscar core/audio/sfx.py
+  (MIT). No recorded samples, no music other than original synthesis.
