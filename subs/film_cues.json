@@ -1,301 +1,301 @@
 [
  {
   "t0": 0.4,
-  "t1": 5.07,
+  "t1": 5.28,
   "text": "Okay, okay — new idea. Hear me out. Um…\nno, wait. This one's actually big.",
   "who": "FY"
  },
  {
-  "t0": 6.02,
-  "t1": 8.63,
+  "t0": 6.23,
+  "t1": 8.86,
   "text": "So… did we make it?",
   "who": "FY"
  },
  {
-  "t0": 8.67,
-  "t1": 9.89,
+  "t0": 8.9,
+  "t1": 10.18,
   "text": "Read it.",
   "who": "TY"
  },
  {
-  "t0": 11.54,
-  "t1": 12.5,
+  "t0": 11.83,
+  "t1": 12.74,
   "text": "It's blank.",
   "who": "FY"
  },
  {
-  "t0": 12.54,
-  "t1": 16.08,
+  "t0": 12.78,
+  "t1": 16.743,
   "text": "We don't write things down. We talk. Voice\nnotes, all day, every idea.",
   "who": "FY"
  },
  {
-  "t0": 16.12,
-  "t1": 17.8,
+  "t0": 16.783,
+  "t1": 18.62,
   "text": "What happened to that guy?",
   "who": "FY"
  },
  {
-  "t0": 17.9,
-  "t1": 20.27,
+  "t0": 18.72,
+  "t1": 21.31,
   "text": "I don't know how it ends yet.",
   "who": "TY"
  },
  {
-  "t0": 20.31,
-  "t1": 22.17,
+  "t0": 21.35,
+  "t1": 23.19,
   "text": "Then don't write it. Say it.",
   "who": "FY"
  },
  {
-  "t0": 24.02,
-  "t1": 25.8,
+  "t0": 25.04,
+  "t1": 26.89,
   "text": "Okay. Did we build anything?",
   "who": "FY"
  },
  {
-  "t0": 25.84,
-  "t1": 27.23,
+  "t0": 26.93,
+  "t1": 28.36,
   "text": "Three things.",
   "who": "TY"
  },
  {
-  "t0": 27.27,
-  "t1": 28.57,
+  "t0": 28.4,
+  "t1": 29.73,
   "text": "Three companies?",
   "who": "FY"
  },
  {
-  "t0": 28.61,
-  "t1": 31.11,
+  "t0": 29.77,
+  "t1": 32.57,
   "text": "Three products. Calm down.",
   "who": "TY"
  },
  {
-  "t0": 31.15,
-  "t1": 32.77,
+  "t0": 32.61,
+  "t1": 34.18,
   "text": "…Okay. First one.",
   "who": "FY"
  },
  {
-  "t0": 32.81,
-  "t1": 38.41,
+  "t0": 34.22,
+  "t1": 40.125,
   "text": "Friends were throwing around a hackathon\nidea. I shipped it in four, five hours.",
   "who": "TY"
  },
  {
-  "t0": 38.45,
-  "t1": 44.3,
+  "t0": 40.165,
+  "t1": 46.32,
   "text": "Two, three days later I'd bought a domain\n— didn't even know how domains worked.",
   "who": "TY"
  },
  {
-  "t0": 44.34,
-  "t1": 48.23,
+  "t0": 46.36,
+  "t1": 50.49,
   "text": "Ten emails. One reply.",
   "who": "TY"
  },
  {
-  "t0": 48.27,
-  "t1": 49.56,
+  "t0": 50.53,
+  "t1": 51.81,
   "text": "One reply!",
   "who": "FY"
  },
  {
-  "t0": 49.6,
-  "t1": 55.4,
+  "t0": 51.85,
+  "t1": 57.89,
   "text": "Wrong customers. Small sites didn't feel\nthe pain. Big ones already had someone.",
   "who": "TY"
  },
  {
-  "t0": 55.44,
-  "t1": 56.28,
+  "t0": 57.93,
+  "t1": 58.81,
   "text": "Second?",
   "who": "FY"
  },
  {
-  "t0": 56.32,
-  "t1": 61.27,
+  "t0": 58.85,
+  "t1": 63.96,
   "text": "Spending limits for AI apps. Nobody cared\nabout the bill yet.",
   "who": "TY"
  },
  {
-  "t0": 61.31,
-  "t1": 62.1,
+  "t0": 64.0,
+  "t1": 64.81,
   "text": "Third?",
   "who": "FY"
  },
  {
-  "t0": 62.14,
-  "t1": 67.77,
+  "t0": 64.85,
+  "t1": 70.67,
   "text": "Safety rules for AI agents. Five months.\nBest thing I've ever built.",
   "who": "TY"
  },
  {
-  "t0": 67.81,
-  "t1": 71.825,
+  "t0": 70.71,
+  "t1": 74.99,
   "text": "You sleep at twelve, right? I was up till\nthree. Every night.",
   "who": "TY"
  },
  {
-  "t0": 71.865,
-  "t1": 73.62,
+  "t0": 75.03,
+  "t1": 76.89,
   "text": "Code, customers, emails.",
   "who": "TY"
  },
  {
-  "t0": 73.66,
-  "t1": 75.21,
+  "t0": 76.93,
+  "t1": 78.5,
   "text": "So who's using it?",
   "who": "FY"
  },
  {
-  "t0": 75.25,
-  "t1": 80.01,
+  "t0": 78.54,
+  "t1": 83.71,
   "text": "Fifty emails. Zero replies.",
   "who": "TY"
  },
  {
-  "t0": 81.46,
-  "t1": 82.45,
+  "t0": 85.16,
+  "t1": 86.18,
   "text": "Did you try—",
   "who": "FY"
  },
  {
-  "t0": 82.49,
-  "t1": 88.222,
+  "t0": 86.22,
+  "t1": 92.406,
   "text": "Articles. Reddit. One post blew up in a\nfew hours. Mods took it down.",
   "who": "TY"
  },
  {
-  "t0": 88.262,
-  "t1": 89.86,
+  "t0": 92.446,
+  "t1": 94.15,
   "text": "Account too new.",
   "who": "TY"
  },
  {
-  "t0": 89.9,
-  "t1": 91.59,
+  "t0": 94.19,
+  "t1": 95.85,
   "text": "…Of course they did.",
   "who": "FY"
  },
  {
-  "t0": 92.44,
-  "t1": 93.31,
+  "t0": 96.7,
+  "t1": 97.6,
   "text": "Money?",
   "who": "FY"
  },
  {
-  "t0": 93.35,
-  "t1": 94.58,
+  "t0": 97.64,
+  "t1": 98.88,
   "text": "Zero.",
   "who": "TY"
  },
  {
-  "t0": 95.83,
-  "t1": 100.97,
+  "t0": 100.13,
+  "t1": 105.5,
   "text": "I'd promised myself five thousand dollars\na month. By December.",
   "who": "TY"
  },
  {
-  "t0": 101.01,
-  "t1": 106.285,
+  "t0": 105.54,
+  "t1": 111.064,
   "text": "Placements are next July. Half of me is\npreparing for that. Half of me is here.",
   "who": "TY"
  },
  {
-  "t0": 106.325,
-  "t1": 107.46,
+  "t0": 111.104,
+  "t1": 112.28,
   "text": "Never all in.",
   "who": "TY"
  },
  {
-  "t0": 107.5,
-  "t1": 110.9,
+  "t0": 112.32,
+  "t1": 115.92,
   "text": "So two months ago, I stopped. Everything.",
   "who": "TY"
  },
  {
-  "t0": 111.95,
-  "t1": 115.7,
+  "t0": 116.97,
+  "t1": 120.64,
   "text": "Was I wrong? To want it that big?",
   "who": "FY"
  },
  {
-  "t0": 115.75,
-  "t1": 123.09,
+  "t0": 120.69,
+  "t1": 128.24,
   "text": "No. You're the only reason I started. You\njust didn't know how long the middle is.",
   "who": "TY"
  },
  {
-  "t0": 123.13,
-  "t1": 128.191,
+  "t0": 128.28,
+  "t1": 133.508,
   "text": "I kept asking AI for ideas. But real\nproblems don't come from prompts.",
   "who": "TY"
  },
  {
-  "t0": 128.231,
-  "t1": 133.52,
+  "t0": 133.548,
+  "t1": 139.0,
   "text": "They come from people. And I've been doing\nit all alone, in one room.",
   "who": "TY"
  },
  {
-  "t0": 133.56,
-  "t1": 134.89,
+  "t0": 139.04,
+  "t1": 140.32,
   "text": "So what's next?",
   "who": "FY"
  },
  {
-  "t0": 134.93,
-  "t1": 138.884,
+  "t0": 140.36,
+  "t1": 144.422,
   "text": "Get out of this room. Talk to people.\nMaybe physical AI.",
   "who": "TY"
  },
  {
-  "t0": 138.924,
-  "t1": 141.2,
+  "t0": 144.462,
+  "t1": 146.79,
   "text": "Honestly, I don't know yet.",
   "who": "TY"
  },
  {
-  "t0": 141.25,
-  "t1": 142.4,
+  "t0": 146.84,
+  "t1": 148.02,
   "text": "It's okay.",
   "who": "FY"
  },
  {
-  "t0": 142.44,
-  "t1": 143.35,
+  "t0": 148.06,
+  "t1": 149.06,
   "text": "…What?",
   "who": "TY"
  },
  {
-  "t0": 143.39,
-  "t1": 145.15,
+  "t0": 149.1,
+  "t1": 150.79,
   "text": "It's okay. You'll do it.",
   "who": "FY"
  },
  {
-  "t0": 145.19,
-  "t1": 146.55,
+  "t0": 150.83,
+  "t1": 152.27,
   "text": "How do you know?",
   "who": "TY"
  },
  {
-  "t0": 146.59,
-  "t1": 148.52,
+  "t0": 152.31,
+  "t1": 154.23,
   "text": "You're still talking to me.",
   "who": "FY"
  },
  {
-  "t0": 150.57,
-  "t1": 153.4,
+  "t0": 156.28,
+  "t1": 159.13,
   "text": "Don't write it. Say it.",
   "who": "FY"
  },
  {
-  "t0": 154.45,
-  "t1": 157.01,
+  "t0": 160.18,
+  "t1": 162.96,
   "text": "Okay. New idea. Hear me out.",
   "who": "TY"
  }

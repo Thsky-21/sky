@@ -1,214 +1,214 @@
 1
-00:00:00,400 --> 00:00:05,070
+00:00:00,400 --> 00:00:05,280
 Okay, okay — new idea. Hear me out. Um…
 no, wait. This one's actually big.
 
 2
-00:00:06,020 --> 00:00:08,630
+00:00:06,230 --> 00:00:08,860
 So… did we make it?
 
 3
-00:00:08,670 --> 00:00:09,890
+00:00:08,900 --> 00:00:10,180
 Read it.
 
 4
-00:00:11,540 --> 00:00:12,500
+00:00:11,830 --> 00:00:12,740
 It's blank.
 
 5
-00:00:12,540 --> 00:00:16,080
+00:00:12,780 --> 00:00:16,743
 We don't write things down. We talk. Voice
 notes, all day, every idea.
 
 6
-00:00:16,120 --> 00:00:17,800
+00:00:16,783 --> 00:00:18,620
 What happened to that guy?
 
 7
-00:00:17,900 --> 00:00:20,270
+00:00:18,720 --> 00:00:21,310
 I don't know how it ends yet.
 
 8
-00:00:20,310 --> 00:00:22,170
+00:00:21,350 --> 00:00:23,190
 Then don't write it. Say it.
 
 9
-00:00:24,020 --> 00:00:25,800
+00:00:25,040 --> 00:00:26,890
 Okay. Did we build anything?
 
 10
-00:00:25,840 --> 00:00:27,230
+00:00:26,930 --> 00:00:28,360
 Three things.
 
 11
-00:00:27,270 --> 00:00:28,570
+00:00:28,400 --> 00:00:29,730
 Three companies?
 
 12
-00:00:28,610 --> 00:00:31,110
+00:00:29,770 --> 00:00:32,570
 Three products. Calm down.
 
 13
-00:00:31,150 --> 00:00:32,770
+00:00:32,610 --> 00:00:34,180
 …Okay. First one.
 
 14
-00:00:32,810 --> 00:00:38,410
+00:00:34,220 --> 00:00:40,125
 Friends were throwing around a hackathon
 idea. I shipped it in four, five hours.
 
 15
-00:00:38,450 --> 00:00:44,300
+00:00:40,165 --> 00:00:46,320
 Two, three days later I'd bought a domain
 — didn't even know how domains worked.
 
 16
-00:00:44,340 --> 00:00:48,230
+00:00:46,360 --> 00:00:50,490
 Ten emails. One reply.
 
 17
-00:00:48,270 --> 00:00:49,560
+00:00:50,530 --> 00:00:51,810
 One reply!
 
 18
-00:00:49,600 --> 00:00:55,400
+00:00:51,850 --> 00:00:57,890
 Wrong customers. Small sites didn't feel
 the pain. Big ones already had someone.
 
 19
-00:00:55,440 --> 00:00:56,280
+00:00:57,930 --> 00:00:58,810
 Second?
 
 20
-00:00:56,320 --> 00:01:01,270
+00:00:58,850 --> 00:01:03,960
 Spending limits for AI apps. Nobody cared
 about the bill yet.
 
 21
-00:01:01,310 --> 00:01:02,100
+00:01:04,000 --> 00:01:04,810
 Third?
 
 22
-00:01:02,140 --> 00:01:07,770
+00:01:04,850 --> 00:01:10,670
 Safety rules for AI agents. Five months.
 Best thing I've ever built.
 
 23
-00:01:07,810 --> 00:01:11,825
+00:01:10,710 --> 00:01:14,990
 You sleep at twelve, right? I was up till
 three. Every night.
 
 24
-00:01:11,865 --> 00:01:13,620
+00:01:15,030 --> 00:01:16,890
 Code, customers, emails.
 
 25
-00:01:13,660 --> 00:01:15,210
+00:01:16,930 --> 00:01:18,500
 So who's using it?
 
 26
-00:01:15,250 --> 00:01:20,010
+00:01:18,540 --> 00:01:23,710
 Fifty emails. Zero replies.
 
 27
-00:01:21,460 --> 00:01:22,450
+00:01:25,160 --> 00:01:26,180
 Did you try—
 
 28
-00:01:22,490 --> 00:01:28,222
+00:01:26,220 --> 00:01:32,406
 Articles. Reddit. One post blew up in a
 few hours. Mods took it down.
 
 29
-00:01:28,262 --> 00:01:29,860
+00:01:32,446 --> 00:01:34,150
 Account too new.
 
 30
-00:01:29,900 --> 00:01:31,590
+00:01:34,190 --> 00:01:35,850
 …Of course they did.
 
 31
-00:01:32,440 --> 00:01:33,310
+00:01:36,700 --> 00:01:37,600
 Money?
 
 32
-00:01:33,350 --> 00:01:34,580
+00:01:37,640 --> 00:01:38,880
 Zero.
 
 33
-00:01:35,830 --> 00:01:40,970
+00:01:40,130 --> 00:01:45,500
 I'd promised myself five thousand dollars
 a month. By December.
 
 34
-00:01:41,010 --> 00:01:46,285
+00:01:45,540 --> 00:01:51,064
 Placements are next July. Half of me is
 preparing for that. Half of me is here.
 
 35
-00:01:46,325 --> 00:01:47,460
+00:01:51,104 --> 00:01:52,280
 Never all in.
 
 36
-00:01:47,500 --> 00:01:50,900
+00:01:52,320 --> 00:01:55,920
 So two months ago, I stopped. Everything.
 
 37
-00:01:51,950 --> 00:01:55,700
+00:01:56,970 --> 00:02:00,640
 Was I wrong? To want it that big?
 
 38
-00:01:55,750 --> 00:02:03,090
+00:02:00,690 --> 00:02:08,240
 No. You're the only reason I started. You
 just didn't know how long the middle is.
 
 39
-00:02:03,130 --> 00:02:08,191
+00:02:08,280 --> 00:02:13,508
 I kept asking AI for ideas. But real
 problems don't come from prompts.
 
 40
-00:02:08,231 --> 00:02:13,520
+00:02:13,548 --> 00:02:19,000
 They come from people. And I've been doing
 it all alone, in one room.
 
 41
-00:02:13,560 --> 00:02:14,890
+00:02:19,040 --> 00:02:20,320
 So what's next?
 
 42
-00:02:14,930 --> 00:02:18,884
+00:02:20,360 --> 00:02:24,422
 Get out of this room. Talk to people.
 Maybe physical AI.
 
 43
-00:02:18,924 --> 00:02:21,200
+00:02:24,462 --> 00:02:26,790
 Honestly, I don't know yet.
 
 44
-00:02:21,250 --> 00:02:22,400
+00:02:26,840 --> 00:02:28,020
 It's okay.
 
 45
-00:02:22,440 --> 00:02:23,350
+00:02:28,060 --> 00:02:29,060
 …What?
 
 46
-00:02:23,390 --> 00:02:25,150
+00:02:29,100 --> 00:02:30,790
 It's okay. You'll do it.
 
 47
-00:02:25,190 --> 00:02:26,550
+00:02:30,830 --> 00:02:32,270
 How do you know?
 
 48
-00:02:26,590 --> 00:02:28,520
+00:02:32,310 --> 00:02:34,230
 You're still talking to me.
 
 49
-00:02:30,570 --> 00:02:33,400
+00:02:36,280 --> 00:02:39,130
 Don't write it. Say it.
 
 50
-00:02:34,450 --> 00:02:37,010
+00:02:40,180 --> 00:02:42,960
 Okay. New idea. Hear me out.

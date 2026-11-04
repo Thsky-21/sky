@@ -19,12 +19,29 @@ OUT = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else os.path.
 rng = np.random.default_rng(7)
 
 
-def voice(lid, fx=None):
+_IR = None
+def room_ir():
+    """a small, soft room (≈0.35 s): exponentially decaying filtered noise, so every line ends in air, not in a cut"""
+    global _IR
+    if _IR is None:
+        d = .38; tt = t_(d); n = lp(hp(noise(d), 250), 5000) * np.exp(-tt / .075)
+        _IR = n / np.sqrt((n ** 2).sum())
+    return _IR
+
+
+def voice(lid, fx=None, who='FY'):
     x, sr = sf.read(os.path.join(ROOT, 'voices', 'final', lid + '.wav'), dtype='float32')
     if x.ndim > 1: x = x.mean(1)
     if sr != SR: x = soxr.resample(x, sr, SR)
     x = hp(x, 80)
+    # a touch of tone per character (the take carries the real difference): FY a little brighter, TY a little warmer
+    if fx != 'phone':
+        x = x + (.18 * bp(x, 2500, 6000) if who == 'FY' else .22 * lp(x, 400))
     x = compress(norm(x, .9), thr=.3, ratio=2.5)
+    if fx != 'phone':
+        from scipy.signal import fftconvolve
+        wet = fftconvolve(x, room_ir())[:len(x) + int(.38 * SR)]
+        x = np.concatenate([x, np.zeros(int(.38 * SR), 'float32')]) + wet * 10 ** (-17 / 20)
     if fx == 'phone':   # a small phone speaker on a wooden desk
         x = bp(x, 300, 3400, 4); x = np.tanh(x * 2.2) * .6
         y = x.copy()
@@ -52,7 +69,7 @@ def main():
     voc, fol, amb, mus = (np.zeros((N, 2)) for _ in range(4))
     for ev in E['ev']:
         t, ty, g, pan = ev['t'], ev['type'], ev.get('gain', 1), ev.get('pan', 0)
-        if ty == 'voice': add(voc, voice(ev['id'], ev.get('fx')) * db(-12), t, 1.0, -.1 if ev['who'] == 'FY' else .1)
+        if ty == 'voice': add(voc, voice(ev['id'], ev.get('fx'), ev['who']) * db(-12), t, 1.0, -.1 if ev['who'] == 'FY' else .1)
         elif ty == 'stopClick': add(fol, stop_click() * db(-18), t, g, pan)
         elif ty == 'recordBlip': add(fol, record_blip() * db(-20), t, g, pan)
         elif ty == 'lampClick': add(fol, M0.lamp_click() * db(-16), t, g, pan)

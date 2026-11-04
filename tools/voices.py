@@ -36,10 +36,13 @@ MAX_RUNTIME = 180.0
 # exactly. dialogue.json is not changed.
 TURN, PAUSE_KEEP = 0.5, 1.0
 
-# ——— temp casting (Kokoro). Same voice, two performances: the difference is speed, never pitch. ———
-VOICE = 'am_liam'
-SPEED = {'FY': 0.94, 'TY': 0.79}   # Kokoro am_liam reads fast: these hit the top of 160-170 / 135-145 wpm (measured)
+# ——— temp casting (Kokoro). One base voice (am_liam: the same person) blended toward a brighter, higher voice for the
+# First-year and a lower, darker one for the Third-year (Sky's review: "there must be some difference in the two
+# voices"). Measured median pitch: FY ~131 Hz, TY ~106 Hz (plain am_liam 122 Hz). Speeds hit the target pace.
+BLEND = {'FY': [('am_liam', .6), ('am_fenrir', .4)], 'TY': [('am_liam', .6), ('am_onyx', .4)]}
+SPEED = {'FY': 0.89, 'TY': 0.79}   # measured with the blends: FY ~170, TY ~139 wpm
 SPEED_LINE = {'VN01': 0.90}          # the late-night voice note: fast, ~180 wpm
+PAUSES = {'FY': (.2, .08), 'TY': (.3, .12)}   # Kokoro's own sentence / clause pauses inside a line
 # punctuation-only steering for the TTS (words never change; checked)
 SAY = {}
 
@@ -62,6 +65,11 @@ def units(l):
 
 # ——— 1. temp voices ———
 def make_tmp(D):
+    """Kokoro directly (not core/tts/tts.py): blended voices, and untrimmed takes so the ends keep their natural decay
+    (the resolver trims them gently). Run with the library's .venv python."""
+    from kokoro_onnx import Kokoro
+    k = Kokoro(os.path.join(LIB, 'core', 'tts', 'kokoro-v1.0.onnx'), os.path.join(LIB, 'core', 'tts', 'voices-v1.0.bin'))
+    style = {w: sum(k.get_voice_style(n) * f for n, f in BLEND[w]) for w in BLEND}
     os.makedirs(V('tmp'), exist_ok=True)
     todo = []
     for l in D['lines']:
@@ -69,13 +77,13 @@ def make_tmp(D):
             say = SAY.get(uid, text)
             if words(say) != words(text):
                 sys.exit(f'voices.py: {uid}: TTS text changes words: {say!r} vs {text!r}')
-            todo.append({'id': uid, 'text': say, 'voice': VOICE, 'speed': SPEED_LINE.get(l['id'], SPEED[l['speaker']])})
-    p = os.path.join(ROOT, 'tts', 'lines_v2.json')
-    os.makedirs(os.path.dirname(p), exist_ok=True)
-    json.dump(todo, open(p, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-    py = os.path.join(LIB, '.venv', 'Scripts', 'python.exe')
-    if not os.path.exists(py): py = os.path.join(LIB, '.venv', 'bin', 'python')
-    subprocess.run([py, os.path.join(LIB, 'core', 'tts', 'tts.py'), p, V('tmp')], check=True)
+            todo.append({'id': uid, 'who': l['speaker'], 'text': say, 'voice': BLEND[l['speaker']], 'speed': SPEED_LINE.get(l['id'], SPEED[l['speaker']])})
+    json.dump(todo, open(os.path.join(ROOT, 'tts', 'lines_v2.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    for u in todo:
+        sp, cp = PAUSES[u['who']]
+        a, sr = k.create(u['text'], voice=style[u['who']], speed=u['speed'], trim=False, sentence_pause=sp, clause_pause=cp)
+        sf.write(V('tmp', u['id'] + '.wav'), a, sr)
+        print(f"{u['id']:7s} {len(a) / sr:6.2f} s  {u['text']}")
 
 
 # ——— 2. resolver ———
@@ -108,10 +116,17 @@ def trim(a):
     thr = max(rms.max() * 10 ** (-40 / 20), 1e-5)
     on = np.where(rms > thr)[0]
     if not len(on): return np.zeros(int(2 * PAD * SR), 'float32')
-    s, e = on[0] * win, min(len(a), (on[-1] + 1) * win)
+    # keep each end's natural decay (breath, the last consonant's release) down to −60 dB, at most 180 ms past the
+    # speech, and fade it out on a raised-cosine curve: no hard cut at the end of a word (Sky: "not a smooth finish")
+    soft = np.where(rms > max(rms.max() * 10 ** (-60 / 20), 1e-6))[0]
+    s = max(on[0] - 3, soft[soft <= on[0]][0] if (soft <= on[0]).any() else on[0]) * win
+    tail = soft[(soft >= on[-1]) & (soft <= on[-1] + 18)]
+    e = min(len(a), ((tail[-1] if len(tail) else on[-1]) + 1) * win)
     x = a[s:e].copy()
-    f = min(len(x) // 2, int(.004 * SR))   # no clicks at the cut
-    if f: x[:f] *= np.linspace(0, 1, f); x[-f:] *= np.linspace(1, 0, f)
+    fi = min(len(x) // 4, int(.012 * SR))
+    if fi: x[:fi] *= np.sin(np.linspace(0, np.pi / 2, fi)) ** 2
+    fo = min(len(x) // 3, max(int(.06 * SR), e - (on[-1] + 1) * win))
+    if fo: x[-fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
     z = np.zeros(int(PAD * SR), 'float32')
     return np.concatenate([z, x, z])
 

@@ -1,308 +1,818 @@
 [
  {
   "id": "VN01",
+  "who": "FY",
   "text": "Okay, okay — new idea. Hear me out. Um… no, wait. This one's actually big.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
   "speed": 0.9
  },
  {
   "id": "Y01_p1",
+  "who": "FY",
   "text": "So…",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "Y01_p2",
+  "who": "FY",
   "text": "did we make it?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T01",
+  "who": "TY",
   "text": "Read it.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y02",
+  "who": "FY",
   "text": "It's blank.",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "Y03",
+  "who": "FY",
   "text": "We don't write things down. We talk. Voice notes, all day, every idea. What happened to that guy?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T02",
+  "who": "TY",
   "text": "I don't know how it ends yet.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y04",
+  "who": "FY",
   "text": "Then don't write it. Say it.",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "Y05",
+  "who": "FY",
   "text": "Okay. Did we build anything?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T03",
+  "who": "TY",
   "text": "Three things.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y06",
+  "who": "FY",
   "text": "Three companies?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T04",
+  "who": "TY",
   "text": "Three products. Calm down.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y07",
+  "who": "FY",
   "text": "…Okay. First one.",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T05_p1",
+  "who": "TY",
   "text": "Friends were throwing around a hackathon idea. I shipped it in four, five hours.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T05_p2",
+  "who": "TY",
   "text": "Two, three days later I'd bought a domain — didn't even know how domains worked.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T06_p1",
+  "who": "TY",
   "text": "Ten emails.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T06_p2",
+  "who": "TY",
   "text": "One reply.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y08",
+  "who": "FY",
   "text": "One reply!",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T07",
+  "who": "TY",
   "text": "Wrong customers. Small sites didn't feel the pain. Big ones already had someone.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y09",
+  "who": "FY",
   "text": "Second?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T08",
+  "who": "TY",
   "text": "Spending limits for AI apps. Nobody cared about the bill yet.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y10",
+  "who": "FY",
   "text": "Third?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T09",
+  "who": "TY",
   "text": "Safety rules for AI agents. Five months. Best thing I've ever built.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T10",
+  "who": "TY",
   "text": "You sleep at twelve, right? I was up till three. Every night. Code, customers, emails.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y11",
+  "who": "FY",
   "text": "So who's using it?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T11_p1",
+  "who": "TY",
   "text": "Fifty emails.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T11_p2",
+  "who": "TY",
   "text": "Zero replies.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y12",
+  "who": "FY",
   "text": "Did you try—",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T12_p1",
+  "who": "TY",
   "text": "Articles. Reddit. One post blew up in a few hours.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T12_p2",
+  "who": "TY",
   "text": "Mods took it down. Account too new.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y13",
+  "who": "FY",
   "text": "…Of course they did.",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "Y14",
+  "who": "FY",
   "text": "Money?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T13",
+  "who": "TY",
   "text": "Zero.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T14",
+  "who": "TY",
   "text": "I'd promised myself five thousand dollars a month. By December.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T15",
+  "who": "TY",
   "text": "Placements are next July. Half of me is preparing for that. Half of me is here. Never all in.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T16",
+  "who": "TY",
   "text": "So two months ago, I stopped. Everything.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y15_p1",
+  "who": "FY",
   "text": "Was I wrong?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "Y15_p2",
+  "who": "FY",
   "text": "To want it that big?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T17_p1",
+  "who": "TY",
   "text": "No.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T17_p2",
+  "who": "TY",
   "text": "You're the only reason I started. You just didn't know how long the middle is.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "T18",
+  "who": "TY",
   "text": "I kept asking AI for ideas. But real problems don't come from prompts. They come from people. And I've been doing it all alone, in one room.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y16",
+  "who": "FY",
   "text": "So what's next?",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T19",
+  "who": "TY",
   "text": "Get out of this room. Talk to people. Maybe physical AI. Honestly, I don't know yet.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y17",
+  "who": "FY",
   "text": "It's okay.",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T20",
+  "who": "TY",
   "text": "…What?",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y18",
+  "who": "FY",
   "text": "It's okay. You'll do it.",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T21",
+  "who": "TY",
   "text": "How do you know?",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  },
  {
   "id": "Y19",
+  "who": "FY",
   "text": "You're still talking to me.",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "Y20_p1",
+  "who": "FY",
   "text": "Don't write it.",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "Y20_p2",
+  "who": "FY",
   "text": "Say it.",
-  "voice": "am_liam",
-  "speed": 0.94
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_fenrir",
+    0.4
+   ]
+  ],
+  "speed": 0.89
  },
  {
   "id": "T22",
+  "who": "TY",
   "text": "Okay. New idea. Hear me out.",
-  "voice": "am_liam",
+  "voice": [
+   [
+    "am_liam",
+    0.6
+   ],
+   [
+    "am_onyx",
+    0.4
+   ]
+  ],
   "speed": 0.79
  }
 ]
