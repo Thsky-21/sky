@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Did We Make It? — a short film by Sky</title>
 <meta name="description" content="A short film by Sky. My first year asks my third year: did we make it?">
 <meta property="og:title" content="Did We Make It?">
@@ -12,40 +12,56 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="lamp-glow" aria-hidden="true"></div>
 
-<header class="hero" id="top">
+<nav class="top">
+  <span class="mark">DID WE MAKE IT?</span>
+  <span class="coords"><span lang="kn">ಬೆಂಗಳೂರು</span> · 12.97° N 77.59° E · <span id="clock">00:40</span></span>
+</nav>
+
+<header class="hero">
   <div class="hero-text">
     <p class="eyebrow">A SHORT FILM BY SKY</p>
-    <h1>DID WE MAKE IT?</h1>
-    <p class="subline">My first year asks my third year. <span class="runtime" id="runtime">· 2:32</span></p>
-    <button class="play" id="playBtn" type="button" aria-controls="film">
-      <span class="bulb" aria-hidden="true"></span>
-      <span>PLAY FILM</span>
+    <h1>DID WE<br>MAKE IT?</h1>
+    <p class="subline">My first year asks my third year. <span class="runtime" id="runtime">2:32</span></p>
+    <button class="play" id="playBtn" type="button">
+      <span class="bulb" aria-hidden="true"></span><span>PLAY FILM</span>
     </button>
-    <p class="hint">Click the lamp. Sound on.</p>
   </div>
+
+  <svg class="city" viewBox="0 0 1200 210" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <path class="sky" d="M0 170H60V120H95V150H130V90H150V80H170V90H190V140H240V110H290V60H330V110H360V150H420V100H445V70H470V100H500V130H560V40H575V30H590V40H605V130H650V150H700V105H760V125H800V75H840V125H880V145H930V95H960V115H1010V65H1050V140H1100V120H1150V150H1200V170"/>
+    <path class="sky thin" d="M870 145V28M820 34H965M870 28L820 34M940 34V50"/>
+    <g class="win">
+      <rect x="300" y="72" width="4" height="4"/><rect x="314" y="90" width="4" height="4"/>
+      <rect x="566" y="52" width="4" height="4"/><rect x="590" y="80" width="4" height="4"/>
+      <rect x="812" y="88" width="4" height="4"/><rect x="1022" y="80" width="4" height="4"/>
+      <rect x="140" y="100" width="4" height="4"/><rect x="452" y="84" width="4" height="4"/>
+    </g>
+    <path class="viaduct" d="M0 178H1200M50 178V210M200 178V210M350 178V210M500 178V210M650 178V210M800 178V210M950 178V210M1100 178V210"/>
+    <rect class="train" x="-90" y="170" width="78" height="7" rx="3.5"/>
+  </svg>
+  <p class="ticker">Koramangala · HSR · Indiranagar · Outer Ring Road — everyone here is building something.</p>
 </header>
 
 <main>
-  <section class="screen" aria-label="The film">
-    <div class="frame" id="frame">
-      <video id="film" preload="metadata" playsinline controls poster="film/poster.jpg">
-        <source src="film/film.mp4" type="video/mp4">
-        <track kind="captions" src="film/film.vtt" srclang="en" label="English" default>
-      </video>
-    </div>
+  <section class="station" aria-labelledby="s1">
+    <p class="stop"><i></i>01 · <span id="s1">The film</span></p>
+    <button class="screen" id="openFilm" type="button" aria-label="Play the film full screen">
+      <img src="film/poster.jpg" alt="First-year Sky at the desk under a lamp, the city at night behind him.">
+      <span class="screen-play"><span class="bulb" aria-hidden="true"></span> Watch · <span class="rt">2:32</span></span>
+    </button>
   </section>
 
-  <section class="page-wrap" aria-labelledby="pageTitle">
-    <div class="paper" id="paper">
-      <h2 id="pageTitle" class="paper-title">The page</h2>
-      <p class="paper-note" id="paperNote">It's blank. Press play — the page fills in as they talk. Click any line to jump there.</p>
+  <section class="station" aria-labelledby="s2">
+    <p class="stop"><i></i>02 · <span id="s2">The page</span></p>
+    <div class="paper">
+      <p class="paper-note" id="paperNote">It's blank. Press play — it fills in as they talk. Tap a line to jump there.</p>
       <ol class="lines" id="lines"></ol>
     </div>
   </section>
 
-  <section class="ask" id="ask" aria-labelledby="askTitle" hidden>
+  <section class="station ask" id="ask" aria-labelledby="askTitle" hidden>
+    <p class="stop"><i></i>03 · Your turn</p>
     <h2 id="askTitle">What would your first-year self ask you today?</h2>
     <div class="modes" role="group" aria-label="Answer by">
       <button type="button" class="mode" id="speakBtn">● Speak</button>
@@ -65,33 +81,51 @@
     <p class="privacy">Your browser's speech service turns your voice into text. This site stores nothing.</p>
   </section>
 
-  <section class="numbers" aria-labelledby="numTitle">
-    <h2 id="numTitle">The real numbers</h2>
-    <ul class="tally">
-      <li><b data-count="3">3</b><span>products</span></li>
-      <li><b><i data-count="10">10</i> → <i data-count="1">1</i></b><span>emails → reply</span></li>
-      <li><b><i data-count="50">50</i> → <i data-count="0">0</i></b><span>emails → replies</span></li>
-      <li class="rust"><b>zero</b><span>revenue</span></li>
-      <li class="teal"><b>now</b><span>exploring physical AI</span></li>
-    </ul>
+  <section class="station" aria-labelledby="s4">
+    <p class="stop"><i></i>04 · <span id="s4">The traction slide</span></p>
+    <p class="lede">Every pitch deck in this city has one. Here's mine, honestly.</p>
+    <dl class="ledger">
+      <div><dt>Products shipped</dt><dd data-count="3">3</dd></div>
+      <div><dt>First outreach</dt><dd><span data-count="10">10</span> emails → <span data-count="1">1</span> reply</dd></div>
+      <div><dt>Second outreach</dt><dd><span data-count="50">50</span> emails → <span data-count="0">0</span> replies</dd></div>
+      <div class="rust"><dt>Revenue</dt><dd>₹0</dd></div>
+      <div class="teal"><dt>Now</dt><dd>Exploring physical AI</dd></div>
+    </dl>
     <p class="still">Not yet. Still building.</p>
   </section>
 
-  <section class="made" aria-labelledby="madeTitle">
-    <h2 id="madeTitle">How it was made</h2>
+  <section class="station" aria-labelledby="s5">
+    <p class="stop"><i></i>05 · <span id="s5">How it was made</span></p>
     <p class="placeholder">[Sky writes 2–3 lines here.]</p>
-    <p class="fine">Every frame is drawn in code — characters, light, paper and camera — and rendered at 24 fps. Temporary voices, original sound. Made for the Wispr Flow hiring challenge.</p>
+    <p class="fine">Every frame is drawn in code — characters, light, paper and camera — at 24 fps. Temporary voices, original sound. Made for the Wispr Flow hiring challenge.</p>
   </section>
 </main>
 
 <footer>
-  <p class="end">DID WE MAKE IT? <span>NOT YET. STILL BUILDING.</span></p>
-  <p class="links">
-    <a href="#" id="linkedin">LinkedIn</a>
-    <a href="mailto:your@email" id="email">Email</a>
-  </p>
-  <p class="credits">Fonts: Barlow Semi Condensed &amp; Caveat (SIL OFL).</p>
+  <p class="links"><a href="#" id="linkedin">LinkedIn</a><a href="mailto:your@email" id="email">Email</a></p>
+  <p class="credits">Bengaluru, after midnight. Fonts: Barlow Semi Condensed &amp; Caveat (SIL OFL).</p>
 </footer>
+
+<!-- full-screen theatre -->
+<div class="theatre" id="theatre" hidden>
+  <video id="film" preload="metadata" playsinline poster="film/poster.jpg">
+    <source src="film/film.mp4" type="video/mp4">
+  </video>
+  <p class="cap" id="cap" aria-live="off"></p>
+  <div class="bar" id="bar">
+    <button class="ctl lamp" id="pp" type="button" aria-label="Pause"><span class="bulb"></span></button>
+    <div class="line" id="line" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="152" aria-valuenow="0">
+      <div class="track"><div class="done" id="done"></div></div>
+      <div class="stations" id="stations"></div>
+      <div class="train-dot" id="dot"></div>
+    </div>
+    <span class="time" id="time">0:00</span>
+    <button class="ctl txt" id="cc" type="button" aria-pressed="true">CC</button>
+    <button class="ctl txt" id="mute" type="button" aria-pressed="false">SOUND</button>
+    <button class="ctl txt" id="close" type="button" aria-label="Close film">✕</button>
+  </div>
+  <p class="now-at" id="nowAt"></p>
+</div>
 
 <script src="app.js"></script>
 </body>
