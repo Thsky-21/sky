@@ -1,0 +1,276 @@
+{
+  "title": "DID WE MAKE IT?",
+  "runtime_seconds": 180,
+  "characters": {
+    "FIRST_YEAR_SKY": {
+      "description": "Younger Sky, first year at MSRIT, approximately two years younger; asks the questions."
+    },
+    "THIRD_YEAR_SKY": {
+      "description": "Current Sky, third year at MSRIT; answers from lived experience, direct then empathetic."
+    }
+  },
+  "lines": [
+    {
+      "id": "Y01",
+      "start_seconds": 3,
+      "end_seconds": 7,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "So… did we make it?",
+      "delivery": "curious, hopeful, slightly impatient",
+      "audio_file": "audio/Y01.wav"
+    },
+    {
+      "id": "T01",
+      "start_seconds": 7,
+      "end_seconds": 10,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "Take this. Read it.",
+      "delivery": "matter-of-fact, guarded",
+      "audio_file": "audio/T01.wav"
+    },
+    {
+      "id": "Y02",
+      "start_seconds": 10,
+      "end_seconds": 13,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "It's blank.",
+      "delivery": "puzzled",
+      "audio_file": "audio/Y02.wav"
+    },
+    {
+      "id": "Y03",
+      "start_seconds": 13,
+      "end_seconds": 20,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "You used to send me voice notes—ideas, plans, all those thoughts you couldn't switch off. What happened?",
+      "delivery": "familiar, lightly teasing, curious",
+      "audio_file": "audio/Y03.wav"
+    },
+    {
+      "id": "T02",
+      "start_seconds": 20,
+      "end_seconds": 25,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "I don't know how to write the ending yet.",
+      "delivery": "honest, restrained",
+      "audio_file": "audio/T02.wav"
+    },
+    {
+      "id": "Y04",
+      "start_seconds": 25,
+      "end_seconds": 30,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "Then start at the beginning. Start with college.",
+      "delivery": "encouraging, curious",
+      "audio_file": "audio/Y04.wav"
+    },
+    {
+      "id": "T03",
+      "start_seconds": 33,
+      "end_seconds": 41,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "I came from Gokak. I was quiet, a little shy. I chose Bengaluru because startups were everywhere.",
+      "delivery": "intimate recollection",
+      "audio_file": "audio/T03.wav"
+    },
+    {
+      "id": "Y05",
+      "start_seconds": 41,
+      "end_seconds": 47,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "I thought we'd be building a company straight away.",
+      "delivery": "hopeful, slightly impatient",
+      "audio_file": "audio/Y05.wav"
+    },
+    {
+      "id": "T04",
+      "start_seconds": 47,
+      "end_seconds": 55,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "I wanted to build something big. I looked up to Elon Musk. I thought: start small, keep scaling.",
+      "delivery": "reflective, not worshipful",
+      "audio_file": "audio/T04.wav"
+    },
+    {
+      "id": "Y06",
+      "start_seconds": 55,
+      "end_seconds": 60,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "Okay. So what did we actually build?",
+      "delivery": "eager, direct",
+      "audio_file": "audio/Y06.wav"
+    },
+    {
+      "id": "T05",
+      "start_seconds": 60,
+      "end_seconds": 68,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "For almost a year, I mostly thought. I asked AI if my ideas were good. I had more plans than proof.",
+      "delivery": "self-aware, slightly dry",
+      "audio_file": "audio/T05.wav"
+    },
+    {
+      "id": "Y07",
+      "start_seconds": 68,
+      "end_seconds": 72,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "What finally got us moving?",
+      "delivery": "curious",
+      "audio_file": "audio/Y07.wav"
+    },
+    {
+      "id": "T06",
+      "start_seconds": 72,
+      "end_seconds": 82,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "A conversation with friends about a hackathon problem. I built a first version in four or five hours, learning what I needed as I went.",
+      "delivery": "energised memory, natural pace",
+      "audio_file": "audio/T06.wav"
+    },
+    {
+      "id": "Y08",
+      "start_seconds": 82,
+      "end_seconds": 86,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "Four hours? Seriously?",
+      "delivery": "surprised, almost amused",
+      "audio_file": "audio/Y08.wav"
+    },
+    {
+      "id": "T07",
+      "start_seconds": 86,
+      "end_seconds": 90,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "I bought a domain two days later. Sent ten emails. One person replied.",
+      "delivery": "quiet excitement",
+      "audio_file": "audio/T07.wav"
+    },
+    {
+      "id": "Y09",
+      "start_seconds": 90,
+      "end_seconds": 94,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "One reply. That must've felt huge.",
+      "delivery": "warm, excited for him",
+      "audio_file": "audio/Y09.wav"
+    },
+    {
+      "id": "T08",
+      "start_seconds": 94,
+      "end_seconds": 105,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "It did. It was about website content licensing and stopping AI scrapers. But I'd chosen the wrong customers: small publishers didn't feel enough pain; bigger ones already had solutions.",
+      "delivery": "matter-of-fact, no self-pity",
+      "audio_file": "audio/T08.wav"
+    },
+    {
+      "id": "Y10",
+      "start_seconds": 105,
+      "end_seconds": 109,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "So you changed direction?",
+      "delivery": "curious",
+      "audio_file": "audio/Y10.wav"
+    },
+    {
+      "id": "T09",
+      "start_seconds": 109,
+      "end_seconds": 120,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "First LLM budget enforcement. Then agent governance. That one took five months. I learned TypeScript, Python, React and Redis while building it.",
+      "delivery": "measured, quietly proud of the learning",
+      "audio_file": "audio/T09.wav"
+    },
+    {
+      "id": "Y11",
+      "start_seconds": 120,
+      "end_seconds": 126,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "You learned all that. Did people start using it?",
+      "delivery": "impressed, expectant",
+      "audio_file": "audio/Y11.wav"
+    },
+    {
+      "id": "T10",
+      "start_seconds": 126,
+      "end_seconds": 133,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "I sent around fifty emails. Zero replies.",
+      "delivery": "direct, dry, pause after zero",
+      "audio_file": "audio/T10.wav"
+    },
+    {
+      "id": "Y12",
+      "start_seconds": 133,
+      "end_seconds": 138,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "Didn't you try other ways?",
+      "delivery": "not accusing",
+      "audio_file": "audio/Y12.wav"
+    },
+    {
+      "id": "T11",
+      "start_seconds": 138,
+      "end_seconds": 148,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "Two Dev.to articles, Reddit, Twitter. One security post took off—then moderators removed it because my account was new.",
+      "delivery": "factual, lightly frustrated",
+      "audio_file": "audio/T11.wav"
+    },
+    {
+      "id": "Y13",
+      "start_seconds": 150,
+      "end_seconds": 156,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "So did we make any money?",
+      "delivery": "quiet, sincere",
+      "audio_file": "audio/Y13.wav"
+    },
+    {
+      "id": "T12",
+      "start_seconds": 156,
+      "end_seconds": 164,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "Zero. I imagined five thousand dollars a month by December. Placements were getting closer, too.",
+      "delivery": "honest, vulnerable but controlled",
+      "audio_file": "audio/T12.wav"
+    },
+    {
+      "id": "Y14",
+      "start_seconds": 164,
+      "end_seconds": 169,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "Was I wrong to dream that big?",
+      "delivery": "vulnerable, quieter",
+      "audio_file": "audio/Y14.wav"
+    },
+    {
+      "id": "T13",
+      "start_seconds": 169,
+      "end_seconds": 176,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "No. You got us started. After two months away, I learned: real problems come from people, not prompts.",
+      "delivery": "warm, empathetic, direct to the younger self",
+      "audio_file": "audio/T13.wav"
+    },
+    {
+      "id": "T14",
+      "start_seconds": 176,
+      "end_seconds": 178,
+      "speaker": "THIRD_YEAR_SKY",
+      "text": "I'm exploring physical AI.",
+      "delivery": "open-ended, honest uncertainty",
+      "audio_file": "audio/T14.wav"
+    },
+    {
+      "id": "Y15",
+      "start_seconds": 178,
+      "end_seconds": 180,
+      "speaker": "FIRST_YEAR_SKY",
+      "text": "Let's go.",
+      "delivery": "quiet determination",
+      "audio_file": "audio/Y15.wav"
+    }
+  ],
+  "note": "This file is the machine-readable dialogue source. Do not rewrite lines. Align audio and subtitles to these IDs. The scene timeline contains non-dialogue beats and visual direction."
+}

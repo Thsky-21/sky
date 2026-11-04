@@ -1,0 +1,10 @@
+{
+  "name": "did-we-make-it",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "film": "node tools/film.mjs",
+    "film:tmp": "node tools/film.mjs --tmp",
+    "film:final": "node tools/film.mjs --final"
+  }
+}

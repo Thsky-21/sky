@@ -3,6 +3,8 @@ DID WE MAKE IT? — CREDITS (assets and licences)
 Fonts
 - Barlow Semi Condensed (Regular, Medium, SemiBold, Bold) — Jeremy Tribby / The Barlow Project Authors.
   SIL Open Font License 1.1 — fonts/OFL.txt. Source: github.com/google/fonts (ofl/barlowsemicondensed).
+- Caveat (variable, used for the pencil handwriting on the sheet) — The Caveat Project Authors.
+  SIL Open Font License 1.1 — fonts/Caveat-OFL.txt. Source: github.com/google/fonts (ofl/caveat).
 
 Code
 - src/cel.js, src/post.js adapted from Lemo-Opuscar, style cel-anime-80s (demo technique only).

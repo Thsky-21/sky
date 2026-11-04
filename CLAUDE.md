@@ -6,15 +6,73 @@ Film project folder for **"Did We Make It?"**: a 180 s portfolio film for the Wi
 with Lemo-Opuscar, style `cel-anime-80s`. The workspace-level `../CLAUDE.md` covers the library, the page contract
 and the build commands; this file only covers what is specific to this film.
 
-## State (updated 2026-11-04, end of the cloud session): resume here
+## State v3 (2026-11-04 night): RESUME HERE — the sections below this one are HISTORY (v1 / clip 01 era)
 
-**Gate B: COMPLETE and LOCKED. Gate C: done for clip 01's six lines only. Gate D: clip 01 (0–30 s) built and rendered
-as preview v3, WAITING FOR SKY'S REVIEW. Clips 02–06 and the website (Gate E) have NOT started; don't start them
-until Sky approves clip 01.** Everything is on `main` (commit `32a2765`) and on branch `ccr-f0287510-7jx7hj`.
+Sky's instruction: follow `CLAUDE_CODE_PROMPT_V3.md` exactly; `SCRIPT_V2.md` + `dialogue.json` v2 replace everything
+before (SCRIPT_TIMELINE, SHOT_LIST, dialogue v1 = `dialogue_v1.json`, the old clip 01 timing, the one-frame-only rule:
+v3 cuts between W / FY / TY / TY_CU / PAPER / PHONE). Never edit `dialogue.json` or `SCRIPT_V2.md`.
+Layers: 0 audit ✓ · 1 temp voices + animatic ✓ (ONE review stop: wait for Sky) · 2 performance · 3 paper inserts ·
+4 light + sound · 5 website · then the voice swap. Commit after each layer ("Layer N: …"). After the Layer 1 review,
+keep going without stopping.
+- **Build:** from PowerShell in this folder: `npm run film` (720p preview + `preview/film_CONTACT.jpg`, ~7 min),
+  `npm run film:tmp` (regenerate Kokoro takes first), `npm run film:final` (1080p exports + swap report + verify;
+  see `VOICE_SWAP.md`). Orchestrator `tools/film.mjs`.
+- **Timing:** `tools/voices.py` = temp Kokoro takes (`voices/tmp/`, am_liam, FY .94 / TY .79 / VN01 .90 → measured
+  FY 174, TY 147, VN01 194 wpm; slower pushed the runtime past 3:00) → resolver (`voices/clone/` first) →
+  `voices/final/<ID>.wav` → `timeline.json` (generated) → `voices/mouth.json` → `subs/film.srt|vtt`.
+- **Picture:** `src/film.js` (page) · `src/tl.js` (anchors `at(id, anchor, off)` / `frac(id, f)` + cut list) ·
+  `src/acting.js` (poses, mouths, blinks, eyelines, page path, lamp) · `src/stage.js` (the room under camera setups;
+  golden plate cached 3×) · `src/inserts.js` (PAPER, PHONE, title, end card; handwriting font Caveat, OFL).
+  `src/clip01.js` is superseded (still imported by the old `site/room.js`).
+- **Sound:** `tools/mix_film.py` (events from the page; VN01 phone filter). Room tone + music come in Layer 4.
+- **Checks:** `tools/verify.py <mp4>`; `tools/contact.py`.
+
+## State (updated 2026-11-04 evening, laptop session): HISTORY
+
+**Where things stand.** Gate B is LOCKED. Clip 01 (0–30 s) has been REBUILT to Sky's new direction (one set, both
+characters in one frame) and rendered; the website (Gate E) is BUILT and tested locally but NOT deployed. Sky's latest
+words: the animation feels unexciting and "a lot is missing"; Sky will give direction in the next session. Don't change
+clip 01 or the site until Sky says what to change. Sky works step by step: do exactly the task asked, nothing extra.
 Build in this folder, not inside `animation-engine/`; run `core/` commands from the library root
 (`LIB` = `C:/Users/User/lemo-opuscar`) with this folder as the argument.
 
-**Where clip 01 stands (v3, sent to Sky):**
+**Nothing from this session is committed.** `main` = `27bcd10` (pulled from GitHub; remote `origin` =
+`https://github.com/Thsky-21/sky.git`). Uncommitted: `src/clip01.js` (rewritten), `src/apartment.js` (new), `src/pal.js`
+(+`golden` set), `timeline.json`, `events.json`, `preview/*` (new render), `site/` (new), `tools/build_site.py` (new),
+`.gitignore` (+`site/dist/`), this file. Commit/push only when Sky asks.
+
+**THE STORY AND DIALOGUE ARE NOW SKY'S v2 — BUILD ON THEM, NEVER EDIT THEM.** Sky rewrote the script himself
+(2026-11-04, 18:43): **`dialogue.json` v2** (`"supersedes": "dialogue.json v1, SCRIPT_TIMELINE.md, SHOT_LIST.md"`,
+new line IDs, runtime ~2:20–2:40, timing measured from recordings) and **`SCRIPT_V2.md`** (direction and picture:
+one set, the existing room; memories drawn on the sheet; hook = a glowing phone playing a voice note). Sky's words:
+"the animation is good but the story and dialogues were not; build on these from now on; don't touch them, keep them
+as they are; don't remove or delete lines." So: never modify, reformat, re-save or "fix" `dialogue.json` or
+`SCRIPT_V2.md`, not even to make a tool pass. If a tool disagrees with them, change the tool, or report and ask.
+Status of the old outputs: clip 01 v4, its voices (`voices/Y01…Y04, T01, T02.wav`), `timeline.json`, the
+`tools/check_dialogue.py` / `make_lines.py` / `check_timing.py` logic, `VOICE_CLONE_INSTRUCTIONS.md` and the site's
+transcript were all built from **v1** and will need adapting to v2 (new IDs and fields) when Sky asks. Don't re-run
+`build_clip.sh` or `build_site.py` before that adaptation: they would read v2 and fail or change the outputs. Keep the
+animation look (the golden apartment, the rig, the lamp hook). SCRIPT_V2 lists MCUs and inserts while Sky's earlier
+direction was both characters in one frame always: ask Sky which wins before staging.
+
+**Clip 01 now (v4):** `preview/clip01_preview.mp4` (+ `.srt`, `preview/clip01_CONTACT.jpg`, `preview/clip01/t_*.jpg`).
+Black 0–0.5 s (heel taps), then ONE continuous two-shot in the golden high-rise apartment (`src/apartment.js`): dark
+room lit by the city → desk lamp clicks at 0.75 s → pendant / floor lamp / cove warm up to gold (1.05–2.4 s) → Y01 FY
+leans in → T01 TY slides the page across → Y02 FY lifts and flips it → Y03 one-hand gesture + voice-note waveform →
+page laid down → T02 TY's eyes drop → Y04 FY pushes the page back to the middle → push-in toward the page (no
+white-out). Staging: FY x 560, TY x 1360, scale .8, floor y 1250, yaw .95; camera keys in `CAM` (clip01.js); TY's
+hands rest open. `roomShot` is exported with website-only options (`o` = life/lamp/gold/cam/still/empty); the film
+passes none, so its output is unchanged by them. Voices are still temp Kokoro TTS.
+
+**Voices:** Sky is cloning his own voice in another session run from `C:\Users\User\arc\wisprflow`, following
+`..\VOICE_CLONE_INSTRUCTIONS.md` (written this session from dialogue **v1**: 29 lines → `voices/<ID>.wav`, staging in
+`..\voice-work\final\`, report `takes.json`). If dialogue v2 is adopted, that file's line table is out of date.
+
+**Website (built, local only):** see "Decisions taken → Website". Test with a Range-capable server (a scratch
+`serve.mjs` on port 8766 was used; python http.server breaks video seeking). Publishing (Vercel is connected) needs
+Sky's explicit yes.
+
+**History: where clip 01 stood at v3 (cloud session; superseded by v4 above):**
 - Watch: `preview/clip01_preview.mp4` (+ `preview/clip01_preview.srt`, `preview/clip01_CONTACT.jpg`, `preview/clip01/`).
 - Sky's notes so far, all addressed in v1→v3: paper size must stay constant (one A4 page = 236 × 167 rig units ×
   the shot's figure scale; hands hold it fingers-behind / thumb-in-front); remove the constant noise (no ambience
@@ -75,13 +133,12 @@ Build in this folder, not inside `animation-engine/`; run `core/` commands from 
   `sh tools/look.sh [page]`, then `<LIB>/.venv/Scripts/python.exe tools/board.py`.
 - Repository audit: `C:\Users\User\.claude\plans\pasted-content-id-198a-we-are-imperative-taco.md`.
 
-**Next, only when Sky asks:** Sky's review of clip 01 v3 (and answers to the four open questions above). After
-approval: clip 02 (30–60 s, Scene 2, memory palette) in a new `src/clip02.js`, then 03–06 in order, each reviewed
-before the next. Generate each clip's voices with `tools/make_lines.py --from <a> --to <b>`; watch T07 (13 words in
-4 s) for overflow and report it rather than speeding it up. Sky works step by step: do exactly the task asked,
-nothing extra.
+**Next, only when Sky asks:** (1) Sky's direction on making the animation more exciting; (2) whether dialogue v2 /
+SCRIPT_V2.md replaces v1; then clips in order, each reviewed before the next; swap in the cloned voices when delivered
+(`build_clip.sh <clip> --keep-voices`); re-run `tools/build_site.py` after each clip; deploy only on Sky's yes.
+Sky works step by step: do exactly the task asked, nothing extra.
 
-**Protect the locked outputs:** don't edit `src/sky.js`, `src/body.js`, `src/pal.js`, `src/plates.js`,
+**Protect the locked outputs:** don't edit `src/sky.js`, `src/body.js`, `src/pal.js` (only its added `golden` set is new), `src/plates.js`,
 `src/frames.js`, `src/main.js`, `fonts/` or `review/` unless Sky asks. Gate C work goes in new files (`tools/`, `tts/`, `voices/`,
 `VOICE_REPLACEMENT.md`). For Gate D, build the film page (`film.js`, timeline) *on top of* these modules: import
 `head`/`figure`/plates; don't fork or redraw the characters. `../coffee-farm-film/` doesn't exist on this machine:
@@ -135,6 +192,30 @@ use the library's `core/README.md` and `TECHNIQUE.md` as the pattern instead.
 - **Sky's direction on clip 01 (2026-11-04):** First-year sounds excited and quick early on; the paper never changes
   size; no constant noise under the voices (placed sound events only); smoother motion (ones/twos) and more
   realism; a hook in the opening seconds. Apply the same standards to clips 02–06.
+- **ONE SET, ONE FRAME (Sky, 2026-11-04, overrides SHOT_LIST/SCRIPT_TIMELINE staging):** the whole film plays in
+  one place: a high-rise apartment at night washed in golden light, a floor-to-ceiling window onto the city with an
+  elevated road whose traffic is visible below (`src/apartment.js`: cached 2× plates `dark`/`gold`, `windowLife()`
+  for traffic/beacons/aircraft, `table()`, `deskLamp()`; palette `PAL.golden` added to `pal.js`). Both characters are
+  in the same frame at all times, talking to each other: no cutting to singles, close-ups or inserts; the camera only
+  drifts, pushes and re-centres slightly toward whoever acts. Clip 01 is rebuilt this way (`src/clip01.js`: black
+  0–0.5 s, then one continuous two-shot; the old push into white paper at 29.5 s is gone, it ends on a push-in toward
+  the page between them). The memory/hostel/campus scenes in the script are NOT yet re-staged for this; ask Sky
+  before re-writing SHOT_LIST.md / SCRIPT_TIMELINE.md for clips 02–06.
+- **Website (Gate E, approved by Sky 2026-11-04, title "Akash, did we make it?"):** `site/` (index.html, site.css,
+  site.js, room.js) → `tools/build_site.py` assembles `site/dist/` (git-ignored): the built clips joined into one
+  web MP4 (`media/film.mp4`, crf 25), captions `film.vtt` with speaker voice tags, stills, the film's `src/` modules,
+  fonts, data. Flow: live dark room (room.js runs `roomShot` from clip01.js, exported with website-only options) →
+  the desk lamp is the play button → video starts at 0.74 s (the film's own lamp click) → after the film the room
+  returns live with empty chairs; the visitor picks up the page and writes (typed or browser speech; nothing stored).
+  Themed controls: lamp = play/pause (paused dims the frame), the elevated road = scrubber (chapters as streetlamps,
+  unmade part dashed "still building"), voice-note bars = sound, page = captions. Below: transcript, the honest page,
+  "how it was made" (live layers: finished / paint only / light only), credits. Re-run build_site.py after each new
+  clip. Test locally with a server that supports HTTP Range (python http.server does not, so seeking fails).
+  Not deployed yet: ask Sky before publishing.
+- **Render on this laptop:** run `node core/render/*.mjs` from PowerShell (the Bash sandbox can't launch the
+  headless browser). The system `ffmpeg` on PATH is a 2013 build; put
+  `C:\Users\User\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-9.0.2-full_build\bin`
+  first on PATH. `tools/mix.py` needs `LIB=C:/Users/User/lemo-opuscar` set.
 
 ## Gaps to bridge (mismatches with the library)
 
