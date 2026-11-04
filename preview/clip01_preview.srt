@@ -1,5 +1,5 @@
 1
-00:00:03,400 --> 00:00:05,086
+00:00:03,180 --> 00:00:04,745
 So… did we make it?
 
 2
@@ -7,11 +7,11 @@ So… did we make it?
 Take this. Read it.
 
 3
-00:00:11,550 --> 00:00:12,750
+00:00:11,200 --> 00:00:12,400
 It's blank.
 
 4
-00:00:13,450 --> 00:00:18,967
+00:00:13,300 --> 00:00:18,434
 You used to send me voice notes—ideas, plans, all
 those thoughts you couldn't switch off. What happened?
 
@@ -20,6 +20,6 @@ those thoughts you couldn't switch off. What happened?
 I don't know how to write the ending yet.
 
 6
-00:00:25,450 --> 00:00:28,308
+00:00:25,400 --> 00:00:28,176
 Then start at the beginning.
 Start with college.
