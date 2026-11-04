@@ -13,9 +13,28 @@ before (SCRIPT_TIMELINE, SHOT_LIST, dialogue v1 = `dialogue_v1.json`, the old cl
 v3 cuts between W / FY / TY / TY_CU / PAPER / PHONE). `dialogue.json` is now **v2.1**: Sky allowed edits to the
 0:15–1:35 stretch and the T11 lag (log in its `changes_from_2_0`; untouched v2 = `dialogue_v2.json`; new IDs Y07B,
 T05B, Y10B, T10B). Any further dialogue edit needs Sky's explicit OK. Never edit `SCRIPT_V2.md`.
-Layers: 0 audit ✓ · 1 temp voices + animatic ✓ (reviewed: turns tightened, two distinct voices, smooth line ends) · 2 performance ✓ · 3 paper inserts ·
-4 light + sound · 5 website · then the voice swap. Commit after each layer ("Layer N: …"). After the Layer 1 review,
-keep going without stopping.
+
+**WHERE WE STOPPED (last commit `647d0c4`, everything committed, nothing pushed):**
+- Layers: 0 audit ✓ · 1 temp voices + animatic ✓ · 2 performance ✓ · **3 paper inserts = NEXT** · 4 light + sound ·
+  5 website · then the voice swap (`npm run film:final`, `VOICE_SWAP.md`). Commit after each layer ("Layer N: …").
+- Current outputs (don't regenerate unless a step needs it): `preview/film_preview.mp4` (+ `.srt/.vtt`, 720p, 2:31.74,
+  Y01 at 5.94 s, verified), `preview/film_CONTACT.jpg` (one frame per line), `timeline.json`, `voices/tmp|final/`,
+  `voices/mouth.json`, `subs/film.*`. Re-running `npm run film` with the same files reproduces them; `npm run film:tmp`
+  regenerates the Kokoro takes (same settings → same timing).
+- Sky's reviews so far (all done): lag between lines → turn rule (TURN 0.5, pauses ≥1.0 s kept); voices must differ
+  and not sound odd → pure am_fenrir / am_michael near natural speed, soft line ends + room tail; 0:15–1:35 dull →
+  dialogue v2.1 (Y07B "Five hours?!", Y10B "…Yeah?", splits of T05 / T10, T12 shorter) + push-in on all inserts;
+  lag after "Fifty emails. Zero replies." → T11 beat 0.5 s, SILENCE Y12 0.8 s.
+- Waiting on Sky: his listen of the latest preview, then his OK to start Layer 3. Sky works step by step: do the
+  named step, report, stop (memory: feedback-scope-exactly). He may give more notes on pace/voices first.
+- Open points to raise when relevant: T18 is one ~9 s PAPER shot (script says shots ≤ ~6 s); the desk-lamp bloom
+  between faces (Layer 4 fixes it); the clone's pace may shift the runtime (swap report shows it); website (Layer 5)
+  replaces the old `site/` design per the v3 prompt — confirm with Sky before deploying to Vercel (never deploy
+  without his explicit yes).
+- **Gotchas:** run renders (`npm run film`, `core/render/*.mjs`) from PowerShell, not the Bash tool (headless browser
+  can't start in the sandbox). Running `tools/mix_film.py` by hand needs `LIB=C:/Users/User/lemo-opuscar` (it imports
+  `core/audio/sfx.py` via `tools/mix.py`) and the WinGet ffmpeg 9 on PATH (path in "Render on this laptop" below).
+  A full 720p build takes 7–19 min; `tools/verify.py` takes a few minutes (frame sampling).
 - **Build:** from PowerShell in this folder: `npm run film` (720p preview + `preview/film_CONTACT.jpg`, ~7 min),
   `npm run film:tmp` (regenerate Kokoro takes first), `npm run film:final` (1080p exports + swap report + verify;
   see `VOICE_SWAP.md`). Orchestrator `tools/film.mjs`.
