@@ -20,6 +20,26 @@ def band(spec, freqs, lo, hi):
     return spec[m].sum()
 
 
+def smooth(sh):
+    """in-betweens and holds, so the mouth moves instead of snapping:
+    - a single open drawing between two equal ones becomes that drawing (no one-frame flicker)
+    - wide or round drawings never follow a closed mouth directly: the first open drawing is the small 'talk'
+    - the mouth closes through 'talk' too, and the last drawing is always closed"""
+    s = list(sh)
+    for k in range(1, len(s) - 1):
+        if s[k - 1] == s[k + 1] and s[k] != s[k - 1] and s[k] != 'C': s[k] = s[k - 1]
+    for k in range(len(s)):
+        if (k == 0 or s[k - 1] == 'C') and s[k] in 'AO': s[k] = 'T'   # a line starts from a closed mouth
+    for k in range(len(s) - 1):
+        if s[k] in 'AO' and s[k + 1] == 'C': s[k] = 'T'
+    run = 0
+    for k in range(len(s)):
+        run = run + 1 if s[k] in 'AO' else 0
+        if run > 3: s[k] = 'T'; run = 0
+    s[-1] = 'C'
+    return s
+
+
 def track(path):
     a, sr = sf.read(path, dtype='float32')
     if a.ndim > 1:
@@ -35,26 +55,26 @@ def track(path):
     ref = np.percentile(env[env > 0], 95) if (env > 0).any() else 1.0
     envn = np.clip(env / (ref or 1), 0, 1)
 
-    shapes = []
+    rs, br = [], []
     for k in range(int(np.ceil(dur * MFPS)) + 1):
         t0, t1 = k / MFPS + LEAD, (k + 1) / MFPS + LEAD
         w = window(t0, t1)
-        r = min(1.0, np.sqrt(np.mean(w ** 2)) / (ref or 1))
-        if r < .14 or len(w) < 64:
-            shapes.append('C'); continue
+        rs.append(min(1.0, np.sqrt(np.mean(w ** 2)) / (ref or 1)) if len(w) >= 64 else 0.0)
+        if len(w) < 64: br.append(.5); continue
         spec = np.abs(np.fft.rfft(w * np.hanning(len(w)))) ** 2
         freqs = np.fft.rfftfreq(len(w), 1 / sr)
         low, high = band(spec, freqs, 250, 900), band(spec, freqs, 1200, 3800)
-        bright = high / (low + high + 1e-12)
-        # fricatives (s, sh, t: bright, weaker) stay narrow; loud voiced vowels open: rounded (oh/oo) or wide (ah/eh)
-        if r > .5 and bright < .05:
-            shapes.append('O')
-        elif r > .6 and bright < .45:
-            shapes.append('A')
-        else:
-            shapes.append('T')
-    # the last drawing always closes the mouth
-    shapes[-1] = 'C'
+        br.append(high / (low + high + 1e-12))
+    shapes = []
+    for k, r in enumerate(rs):
+        prev, nxt = rs[k - 1] if k else 0, rs[k + 1] if k + 1 < len(rs) else 0
+        dip = r < .85 * max(prev, nxt) and r <= min(prev, nxt) + .05   # the valley between two syllables
+        if r < .2: shapes.append('C')
+        # how open = how loud; the open drawing is round (oh/oo: dark, low spectrum) or wide (everything else)
+        elif r < .55 or dip: shapes.append('T')
+        elif br[k] < .06: shapes.append('O')
+        else: shapes.append('A')
+    shapes = smooth(shapes)
     return {'dur': round(dur, 3), 'fps': MFPS, 'm': ''.join(shapes), 'a': [round(float(x), 2) for x in envn]}
 
 

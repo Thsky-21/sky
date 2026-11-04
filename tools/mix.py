@@ -114,6 +114,16 @@ def passby(d, f0=46):
     return fade(lp(np.tanh(eng * .7) + tyre, 1000) * env, .05, .2)
 
 
+def lamp_click():
+    """an old lamp's rocker switch: a hard plastic snap, a tiny spring ring, then the faint tick of the tube striking"""
+    d = .35; tt = t_(d); x = np.zeros(len(tt))
+    snap = hp(noise(.012), 2000) * env_exp(.012, .0015); x[:len(snap)] += snap
+    x += np.sin(2 * np.pi * 3100 * tt) * env_exp(d, .012) * .25 + np.sin(2 * np.pi * 1450 * tt) * env_exp(d, .02) * .2
+    for at, g_ in [(.06, .25), (.15, .3), (.21, .15)]:   # the flickers (lampLevel in clip01.js)
+        s = int(at * SR); tk = hp(noise(.006), 3000) * env_exp(.006, .001); x[s:s + len(tk)] += tk * g_
+    return fade(norm(x) * .8, .0005, .05)
+
+
 def horn(f=420):
     d = .45; tt = t_(d); x = np.sin(2 * np.pi * f * tt) + .6 * np.sin(2 * np.pi * f * 1.26 * tt) + .3 * np.sin(2 * np.pi * f * 2 * tt)
     return fade(lp(x, 1500) * np.sin(np.pi * tt / d) ** .4, .02, .08)
@@ -166,6 +176,7 @@ def main():
         elif ty == 'horn': add(amb, horn(ev.get('f', 420)) * db(-34), t, g, pan)
         elif ty == 'bus': add(amb, bus(min(ev['dur'], DUR - t)) * db(-14), t, g, 0)
         elif ty == 'tap': add(fol, tap() * db(-24), t, g, pan)
+        elif ty == 'lampClick': add(fol, lamp_click() * db(-16), t, g, pan)
         elif ty == 'creak': add(fol, creak(1.0) * db(-22), t, g, pan)
         elif ty == 'rustle': add(fol, rustle(ev.get('dur', .3)) * db(-26), t, g, pan)
         elif ty == 'inhale': add(fol, breath_in(ev.get('dur', .4)) * db(-24), t, g, pan)

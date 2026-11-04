@@ -2,7 +2,7 @@
 // Built ON TOP of the locked Gate B modules: characters only through figure()/handShape()/limbOutline() (body.js →
 // sky.js), backgrounds through roomPlate/desk/sheet/lamp (plates.js), colours from PAL.night. Nothing is redrawn.
 // The wide two-shot and the TY close-up reuse the approved storyboard compositions (frames.js sf_open / sb2).
-import { canvas, poly, cel, line, rgba, mix, airbrush, vgrad, TAU, LWK } from './cel.js';
+import { canvas, poly, cel, line, rgba, mix, airbrush, vgrad, hash, TAU, LWK } from './cel.js';
 import { PAL, TOK } from './pal.js';
 import { figure, limbOutline, handShape, proj, POSES } from './body.js';
 import { chair } from './props.js';
@@ -21,6 +21,7 @@ function layer(g, e, fn, o = {}) {
   if (!L1) L1 = canvas(W, H);
   const [c, q] = L1; q.setTransform(1, 0, 0, 1, 0, 0); q.clearRect(0, 0, W, H); q.filter = 'none'; q.globalAlpha = 1;
   fn(q);
+  for (const sh of [].concat(o.shadow || [])) shadowFrom(g, c, sh);   // cast shadows go down before the silhouette
   if (o.blur) {   // blur on a second layer (ctx.filter on drawImage of a large canvas is slow in software GL)
     if (!L2) L2 = canvas(W, H);
     const [c2, q2] = L2; q2.setTransform(1, 0, 0, 1, 0, 0); q2.clearRect(0, 0, W, H); q2.filter = `blur(${o.blur}px)`; q2.drawImage(c, 0, 0); q2.filter = 'none';
@@ -51,6 +52,66 @@ function plate(mode, blur = 0) {
   return (PLATES[k] = { g: cg, e: ce });
 }
 const drawPlate = (g, e, pl) => { g.drawImage(pl.g, 0, 0); e.save(); e.globalCompositeOperation = 'lighter'; e.drawImage(pl.e, 0, 0); e.restore(); };
+// ——— realism helpers (Sky, 2026-11-04: "more realistic, smoother, hook the viewer") ———
+// cast shadow of a layer's silhouette: drawn at quarter resolution (a cheap, soft blur), tinted, then laid onto the
+// picture inside `clip` (e.g. the wall or the desk top). Same camera transform as the picture, so it stays attached.
+let SH = null;
+function shadowFrom(g, src, o) {
+  if (!SH) SH = canvas(W / 4, H / 4);
+  const [c, q] = SH;
+  q.setTransform(1, 0, 0, 1, 0, 0); q.globalCompositeOperation = 'source-over'; q.clearRect(0, 0, c.width, c.height);
+  q.filter = `blur(${o.blur ?? 2}px)`;
+  q.setTransform(.25, 0, 0, .25, 0, 0);
+  const [ax, ay] = o.about || [0, 0], k = o.k ?? 1, [dx, dy] = o.off || [0, 0], sy = o.ky ?? k;
+  q.translate(ax + dx, ay + dy); q.scale(k, sy); q.translate(-ax, -ay);
+  q.drawImage(src, 0, 0); q.filter = 'none';
+  q.setTransform(1, 0, 0, 1, 0, 0); q.globalCompositeOperation = 'source-in'; q.fillStyle = o.color || ink; q.fillRect(0, 0, c.width, c.height);
+  q.globalCompositeOperation = 'source-over';
+  g.save(); if (o.clip) { g.beginPath(); o.clip(g); g.clip(o.rule || 'nonzero'); }
+  g.globalAlpha = o.alpha ?? .35; g.imageSmoothingEnabled = true; g.drawImage(c, 0, 0, W, H); g.restore();
+}
+// handheld-free but alive: a very slow, small camera float (two sines per axis), px
+const drift = (t, seed = 0, a = 3) => [a * (.6 * Math.sin(t * .41 + seed) + .4 * Math.sin(t * .93 + seed * 2.3)), a * .7 * (.6 * Math.sin(t * .37 + seed * 1.7) + .4 * Math.sin(t * .77 + seed * .9))];
+// dust motes drifting in the lamp light: tiny sharp specks near the bulb (wide), or big soft out-of-focus discs (close-ups)
+function dust(g, e, t, box, n, seed, o = {}) {
+  const [x0, y0, w, h] = box, big = o.big || 0;
+  for (let i = 0; i < n; i++) {
+    const r1 = hash(seed + i * 3.1), r2 = hash(seed + i * 7.7), r3 = hash(seed + i * 11.3);
+    const x = x0 + ((r1 * w + Math.sin(t * (.2 + r3 * .3) + i) * 26 + t * (r2 - .5) * 8) % w + w) % w;
+    const y = y0 + ((r2 * h - t * (5 + r3 * 9)) % h + h) % h;
+    const tw = .55 + .45 * Math.sin(t * (1.1 + r1 * 2) + i * 2.1);
+    const near = o.focus ? Math.max(0, 1 - Math.hypot(x - o.focus[0], y - o.focus[1]) / o.focus[2]) : 1;
+    const a = (o.a ?? .5) * tw * near;
+    if (a < .01) continue;
+    const rad = big ? big * (1.2 + r3) : .9 + r3 * 1.4;
+    if (big) { airbrush(g, x, y, rad, rad, mix(ivory, amber, .4), a * .12, .35); airbrush(e, x, y, rad, rad, amber, a * .08, .5); }
+    else { g.fillStyle = rgba(mix(ivory, amber, .3), a); g.beginPath(); g.arc(x, y, rad, 0, TAU); g.fill(); e.fillStyle = rgba(amber, a * .6); e.beginPath(); e.arc(x, y, rad * 2, 0, TAU); e.fill(); }
+  }
+}
+// the window behind the desk (plates.js roomPlate: x 760–1180, y 160–560): a few city lights going on and off, and an
+// aircraft's light crossing slowly, so the night outside is alive
+function windowLife(g, e, t) {
+  g.save(); g.beginPath(); g.rect(760, 160, 420, 400); g.clip(); e.save(); e.beginPath(); e.rect(760, 160, 420, 400); e.clip();
+  for (let i = 0; i < 12; i++) {
+    const x = 772 + hash(i * 5.3) * 396, y = 380 + hash(i * 9.1) * 160, per = 3 + hash(i * 2.2) * 6, on = ((t + hash(i) * per) % per) < per * .7;
+    if (!on) continue;
+    const c = hash(i * 4.4) < .8 ? amber : teal;
+    g.fillStyle = rgba(c, .75); g.fillRect(x, y, 3, 4); e.fillStyle = rgba(c, .4); e.fillRect(x - 1, y - 1, 5, 6);
+  }
+  const ax = 1190 - (t * 9) % 460, ay = 210 + Math.sin(t * .1) * 4, bl = (t % 1.2) < .12;
+  g.fillStyle = rgba(ivory, .35); g.fillRect(ax, ay, 2, 2);
+  if (bl) { g.fillStyle = rgba('#ff6b5a', .9); g.fillRect(ax + 3, ay, 3, 3); e.fillStyle = rgba('#ff6b5a', .7); e.fillRect(ax + 2, ay - 1, 5, 5); }
+  g.restore(); e.restore();
+}
+// the desk lamp switching on at the start of the wide (the hook): an old hostel lamp, a click, two flickers, then steady
+const LAMP_ON = .75;
+function lampLevel(t) {
+  const d = t - LAMP_ON;
+  if (d < 0) return 0;
+  if (d < .05) return .7; if (d < .11) return .12; if (d < .19) return .85; if (d < .23) return .45;
+  return .85 + .15 * ss(seg(d, .23, .45));
+}
+
 // camera on ones: zoom s about world point (cx, cy), placed at screen (sx, sy)
 function cam(g, e, s = 1, cx = 960, cy = 540, sx = 960, sy = 540) {
   for (const x of [g, e]) x.setTransform(s, 0, 0, s, sx - cx * s, sy - cy * s);
@@ -135,55 +196,76 @@ function face(t, X, who, base, extra = {}) {
 const apply = (o, f) => ({ ...o, expr: f.expr, open: f.open, E: f.E, mouth: f.mouth, ...(f.look ? { look: f.look } : {}) });
 
 // First-year's heel jiggle in the wide shot (impatient, excited): taps at 2.6 Hz while `on`
-const JIG = { f: 2.6, on: [[.55, 1.22], [1.85, 2.55]] };
+const JIG = { f: 2.6, on: [[.05, 1.25], [1.9, 2.55]] };
 const jigAmt = t => JIG.on.reduce((m, [a, b]) => Math.max(m, ss(seg(t, a, a + .12)) * (1 - ss(seg(t, b - .12, b)))), 0);
-export const jigTaps = () => { const out = []; for (const [a, b] of JIG.on) for (let k = 0; ; k++) { const tk = (k + .5) / JIG.f + Math.floor(a * JIG.f) / JIG.f; if (tk >= b) break; if (tk > a + .1) out.push(+tk.toFixed(3)); } return out; };
+export const jigTaps = () => { const out = []; for (const [a, b] of JIG.on) for (let k = 0; ; k++) { const tk = (k + .5) / JIG.f + Math.floor(a * JIG.f) / JIG.f; if (tk >= b) break; if (tk > a + .05) out.push(+tk.toFixed(3)); } return out; };
 
 // ——— S1-02 · 0:00.5–0:03 · W two-shot, slow push-in (the approved sf_open composition, animated) ———
-// First-year sits forward on his chair edge, excited: heel jiggling, a shift on the chair (creak), a quick inhale before
-// the cut; Third-year sits back, calm, breathing
+// THE HOOK: we hear First-year's heel tapping in the black; the cut finds the room lit only by the city in the window;
+// at 0.75 s the desk lamp clicks on and flickers up, and the blank sheet becomes the brightest thing in the frame as the
+// camera pushes in. Then: First-year on his chair edge, excited (heel jiggling, a shift on the chair, a quick inhale
+// before the cut); Third-year sits back, calm. The lamp throws both their shadows big onto the back wall.
+const BULB = [1114, 590];   // the lamp's bulb in the wide (plates.js lamp at 1150, 704)
 function wide(g, e, t, X) {
-  cam(g, e, 1 + .08 * eio(seg(t, .5, 3.0)), 960, 600);
+  const Lmp = lampLevel(t), d = drift(t, 1, 2.5), z = 1 + .08 * eio(seg(t, .5, 3.0));
+  cam(g, e, z, 960, 600, 960 + d[0] * .5, 540 + d[1] * .5);   // the far wall floats half as much: a hint of depth
   drawPlate(g, e, plate('night'));
-  const shift = spring(seg(t, 1.25, 1.75)) - .45 * ss(seg(t, 1.8, 2.4));
+  windowLife(g, e, t);
+  cam(g, e, z, 960, 600, 960 + d[0], 540 + d[1]);
+  const shift = spring(seg(t, 1.3, 1.8)) - .45 * ss(seg(t, 1.85, 2.45));
   const inhale = ss(seg(t, 2.6, 2.95));
   const jig = jigAmt(t) * Math.pow(Math.max(0, Math.sin(2 * Math.PI * JIG.f * t)), 1.4);
   const pn = pose('_fy102', 'sitLean', { L: { ankle: [70, -60 - 26 * jig, 280], knee: [74, -470 - 12 * jig, 250] } });
-  const fyF = face(t, X, 'FY', 'curious', { blinks: [2.1], look: [.5, 0], E: { brow: [-4.5, -3, 2.6], open: 1.1 } });
-  const tyF = face(t, X, 'TY', 'calm', { blinks: [1.15], look: [.4, .1 + .15 * ss(seg(t, 1.6, 2.1))] });
+  const startle = ss(seg(t, LAMP_ON + .05, LAMP_ON + .3)) * (1 - ss(seg(t, LAMP_ON + .5, LAMP_ON + 1.0)));   // both glance at the light
+  const fyF = face(t, X, 'FY', 'curious', { blinks: [LAMP_ON + .04, 2.2], look: [.5 + .1 * startle, -.15 * startle], E: { brow: [-4.5, -3, 2.6], open: 1.1 } });
+  const tyF = face(t, X, 'TY', 'calm', { blinks: [LAMP_ON + .08, 1.9], look: [.4 - .3 * startle, .1 + .15 * ss(seg(t, 1.6, 2.1))] });
   const FY = apply({ who: 'FY', pose: pn, yaw: .95, x: 560 + 6 * shift, y: 1052, s: .56, light: [1, -.35],
     leanAdd: .03 + .03 * shift - .025 * inhale + .006 * breath(t, .1, 3) + .004 * jig, headTilt: -.02 * shift + .01 * sway(t, 1) + .015 * inhale }, fyF);
   const TY = apply({ who: 'TY', pose: 'sitBack', yaw: .95, x: 1372, y: 1052, s: .56, mirror: true, light: [1, -.35],
-    leanAdd: .006 * breath(t, .55, 4.2), headTilt: .006 * breath(t, .7, 4.2) + .005 * sway(t, 2) }, tyF);
-  layer(g, e, q => { chair(q, P, { yaw: .95, x: 560 + 6 * shift, y: 1052, s: .56 }); chair(q, P, { yaw: .95, x: 1372, y: 1052, s: .56, mirror: true }); figure(q, P, { ...FY, layer: 'base' }); figure(q, P, { ...TY, layer: 'base' }); });
+    leanAdd: .006 * breath(t, .55, 4.2), headTilt: .006 * breath(t, .7, 4.2) + .005 * sway(t, 2) - .02 * startle }, tyF);
+  // contact shadows on the floor under the chairs and the desk
+  airbrush(g, 560 + 6 * shift, 1052, 150, 15, ink, .5, .7); airbrush(g, 1372, 1052, 150, 15, ink, .5, .7); airbrush(g, 960, 1054, 360, 18, ink, .35, .8);
+  const wall = c => { c.rect(-200, -200, W + 400, 1100); c.rect(760, 160, 420, 400); };   // the wall, not the window
+  layer(g, e, q => { chair(q, P, { yaw: .95, x: 560 + 6 * shift, y: 1052, s: .56 }); chair(q, P, { yaw: .95, x: 1372, y: 1052, s: .56, mirror: true }); figure(q, P, { ...FY, layer: 'base' }); figure(q, P, { ...TY, layer: 'base' }); },
+    { shadow: Lmp > 0 ? { about: BULB, k: 1.38, off: [0, -30], alpha: .55 * Lmp, blur: 3, clip: wall, rule: 'evenodd' } : null });
   desk(g, e, P, 'night');
-  sheet(g, e, P, 956, 718, PAPER_GLOW);
+  sheet(g, e, P, 956, 718, PAPER_GLOW * Lmp);
   lamp(g, e, P, 'night', 1150, 704);
   layer(g, e, q => { figure(q, P, { ...FY, layer: 'arms' }); figure(q, P, { ...TY, layer: 'arms' }); });
+  dust(g, e, t, [990, 470, 280, 250], 24, 5, { a: .5 * Lmp, focus: [BULB[0], BULB[1], 210] });
+  if (Lmp < 1) {   // before / while the lamp comes on: the room is dark, the window keeps the city's light
+    const dk = 1 - Lmp;
+    cam(g, e, z, 960, 600, 960 + d[0] * .5, 540 + d[1] * .5);
+    for (const [x, a] of [[g, .9], [e, 1]]) { x.save(); x.fillStyle = x === g ? rgba(ink, a * dk) : rgba('#000000', a * dk); x.beginPath(); wall(x); x.fill('evenodd'); x.fillStyle = x === g ? rgba(ink, .25 * dk) : rgba('#000000', .1 * dk); x.fillRect(760, 160, 420, 400); x.restore(); }
+  }
   return { post: { bloom: .6 } };
 }
 
 // ——— the MCU of First-year (S1-03, S1-06): ¾ facing right, TY off-screen right, soft room behind ———
 const FY_MCU = { who: 'FY', pose: 'sitLean', yaw: .95, x: 640, y: 2190, s: 1.75, light: [1, -.3], rim: P.rim, lwk: .85 };
-function roomMCU(g, e) {
-  cam(g, e, 1);
+function roomMCU(g, e, t, seed = 3) {
+  const d = drift(t, seed, 3);
+  cam(g, e, 1, 960, 540, 960 + d[0] * .4, 540 + d[1] * .4);
   drawPlate(g, e, plate('night', 10));
   airbrush(g, 1500, 640, 640, 460, amber, .16, .9);   // lamp bounce from screen right (off-screen lamp)
+  dust(g, e, t, [1100, 100, 820, 860], 6, 17 + seed, { big: 26, a: .6 });   // out-of-focus motes in the lamp's light
+  cam(g, e, 1, 960, 540, 960 + d[0], 540 + d[1]);
 }
 
 // ——— S1-03 · 0:03–0:07 · MCU FY: "So… did we make it?!" — springs in closer on the cut, eyes wide, brows up, a bounce
-// on "make it", then holds, eager, waiting for the answer ———
+// on "make it", then holds, eager; his eyes dart down to Third-year's hands (the sheet) and back, and he edges in again ———
 function s103(g, e, t, X) {
-  roomMCU(g, e);
+  roomMCU(g, e, t, 3);
   const lean = spring(seg(t, 3.0, 3.45));                   // the lean-in carries on from the inhale before the cut
   const t0 = X.lines.Y01, d = X.M.Y01?.dur || 1.2;
   const bounce = Math.sin(Math.PI * seg(t, t0 + d * .55, t0 + d * .95));
   const wait = ss(seg(t, t0 + d + .3, t0 + d + 1.0));        // the eager hold: a smile, a tiny head tilt
+  const dart = ss(seg(t, 5.15, 5.27)) * (1 - ss(seg(t, 5.7, 5.82)));   // a glance down at Third-year's hands
   const impatient = spring(seg(t, 6.25, 6.6));             // he edges in again as Third-year's hand starts to move
-  const f = face(t, X, 'FY', 'excited', { blinks: [5.55, 5.85], noBlink: [[3.0, 5.4]], rest: wait > .3 ? 'softsmile' : 'closed',
-    look: [.55, -.03], E: { brow: [-5.5 - 1.5 * lean, -4 - 1 * lean, 3], open: 1.1 + .04 * lean } });
+  const f = face(t, X, 'FY', 'excited', { blinks: [5.7, 6.5], noBlink: [[3.0, 5.0]], rest: wait > .3 ? 'softsmile' : 'closed',
+    look: lerpV([.55, -.03], [.4, .55], dart), E: { brow: [-5.5 - 1.5 * lean, -4 - 1 * lean, 3], open: 1.1 + .04 * lean - .06 * dart } });
   const fig = apply({ ...FY_MCU, leanAdd: .055 * lean + .02 * impatient + .03 * bounce * .4 + .006 * breath(t, .2, 2.8),
-    headTilt: -.035 * lean + .03 * f.acc - .025 * bounce + .03 * wait + .008 * sway(t, 4), y: FY_MCU.y - 8 * lean }, f);
+    headTilt: -.035 * lean + .03 * f.acc - .025 * bounce + .03 * wait + .015 * dart + .008 * sway(t, 4), y: FY_MCU.y - 8 * lean }, f);
   layer(g, e, q => figure(q, P, fig));
   return { post: { bloom: .55 } };
 }
@@ -191,10 +273,10 @@ function s103(g, e, t, X) {
 // ——— S1-04 · 0:07–0:10 · OS behind TY's right shoulder onto FY: TY slides the sheet across; FY's hands come down on it ———
 const SL = { t0: 7.2, t1: 8.55, land: 8.75 };
 function s104(g, e, t, X) {
-  const cu = eio(seg(t, 7.0, 9.4));   // a small slide following the sheet (camera on ones)
-  for (const x of [g, e]) x.setTransform(1.5, 0, 0, 1.5, -30 - 50 * cu, -230);
+  const cu = eio(seg(t, 7.0, 9.4)), dr = drift(t, 5, 3);   // a small slide following the sheet (camera on ones)
+  for (const x of [g, e]) x.setTransform(1.5, 0, 0, 1.5, -30 - 50 * cu * .6 + dr[0] * .4, -230 + dr[1] * .4);   // far wall: parallax
   drawPlate(g, e, plate('night', 9));
-  for (const x of [g, e]) x.setTransform(1, 0, 0, 1, -50 * cu, 0);
+  for (const x of [g, e]) x.setTransform(1, 0, 0, 1, -50 * cu + dr[0], dr[1]);
   airbrush(g, 1560, 560, 560, 420, amber, .2, .9);
   airbrush(e, 1600, 470, 160, 120, amber, .4, .8);
   const reach = spring(seg(t, 8.15, 8.7)), pull = eio(seg(t, 9.05, 9.8));
@@ -209,6 +291,8 @@ function s104(g, e, t, X) {
   layer(g, e, q => figure(q, P, { ...FY, layer: 'base' }));
   cel(g, poly([[0, 800], [1920, 776], [1920, 1080], [0, 1080]]), { f: P.wood.f, s: P.wood.s, h: P.wood.h, l: P.wood.l, lw: 2.6, hi: [[[900, 790], [1600, 780], [1700, 860], [980, 880]]] });
   airbrush(g, 1260, 880, 700, 160, amber, .28, .9);
+  airbrush(g, 600, 806, 260, 22, ink, .45, .8);   // FY's body shades the far edge of the desk
+  const deskTop = c => { c.moveTo(-100, 801); c.lineTo(2100, 774); c.lineTo(2100, 1200); c.lineTo(-100, 1200); c.closePath(); };
   // the page lies flat at FY's distance: A4 × his scale, foreshortened by the eye-level view; it slides from the middle of
   // the desk into his hands, then travels with them
   const wR = joint(FY, POSES[pn].R.wrist), wL = joint(FY, POSES[pn].L.wrist);
@@ -219,15 +303,16 @@ function s104(g, e, t, X) {
   const hw = A4[0] * FY.s / 2, hh = A4[1] * FY.s * .19, rot = lerp(-.06, .015, u);
   const cs = Math.cos(rot), sn = Math.sin(rot), R = (x, y) => [c[0] + x * cs - y * sn, c[1] + x * sn + y * cs];
   const pts = [R(-hw * .97, -hh), R(hw * .97, -hh), R(hw, hh), R(-hw, hh)];
+  g.save(); g.filter = 'blur(3px)'; g.fillStyle = rgba(ink, .45); g.beginPath(); pts.forEach((p, i) => g[i ? 'lineTo' : 'moveTo'](p[0] - 9, p[1] + 5)); g.closePath(); g.fill(); g.restore();   // the page's own shadow (lamp at right)
   paperQuad(g, e, pts, PAPER_GLOW);
-  layer(g, e, q => figure(q, P, { ...FY, layer: 'arms' }));
+  layer(g, e, q => figure(q, P, { ...FY, layer: 'arms' }), { shadow: { off: [-16, 9], alpha: .38, blur: 2, clip: deskTop } });
   // Third-year's right forearm comes in from the lower right, fingertips on the page's near edge; released after the slide
   const rel = ss(seg(t, SL.t1, SL.t1 + .4));
   if (rel < .99) layer(g, e, q => {
     const tip = R(hw * .55, hh * .2);
     const hand = lerpV([tip[0] + 36, tip[1] + 28], [tip[0] + 220, tip[1] + 180], rel);
-    forearm(q, { s: 1.15, light: [1, -.3], mirror: true, lwk: .9 }, [hand[0] + 360, hand[1] + 300], hand, 'flat', true);
-  });
+    forearm(q, { s: 1.0, light: [1, -.3], mirror: true, lwk: .9 }, [hand[0] + 360, hand[1] + 300], hand, 'flat', true);
+  }, { shadow: { off: [-30, 16], alpha: .35, blur: 3, clip: deskTop } });
   layer(g, e, q => figure(q, P, { who: 'TY', pose: 'sitBack', yaw: 2.35, x: 1600, y: 2560, s: 2.0, mirror: true, expr: tyF.expr, open: tyF.open, mouth: 'closed',
     light: [1, -.3], rim: P.rim, rimBack: true, layer: 'base', leanAdd: .006 * breath(t, .5, 4.2) - .02 * (1 - rel) * ss(seg(t, 7.0, 7.4)), lwk: .9 }), { blur: 6 });
   return { post: { bloom: .5 } };
@@ -241,7 +326,8 @@ function s105(g, e, t, X) {
   for (let k = 0; k < 16; k++) { g.fillStyle = rgba(ink, .07); g.fillRect(0, k * 72 + 20, W, 4); }
   airbrush(g, 1500, 300, 900, 600, amber, .22, .95);
   airbrush(e, 1600, 260, 300, 220, amber, .16, .9);
-  const S = 3.0;
+  const S = 3.0, dr = drift(t, 9, 5);
+  for (const x of [g, e]) x.setTransform(1, 0, 0, 1, dr[0], dr[1]);
   const lift = eo(seg(t, 10.0, 10.4)), phi = Math.PI * eio(seg(t, 10.5, 10.95)), look = ss(seg(t, 11.0, 11.3)) * (1 - ss(seg(t, 12.2, 12.7)));
   const cy = 580 - 40 * lift + 4 * Math.sin(t * 2.3), cx = 960 + 6 * Math.sin(t * 1.7), tilt = -.025 + .02 * lift + .04 * look + .006 * Math.sin(t * 1.9);
   const hw = A4[0] * S / 2, hh0 = A4[1] * S / 2, hh = hh0 * Math.abs(Math.cos(phi)), back = phi > Math.PI / 2;
@@ -249,11 +335,13 @@ function s105(g, e, t, X) {
   const cs = Math.cos(tilt), sn = Math.sin(tilt), R = (x, y) => [cx + x * cs - y * sn, cy + x * sn + y * cs];
   const o = { s: S * .85, light: [1, -.4], lwk: .8 };
   const hL = R(-hw, 10), hR = R(hw, 10);   // hold points: the middle of each side edge (the flip axis)
+  const pts = [R(-hw, top), R(hw, top), R(hw, hh), R(-hw, hh)];
+  // the page and the hands throw a soft shadow down onto the desk below (lamp up and to the right)
+  g.save(); g.filter = 'blur(16px)'; g.fillStyle = rgba(ink, .4 * (.4 + .6 * Math.abs(Math.cos(phi)))); g.beginPath(); pts.forEach((p, i) => g[i ? 'lineTo' : 'moveTo'](p[0] - 40 + (p[0] - cx) * .04, p[1] + 90 + 30 * lift)); g.closePath(); g.fill(); g.restore();
   layer(g, e, q => {
     forearm(q, o, [hL[0] - 300, 1270], [hL[0] + 6, hL[1] + 40], 'flat');
     q.save(); q.translate(2 * cx, 0); q.scale(-1, 1); forearm(q, o, [2 * cx - hR[0] - 300, 1270], [2 * cx - hR[0] + 6, hR[1] + 40], 'flat'); q.restore();
-  });
-  const pts = [R(-hw, top), R(hw, top), R(hw, hh), R(-hw, hh)];
+  }, { shadow: { off: [-40, 90 + 30 * lift], alpha: .3, blur: 4 } });
   if (hh > 3) {
     paperQuad(g, e, pts, PAPER_GLOW * .5, back);
     g.save(); g.beginPath(); pts.forEach((p, i) => g[i ? 'lineTo' : 'moveTo'](p[0], p[1])); g.closePath(); g.clip();
@@ -276,7 +364,7 @@ function s105(g, e, t, X) {
 // ——— S1-06 · 0:13–0:20 · MCU FY: "You used to send me voice notes—…" — paper → TY, quick and teasing, one gesture
 // with the page; a faint voice-note waveform flickers above it, then fades by 19 s ———
 function s106(g, e, t, X) {
-  roomMCU(g, e);
+  roomMCU(g, e, t, 11);
   const t0 = X.lines.Y03, d = X.M.Y03?.dur || 4.8;
   const toTY = spring(seg(t, 13.05, 13.4));
   const gest = ss(seg(t, t0 + d * .28, t0 + d * .4)) * (1 - ss(seg(t, t0 + d * .62, t0 + d * .8)));
@@ -291,13 +379,13 @@ function s106(g, e, t, X) {
   layer(g, e, q => figure(q, P, { ...fig, layer: 'base' }));
   layer(g, e, q => figure(q, P, { ...fig, layer: 'arms' }));
   const pg = heldPage(fig, ['R'], A4[0] * fig.s * .78, A4[1] * fig.s, -.05 + .1 * gest);   // landscape, turned a little toward TY
-  paperQuad(g, e, pg.pts, PAPER_GLOW);
+  paperQuad(g, e, pg.pts, PAPER_GLOW * .4);
   layer(g, e, q => thumb(q, fig, 'R'));
   // waveform: a held cel of bars with a light band sweeping across it on ones (SHOT_LIST S1-06)
   const wf = seg(t, 13.6, 14.2) * (1 - seg(t, 18.2, 19.0));
   if (wf > 0) {
     const fl = .8 + .2 * Math.sin(t * 37) * Math.sin(t * 11.3);
-    const x0 = 1120, y0 = 520, n = 34, sweep = ((t - 13.6) / 1.6) % 1;
+    const x0 = 1120, y0 = 455, n = 34, sweep = ((t - 13.6) / 1.6) % 1;
     for (let k = 0; k < n; k++) {
       const hgt = 10 + 70 * Math.abs(Math.sin(k * 1.7) * Math.sin(k * .43 + 1.2)), x = x0 + k * 18;
       const band = Math.exp(-Math.pow((k / n - sweep) * 6, 2)), a = wf * fl * (.18 + .5 * band);
@@ -305,16 +393,18 @@ function s106(g, e, t, X) {
       e.fillStyle = rgba(mix(teal, ivory, .3), a * .9); e.fillRect(x - 2, y0 - hgt / 2 - 2, 11, hgt + 4);
     }
   }
-  return { post: { bloom: .58 } };
+  return { post: { bloom: .45, thr: .95 } };
 }
 
 // ——— S1-07 · 0:20–0:25 · CU TY (the approved sb2 composition): eyes drop to the page, a breath, then
 // "I don't know how to write the ending yet." and a held pause; no gesture; very slow push-in ———
 function s107(g, e, t, X) {
-  const z = 1 + .035 * eio(seg(t, 20, 25));
-  cam(g, e, z, 1130, 470, 1130, 470);
+  const z = 1 + .035 * eio(seg(t, 20, 25)), dr = drift(t, 7, 2.5);
+  cam(g, e, z, 1130, 470, 1130 + dr[0] * .4, 470 + dr[1] * .4);
   drawPlate(g, e, plate('night', 10));
   airbrush(g, 560, 700, 700, 500, amber, .18, .9);
+  dust(g, e, t, [60, 120, 820, 860], 5, 29, { big: 26, a: .55 });
+  cam(g, e, z, 1130, 470, 1130 + dr[0], 470 + dr[1]);
   const drop = ss(seg(t, 20.2, 20.65));
   const inb = ss(seg(t, 20.6, 21.05)) * (1 - ss(seg(t, 21.1, 21.7)));   // the breath before answering
   const f = face(t, X, 'TY', 'thoughtful', { blinks: [20.25, 24.1], noBlink: [[20.5, 24.0]], sacc: .03,
@@ -339,14 +429,20 @@ function s108(g, e, t, X) {
     leanAdd: .03 * low + .006 * breath(t, .1, 3.2), headTilt: -.01 + .03 * f.acc + .008 * sway(t, 9) - .02 * (1 - low) }, f);
   const pg = heldPage(fig, ['R', 'L'], A4[1] * fig.s, A4[0] * fig.s, .0);   // portrait, face-on to camera
   const pc = heldPage({ ...fig, pose: pose('_fy108end', 'sitLean', { R: { ...POSES[pn].R, wrist: [-100, -652, 318] }, L: { ...POSES[pn].L, wrist: [100, -652, 324] } }) }, ['R', 'L'], A4[1] * fig.s, A4[0] * fig.s).c;
-  const zs = Math.exp(Math.log(12) * pin);
-  cam(g, e, zs, pc[0], pc[1], lerp(960, pc[0], 1 - pin), lerp(540, pc[1], 1 - pin));
+  const zs = Math.exp(Math.log(12) * pin), dr = drift(t, 13, 3).map(v => v * (1 - pin));
+  const sx = lerp(960, pc[0], 1 - pin), sy = lerp(540, pc[1], 1 - pin);
+  cam(g, e, zs, pc[0], pc[1], sx + dr[0] * .4, sy + dr[1] * .4);
   drawPlate(g, e, plate('night', 6));
   airbrush(g, 1500, 640, 640, 460, amber, .14, .9);
+  dust(g, e, t, [1100, 100, 820, 700], 5, 41, { big: 24, a: .5 * (1 - pin) });
+  cam(g, e, zs, pc[0], pc[1], sx + dr[0], sy + dr[1]);
   layer(g, e, q => figure(q, P, { ...fig, layer: 'base' }));
   cel(g, poly([[0, 850], [1920, 836], [1920, 1080], [0, 1080]]), { f: P.wood.f, s: P.wood.s, h: P.wood.h, l: P.wood.l, lw: 2.6, sh: [[[0, 1010], [1920, 1000], [1920, 1080], [0, 1080]]] });
   airbrush(g, 1300, 880, 700, 120, amber, .26, .9);
-  layer(g, e, q => figure(q, P, { ...fig, layer: 'arms' }));
+  airbrush(g, 650, 856, 300, 22, ink, .45, .8);   // his body shades the desk's far edge
+  const deskTop = c => { c.moveTo(-100, 851); c.lineTo(2100, 835); c.lineTo(2100, 1200); c.lineTo(-100, 1200); c.closePath(); };
+  g.save(); g.beginPath(); deskTop(g); g.clip(); g.filter = 'blur(8px)'; g.fillStyle = rgba(ink, .35); g.beginPath(); pg.pts.forEach((p, i) => g[i ? 'lineTo' : 'moveTo'](p[0] - 30 + (i < 2 ? -40 : 0), Math.max(p[1], 846) + (i < 2 ? 40 : 6))); g.closePath(); g.fill(); g.restore();   // the page's shadow on the desk
+  layer(g, e, q => figure(q, P, { ...fig, layer: 'arms' }), { shadow: { off: [-26, 30], alpha: .3, blur: 3, clip: deskTop } });
   paperQuad(g, e, pg.pts, PAPER_GLOW + .5 * pin);
   layer(g, e, q => { thumb(q, fig, 'R'); thumb(q, fig, 'L'); });
   const wh = ss(seg(t, 28.8, 29.5));   // the white: the paper brightens as it fills the frame
@@ -377,6 +473,8 @@ export function events01(X) {
     { t: 16.2, type: 'passby', dur: 4.0, gain: .3, pan: -.5, f: 44 },
     { t: 5.7, type: 'horn', gain: .22, pan: .6, f: 410 },
     { t: 23.9, type: 'horn', gain: .2, pan: -.6, f: 440 },
+    // the hook: heel taps in the black, then the lamp's switch and its flicker
+    { t: LAMP_ON - .01, type: 'lampClick', gain: .7, pan: .25 },
     // First-year in the wide: heel taps, the chair, a quick excited breath
     ...jigTaps().map(t => ({ t, type: 'tap', gain: .5, pan: -.3 })),
     { t: 1.28, type: 'creak', gain: .55, pan: -.35 }, { t: 1.3, type: 'rustle', dur: .35, gain: .4, pan: -.35 },
