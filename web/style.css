@@ -307,3 +307,5 @@ main::before { left: 50%; margin-left: -1px; }
   .cafe-in { grid-template-columns: 1fr; gap: 28px; }
   .kaapi { width: 170px; }
 }
+.city { pointer-events: none; }
+.hero-text { position: relative; z-index: 2; }

@@ -50,6 +50,7 @@
     window.scrollTo(0, 0);
     enterFs();
     if (typeof at === 'number') film.currentTime = at;
+    film.muted = false; film.volume = 1; $('mute').setAttribute('aria-pressed', 'false');
     film.play().catch(() => theatre.classList.add('paused'));
     wake();
   };
