@@ -212,3 +212,60 @@ body.cinema .hero, body.cinema .top { display: none; }
 .note p:first-child::first-letter { font-size: 2.6em; float: left; line-height: .9; padding: 4px 8px 0 0; color: var(--amber); font-weight: 700; }
 .note footer { margin-top: 14px; font-size: 26px; font-weight: 600; color: var(--amber); }
 .end-kn { margin: -28px 0 40px; font-size: clamp(18px, 2.6vw, 24px); color: var(--teal); }
+
+/* ---------- the route band: Bengaluru as a metro line ---------- */
+.route { position: relative; padding: 72px 0 84px; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(29,43,58,.55), rgba(17,24,32,0)); }
+.route-tag { margin: 0 0 40px; text-align: center; font-family: Caveat, cursive; font-size: clamp(28px, 4.4vw, 46px); color: var(--amber); padding: 0 16px; }
+.route-track { position: relative; height: 170px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.route-track::before { content: ""; position: absolute; left: 0; right: 0; top: 84px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--teal), #7c5a9e, var(--teal)); opacity: .8; }
+.route-run { position: absolute; top: 0; left: 0; display: flex; width: max-content; animation: run 48s linear infinite; }
+.route:hover .route-run { animation-play-state: paused; }
+@keyframes run { to { transform: translateX(-50%); } }
+.rs { position: relative; width: clamp(240px, 28vw, 380px); height: 170px; flex: none; }
+.rs b { position: absolute; left: 50%; transform: translateX(-50%); bottom: 104px; white-space: nowrap; font-weight: 700; letter-spacing: .01em; line-height: 1;
+  font-size: clamp(30px, 4.4vw, 58px); color: var(--ivory); transition: color .3s; }
+.rs:nth-child(even) b { bottom: auto; top: 104px; }
+.rs span { position: absolute; left: 50%; transform: translateX(-50%); top: 104px; white-space: nowrap; font-size: clamp(14px, 1.6vw, 18px); color: var(--teal); }
+.rs:nth-child(even) span { top: auto; bottom: 104px; }
+.rs i { position: absolute; left: 50%; top: 77px; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: var(--ink); border: 3px solid var(--ivory); }
+.rs:hover b { color: var(--amber); }
+.rs:hover i { background: var(--amber); border-color: var(--amber); box-shadow: 0 0 16px rgba(211,161,95,.8); }
+.route-train { position: absolute; top: 79px; left: -60px; width: 54px; height: 14px; border-radius: 7px; background: var(--ivory);
+  box-shadow: 0 0 18px rgba(111,155,154,1), 40px 0 30px rgba(211,161,95,.25); animation: shuttle 9s cubic-bezier(.6,0,.4,1) infinite; }
+@keyframes shuttle { to { left: calc(100% + 60px); } }
+
+/* ---------- stations: zigzag along a centre line ---------- */
+main { max-width: 1160px; padding: 60px 24px 0; }
+main::before { left: 50%; margin-left: -1px; }
+.station { display: grid; grid-template-columns: 1fr 1fr; column-gap: 112px; align-items: start; padding: 90px 0; }
+.station .sign { grid-column: 1; grid-row: 1; position: sticky; top: 110px; text-align: right; }
+.station .body { grid-column: 2; grid-row: 1; min-width: 0; }
+.station.flip .sign { grid-column: 2; text-align: left; }
+.station.flip .body { grid-column: 1; }
+.sign::after { content: ""; position: absolute; top: 34px; right: -65px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--ink); border: 3px solid var(--teal); transition: background .6s, box-shadow .6s; }
+.station.flip .sign::after { right: auto; left: -65px; }
+.station.in .sign::after { background: var(--teal); box-shadow: 0 0 0 7px rgba(111,155,154,.14), 0 0 22px rgba(111,155,154,.7); }
+.sign .num { display: block; position: relative; z-index: 1; font-size: clamp(80px, 11vw, 150px); line-height: .85; -webkit-text-stroke: 1.5px var(--slate); }
+.station.in .sign .num { -webkit-text-stroke-color: var(--amber); transition: -webkit-text-stroke-color 1.2s; }
+.sign .knum { position: absolute; top: -30px; right: 0; font-size: clamp(120px, 16vw, 220px); line-height: 1; color: rgba(111,155,154,.08); font-weight: 700; pointer-events: none; }
+.station.flip .sign .knum { right: auto; left: 0; }
+.sign .name { margin: 14px 0 0; font-size: clamp(26px, 3.4vw, 40px); font-weight: 700; line-height: 1.05; }
+.sign .name small { font-size: 17px; font-weight: 600; margin-top: 8px; }
+.stop { display: none; }
+.station.ask h2 { max-width: none; }
+.end-a { margin-bottom: 40px; }
+
+@media (max-width: 860px) {
+  main { padding: 20px 16px 0; }
+  main::before { left: 25px; margin-left: 0; }
+  .station, .station.flip { grid-template-columns: 1fr; padding: 56px 0 56px 52px; row-gap: 26px; }
+  .station .sign, .station.flip .sign { grid-column: 1; grid-row: 1; position: relative; top: 0; text-align: left; }
+  .station .body, .station.flip .body { grid-column: 1; grid-row: 2; }
+  .sign::after, .station.flip .sign::after { left: -36px; right: auto; top: 22px; }
+  .sign .knum, .station.flip .sign .knum { left: auto; right: 0; }
+  .sign .num { font-size: 72px; }
+  .rs { width: 230px; }
+}
+.station[hidden] { display: none; }

@@ -207,6 +207,19 @@
     }
   });
 
+  // ---------- stations: number in order (01, 02, 03…) and zigzag left / right ----------
+  const KN = '೦೧೨೩೪೫೬೭೮೯';
+  const renumber = () => {
+    [...document.querySelectorAll('[data-station]')].filter((el) => !el.hidden).forEach((el, i) => {
+      const n = String(i + 1).padStart(2, '0');
+      el.querySelector('.num').textContent = n;
+      el.querySelector('.knum').textContent = String(i + 1).split('').map((d) => KN[+d]).join('');
+      el.classList.toggle('flip', i % 2 === 1);
+    });
+  };
+  renumber();
+  film.addEventListener('ended', renumber);
+
   // ---------- reveal on scroll, count-ups, dots ----------
   const countUp = (el) => {
     const to = +el.dataset.count, t0 = performance.now();

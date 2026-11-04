@@ -51,7 +51,6 @@
     <p class="eyebrow">A SHORT FILM BY SKY</p>
     <h1>DID WE<br>MAKE IT?</h1>
     <p class="subline">My first year asks my third year. <span class="runtime" id="runtime">2:32</span></p>
-    <p class="kn-line" lang="kn">ಬರೆಯಬೇಡ. ಹೇಳು.<span lang="en">don't write it. say it.</span></p>
     <button class="play" id="playBtn" type="button">
       <span class="bulb" aria-hidden="true"></span><span>PLAY FILM</span>
     </button>
@@ -68,29 +67,41 @@
     <path class="viaduct" d="M0 178H1200M50 178V210M200 178V210M350 178V210M500 178V210M650 178V210M800 178V210M950 178V210M1100 178V210"/>
     <rect class="train" x="-90" y="170" width="78" height="7" rx="3.5"/>
   </svg>
-  <p class="ticker"><span lang="kn">ನಮ್ಮ ಮೆಟ್ರೋ</span> · Koramangala · HSR · Indiranagar · Outer Ring Road — everyone here is building something.</p>
 </header>
 
+<section class="route" aria-label="Bengaluru: Namma Metro, Koramangala, HSR Layout, Indiranagar, Outer Ring Road, MG Road">
+  <p class="route-tag">Everyone here is building something.</p>
+  <div class="route-track" aria-hidden="true">
+    <div class="route-run"><div class="rs"><b>Namma Metro</b><i></i><span lang="kn">ನಮ್ಮ ಮೆಟ್ರೋ</span></div><div class="rs"><b>Koramangala</b><i></i><span lang="kn">ಕೋರಮಂಗಲ</span></div><div class="rs"><b>HSR Layout</b><i></i><span lang="kn">ಎಚ್‌ಎಸ್‌ಆರ್ ಲೇಔಟ್</span></div><div class="rs"><b>Indiranagar</b><i></i><span lang="kn">ಇಂದಿರಾನಗರ</span></div><div class="rs"><b>Outer Ring Road</b><i></i><span lang="kn">ಹೊರ ವರ್ತುಲ ರಸ್ತೆ</span></div><div class="rs"><b>MG Road</b><i></i><span lang="kn">ಎಂ.ಜಿ. ರಸ್ತೆ</span></div><div class="rs"><b>Namma Metro</b><i></i><span lang="kn">ನಮ್ಮ ಮೆಟ್ರೋ</span></div><div class="rs"><b>Koramangala</b><i></i><span lang="kn">ಕೋರಮಂಗಲ</span></div><div class="rs"><b>HSR Layout</b><i></i><span lang="kn">ಎಚ್‌ಎಸ್‌ಆರ್ ಲೇಔಟ್</span></div><div class="rs"><b>Indiranagar</b><i></i><span lang="kn">ಇಂದಿರಾನಗರ</span></div><div class="rs"><b>Outer Ring Road</b><i></i><span lang="kn">ಹೊರ ವರ್ತುಲ ರಸ್ತೆ</span></div><div class="rs"><b>MG Road</b><i></i><span lang="kn">ಎಂ.ಜಿ. ರಸ್ತೆ</span></div></div>
+    <span class="route-train"></span>
+  </div>
+</section>
+
 <main>
-  <section class="station reveal" id="st-film">
-    <header class="stop"><span class="num">01</span><span class="name">The film<small lang="kn">ಚಿತ್ರ</small></span></header>
+  <section class="station reveal" data-station id="st-film">
+    <div class="sign"><span class="knum" lang="kn" aria-hidden="true"></span><span class="num">01</span><p class="name">The film<small lang="kn">ಚಿತ್ರ</small></p></div>
+    <div class="body">
     <button class="screen" id="openFilm" type="button" aria-label="Play the film full screen">
       <img src="film/poster.jpg" alt="First-year Sky at the desk under a lamp, the city at night behind him.">
       <span class="screen-play"><span class="bulb" aria-hidden="true"></span> Watch · <span class="rt">2:32</span></span>
     </button>
+    </div>
   </section>
 
-  <section class="station reveal" id="st-page">
-    <header class="stop"><span class="num">02</span><span class="name">The page<small lang="kn">ಹಾಳೆ</small></span></header>
+  <section class="station reveal" data-station id="st-page">
+    <div class="sign"><span class="knum" lang="kn" aria-hidden="true"></span><span class="num">02</span><p class="name">The page<small lang="kn">ಹಾಳೆ</small></p></div>
+    <div class="body">
     <div class="paper">
       <span class="tape l" aria-hidden="true"></span><span class="tape r" aria-hidden="true"></span>
       <p class="paper-note" id="paperNote">It's blank. Press play — it fills in as they talk. Tap a line to jump there.</p>
       <ol class="lines" id="lines"></ol>
     </div>
+    </div>
   </section>
 
-  <section class="station reveal ask" id="ask" hidden>
-    <header class="stop"><span class="num">03</span><span class="name">Your turn<small lang="kn">ನಿನ್ನ ಸರದಿ</small></span></header>
+  <section class="station reveal ask" data-station id="ask" hidden>
+    <div class="sign"><span class="knum" lang="kn" aria-hidden="true"></span><span class="num">03</span><p class="name">Your turn<small lang="kn">ನಿನ್ನ ಸರದಿ</small></p></div>
+    <div class="body">
     <h2 id="askTitle">What would your first-year self ask you today?</h2>
     <div class="modes" role="group" aria-label="Answer by">
       <button type="button" class="mode" id="speakBtn">● Speak</button>
@@ -108,10 +119,12 @@
       <button type="button" class="copy" id="copyBtn">Copy</button>
     </figure>
     <p class="privacy">Your browser's speech service turns your voice into text. This site stores nothing.</p>
+    </div>
   </section>
 
-  <section class="station reveal" id="st-traction">
-    <header class="stop"><span class="num">04</span><span class="name">The traction slide<small lang="kn">ಲೆಕ್ಕ</small></span></header>
+  <section class="station reveal" data-station id="st-traction">
+    <div class="sign"><span class="knum" lang="kn" aria-hidden="true"></span><span class="num">04</span><p class="name">The traction slide<small lang="kn">ಲೆಕ್ಕ</small></p></div>
+    <div class="body">
     <p class="lede">Every pitch deck in this city has one. Here's mine, honestly.</p>
     <div class="slide">
       <div class="metric big">
@@ -130,10 +143,12 @@
       <div class="metric half teal"><span class="k">Now</span><span class="v sm">Exploring physical AI</span></div>
     </div>
     <p class="still">Not yet. Still building.</p>
+    </div>
   </section>
 
-  <section class="station reveal" id="st-made">
-    <header class="stop"><span class="num">05</span><span class="name">How it was made<small lang="kn">ಹೇಗೆ ಮಾಡಿದ್ದು</small></span></header>
+  <section class="station reveal" data-station id="st-made">
+    <div class="sign"><span class="knum" lang="kn" aria-hidden="true"></span><span class="num">05</span><p class="name">How it was made<small lang="kn">ಹೇಗೆ ಮಾಡಿದ್ದು</small></p></div>
+    <div class="body">
     <blockquote class="note">
       <p>I didn't draw a single frame by hand. I wrote the story, then directed it line by line in code, with Claude Code as my crew. Every face, every lamp flicker, every page is a function.</p>
       <p>Fitting, for a film that says real problems don't come from prompts: the story came from me. The code came from a lot of them.</p>
@@ -144,13 +159,13 @@
       <li>Drawn in code</li><li>24 fps</li><li>Temporary voices</li><li>Original sound</li>
     </ul>
     <p class="fine">Every frame — characters, light, paper and camera — is drawn in code. Made for the Wispr Flow hiring challenge.</p>
+    </div>
   </section>
 </main>
 
 <footer class="end reveal">
   <p class="end-q">DID WE MAKE IT?</p>
   <p class="end-a">Not yet. Still building.</p>
-  <p class="end-kn" lang="kn">ಇನ್ನೂ ಕಟ್ಟುತ್ತಿದ್ದೇನೆ.</p>
   <p class="links">
     <a href="https://www.linkedin.com/in/akash-melavanki-40a14a349" target="_blank" rel="noopener">LinkedIn ↗</a>
     <a href="mailto:akashmelavanki943@gmail.com">akashmelavanki943@gmail.com</a>
