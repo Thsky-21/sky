@@ -41,8 +41,13 @@ function render(t) {
   const shot = shotAt(t);
   let tape = TAPE;
   if (shot.shot === 'BLACK') { endCard(g, e, T, t, D.end_card.text); tape = { ...TAPE, bloom: .2, scan: .03, noiseA: .004 }; }
-  else if (shot.shot === 'PAPER') paper(g, e, T, t, shot);
-  else if (shot.shot === 'PHONE') phone(g, e, T, M, t, shot);
+  else if (shot.shot === 'PAPER' || shot.shot === 'PHONE') {
+    // inserts never sit still: a slow push-in with a little drift across the shot (Sky: keep attention)
+    const u = Math.min(1, Math.max(0, (t - shot.t0) / Math.max(.5, shot.t1 - shot.t0)));
+    const k = 1 + .07 * u * u * (3 - 2 * u), dx = 14 * Math.sin(t * .37 + shot.t0), dy = 9 * Math.sin(t * .29 + shot.t0 * 1.7);
+    for (const x of [g, e]) x.setTransform(k, 0, 0, k, W / 2 * (1 - k) + dx, H / 2 * (1 - k) + dy);
+    if (shot.shot === 'PAPER') paper(g, e, T, t, shot); else phone(g, e, T, M, t, shot);
+  }
   else {
     room(g, e, state(T, M, t, shot));
     if (shot.shot === 'W' && shot.line === 'Y05') title(g, T, t, shot);

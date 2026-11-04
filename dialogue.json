@@ -1,6 +1,6 @@
 {
   "title": "DID WE MAKE IT?",
-  "version": "2.0 (2026-11-04)",
+  "version": "2.1 (2026-11-04, Sky: tighten 0:15-1:35 for attention; less lag on T11)",
   "supersedes": "dialogue.json v1, SCRIPT_TIMELINE.md, SHOT_LIST.md",
   "source_of_truth": "Words: this file, exactly. Direction and picture: SCRIPT_V2.md. Timing: measured from recordings. start(line) = end(previous line) + gap_before_s; length = measured duration of voices/<id>.wav (leading/trailing silence trimmed to 0.1 s).",
   "speakers": {
@@ -155,31 +155,40 @@
     {
       "id": "Y07",
       "speaker": "FY",
-      "text": "…Okay. First one.",
-      "delivery": "settling in",
-      "gap_before_s": 0.6,
+      "text": "First one?",
+      "delivery": "quick, can't wait",
+      "gap_before_s": 0.3,
       "shot": "W",
       "on_camera": true
     },
     {
       "id": "T05",
       "speaker": "TY",
-      "text": "Friends were throwing around a hackathon idea. I shipped it in four, five hours. Two, three days later I'd bought a domain — didn't even know how domains worked.",
+      "text": "Friends were throwing around a hackathon idea. I shipped it in four, five hours.",
       "delivery": "quietly proud of the speed",
       "gap_before_s": 0.4,
       "shot": "TY",
-      "cut_to": {
-        "shot": "PAPER",
-        "at": "part 2 start"
-      },
       "on_camera": true,
-      "pose": "dry half-smile",
-      "insert": "after the cut: pencil laptop, then a page goes live, then a 'www.' box ticks (generic, no brands)",
-      "parts": [
-        "Friends were throwing around a hackathon idea. I shipped it in four, five hours.",
-        "Two, three days later I'd bought a domain — didn't even know how domains worked."
-      ],
-      "beat_s": 0.3
+      "pose": "dry half-smile"
+    },
+    {
+      "id": "Y07B",
+      "speaker": "FY",
+      "text": "Five hours?!",
+      "delivery": "impressed, fast",
+      "gap_before_s": 0.15,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "T05B",
+      "speaker": "TY",
+      "text": "Two, three days later I'd bought a domain — didn't even know how domains worked.",
+      "delivery": "quietly proud; a smile at himself",
+      "gap_before_s": 0.3,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "after the cut: pencil laptop, then a page goes live, then a 'www.' box ticks (generic, no brands)"
     },
     {
       "id": "T06",
@@ -260,9 +269,28 @@
     {
       "id": "T10",
       "speaker": "TY",
-      "text": "You sleep at twelve, right? I was up till three. Every night. Code, customers, emails.",
-      "delivery": "half a smile",
+      "text": "You sleep at twelve, right?",
+      "delivery": "teasing, half a smile",
       "gap_before_s": 0.6,
+      "shot": "TY",
+      "on_camera": true,
+      "pose": "dry half-smile"
+    },
+    {
+      "id": "Y10B",
+      "speaker": "FY",
+      "text": "…Yeah?",
+      "delivery": "caught, a little guilty",
+      "gap_before_s": 0.2,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "T10B",
+      "speaker": "TY",
+      "text": "I was up till three. Every night. Code, customers, emails.",
+      "delivery": "half a smile",
+      "gap_before_s": 0.25,
       "shot": "PAPER",
       "on_camera": false,
       "insert": "drawn clock, hands sweep from 12 to 3",
@@ -287,32 +315,32 @@
         "Fifty emails.",
         "Zero replies."
       ],
-      "beat_s": 0.9,
+      "beat_s": 0.5,
       "delivery": "dry, no self-pity",
       "gap_before_s": 0.4,
       "shot": "TY_CU",
       "on_camera": true,
       "takes": 2,
-      "sound_after": "near-silence (room tone ducked) until Y12"
+      "sound_after": "near-silence (room tone ducked) until Y12 (shortened, Sky 2.1)"
     },
     {
       "id": "Y12",
       "speaker": "FY",
       "text": "Did you try—",
       "delivery": "cut off",
-      "gap_before_s": 1.6,
+      "gap_before_s": 0.8,
       "shot": "FY",
       "on_camera": true
     },
     {
       "id": "T12",
       "speaker": "TY",
-      "text": "Articles. Reddit. One post blew up in a few hours. Mods took it down. Account too new.",
+      "text": "Reddit. One post blew up in a few hours. Mods took it down. Account too new.",
       "parts": [
-        "Articles. Reddit. One post blew up in a few hours.",
+        "Reddit. One post blew up in a few hours.",
         "Mods took it down. Account too new."
       ],
-      "beat_s": 0.6,
+      "beat_s": 0.45,
       "delivery": "tired irony",
       "gap_before_s": 0.05,
       "shot": "PAPER",
@@ -560,5 +588,13 @@
     "No invented customers, revenue, view counts or events.",
     "Physical AI is an exploration, never shown as a built product.",
     "No copyrighted music; the motif is original."
+  ],
+  "changes_from_2_0": [
+    "Y07 \"…Okay. First one.\" -> \"First one?\" (quicker)",
+    "T05 split into a back-and-forth: T05 (part 1, TY on camera) / new Y07B \"Five hours?!\" (FY) / new T05B (part 2, PAPER)",
+    "T10 split: T10 \"You sleep at twelve, right?\" (TY on camera) / new Y10B \"…Yeah?\" (FY) / new T10B (the rest, PAPER clock)",
+    "T11 beat 0.9 -> 0.5 s; Y12 gap 1.6 -> 0.8 s (Sky: too much lag after \"Zero replies\")",
+    "T12 \"Articles. Reddit. One post…\" -> \"Reddit. One post…\" (shorter), beat 0.6 -> 0.45 s",
+    "original v2 kept unchanged in dialogue_v2.json"
   ]
 }

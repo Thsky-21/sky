@@ -1,0 +1,564 @@
+{
+  "title": "DID WE MAKE IT?",
+  "version": "2.0 (2026-11-04)",
+  "supersedes": "dialogue.json v1, SCRIPT_TIMELINE.md, SHOT_LIST.md",
+  "source_of_truth": "Words: this file, exactly. Direction and picture: SCRIPT_V2.md. Timing: measured from recordings. start(line) = end(previous line) + gap_before_s; length = measured duration of voices/<id>.wav (leading/trailing silence trimmed to 0.1 s).",
+  "speakers": {
+    "FY": "First-year Sky, screen left, leans forward, faster and brighter",
+    "TY": "Third-year Sky, screen right, leans back, slower and drier; leans into the lamp only from T17"
+  },
+  "shots": {
+    "W": "two-shot, existing composition",
+    "FY": "MCU First-year Sky",
+    "TY": "MCU Third-year Sky",
+    "TY_CU": "close-up Third-year Sky",
+    "PAPER": "top-down insert of the sheet (memories are drawn here)",
+    "PHONE": "insert of TY's phone",
+    "BLACK": "black frame"
+  },
+  "preroll": {
+    "shot": "PHONE",
+    "seconds": 0.3,
+    "note": "NO black opening. Frame 1 = phone face-up on the dark desk, screen glowing (only light in the room). Fan and distant traffic already present."
+  },
+  "beat_rule": "Lines with 'parts' are generated as separate clips (voices/<ID>_p1.wav, _p2.wav ...) and joined with exactly beat_s of silence. Subtitles use the full 'text'.",
+  "lines": [
+    {
+      "id": "VN01",
+      "speaker": "FY",
+      "text": "Okay, okay — new idea. Hear me out. Um… no, wait. This one's actually big.",
+      "delivery": "raw, fast, stumbling; a real late-night voice note",
+      "gap_before_s": 0.0,
+      "shot": "PHONE",
+      "voice_fx": "phone_speaker",
+      "on_camera": false,
+      "takes": 3,
+      "insert": "phone screen shows a voice-note waveform playing",
+      "sfx_after": [
+        "voice-note stop click"
+      ],
+      "note": "optionally recorded raw by Sky instead of cloned"
+    },
+    {
+      "id": "Y01",
+      "speaker": "FY",
+      "text": "So… did we make it?",
+      "parts": [
+        "So…",
+        "did we make it?"
+      ],
+      "beat_s": 0.5,
+      "delivery": "hopeful, trying to sound casual",
+      "gap_before_s": 1.1,
+      "shot": "FY",
+      "on_camera": true,
+      "takes": 3,
+      "note": "gap covers: stop click, lamp click at +0.4 s, W two-shot held 0.6 s, cut to FY. Y01 must start before 0:07."
+    },
+    {
+      "id": "T01",
+      "speaker": "TY",
+      "text": "Read it.",
+      "delivery": "flat, not unkind",
+      "gap_before_s": 0.6,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "TY's hand slides the blank sheet across",
+      "sfx": [
+        "paper slide"
+      ]
+    },
+    {
+      "id": "Y02",
+      "speaker": "FY",
+      "text": "It's blank.",
+      "delivery": "deadpan, after checking it properly",
+      "gap_before_s": 1.8,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "FIRST LAUGH: FY flips it, flips it back, then holds it up to the lamp as if there's hidden writing. Nothing. Then the line.",
+      "sfx": [
+        "paper flip x2",
+        "paper rustle"
+      ]
+    },
+    {
+      "id": "Y03",
+      "speaker": "FY",
+      "text": "We don't write things down. We talk. Voice notes, all day, every idea. What happened to that guy?",
+      "delivery": "teasing, familiar; slows on the last sentence",
+      "gap_before_s": 0.4,
+      "shot": "FY",
+      "on_camera": true,
+      "insert": "faint waveform flickers over the sheet, dies on 'that guy'"
+    },
+    {
+      "id": "T02",
+      "speaker": "TY",
+      "text": "I don't know how it ends yet.",
+      "delivery": "eyes on the page; breath before; first crack",
+      "gap_before_s": 0.9,
+      "shot": "TY",
+      "on_camera": true,
+      "camera": "slow push-in",
+      "takes": 2
+    },
+    {
+      "id": "Y04",
+      "speaker": "FY",
+      "text": "Then don't write it. Say it.",
+      "delivery": "simple; a dare",
+      "gap_before_s": 0.5,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "Y05",
+      "speaker": "FY",
+      "text": "Okay. Did we build anything?",
+      "delivery": "restarting, eager",
+      "gap_before_s": 2.0,
+      "shot": "FY",
+      "on_camera": true,
+      "note": "gap covers the title: cut to W, 'DID WE MAKE IT?' fades in small in the lower third for 1.5 s, then out; fan only"
+    },
+    {
+      "id": "T03",
+      "speaker": "TY",
+      "text": "Three things.",
+      "delivery": "dry",
+      "gap_before_s": 0.3,
+      "shot": "TY",
+      "on_camera": true
+    },
+    {
+      "id": "Y06",
+      "speaker": "FY",
+      "text": "Three companies?",
+      "delivery": "lights up",
+      "gap_before_s": 0.25,
+      "shot": "FY",
+      "on_camera": true,
+      "pose": "eager lean"
+    },
+    {
+      "id": "T04",
+      "speaker": "TY",
+      "text": "Three products. Calm down.",
+      "delivery": "dry, hint of a smile; laugh line",
+      "gap_before_s": 0.3,
+      "shot": "TY",
+      "on_camera": true,
+      "pose": "dry half-smile",
+      "takes": 2
+    },
+    {
+      "id": "Y07",
+      "speaker": "FY",
+      "text": "…Okay. First one.",
+      "delivery": "settling in",
+      "gap_before_s": 0.6,
+      "shot": "W",
+      "on_camera": true
+    },
+    {
+      "id": "T05",
+      "speaker": "TY",
+      "text": "Friends were throwing around a hackathon idea. I shipped it in four, five hours. Two, three days later I'd bought a domain — didn't even know how domains worked.",
+      "delivery": "quietly proud of the speed",
+      "gap_before_s": 0.4,
+      "shot": "TY",
+      "cut_to": {
+        "shot": "PAPER",
+        "at": "part 2 start"
+      },
+      "on_camera": true,
+      "pose": "dry half-smile",
+      "insert": "after the cut: pencil laptop, then a page goes live, then a 'www.' box ticks (generic, no brands)",
+      "parts": [
+        "Friends were throwing around a hackathon idea. I shipped it in four, five hours.",
+        "Two, three days later I'd bought a domain — didn't even know how domains worked."
+      ],
+      "beat_s": 0.3
+    },
+    {
+      "id": "T06",
+      "speaker": "TY",
+      "text": "Ten emails. One reply.",
+      "parts": [
+        "Ten emails.",
+        "One reply."
+      ],
+      "beat_s": 0.7,
+      "delivery": "let the beat sit",
+      "gap_before_s": 0.5,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "counter '10 SENT · 1 REPLY'",
+      "sfx": [
+        "one soft notification on 'reply'"
+      ]
+    },
+    {
+      "id": "Y08",
+      "speaker": "FY",
+      "text": "One reply!",
+      "delivery": "genuinely thrilled",
+      "gap_before_s": 0.2,
+      "shot": "FY",
+      "on_camera": true,
+      "pose": "celebrate"
+    },
+    {
+      "id": "T07",
+      "speaker": "TY",
+      "text": "Wrong customers. Small sites didn't feel the pain. Big ones already had someone.",
+      "delivery": "matter-of-fact",
+      "gap_before_s": 0.5,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "sketch splits into small-site vs big-site silhouettes; small rust X at the split"
+    },
+    {
+      "id": "Y09",
+      "speaker": "FY",
+      "text": "Second?",
+      "delivery": "quick",
+      "gap_before_s": 0.3,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "T08",
+      "speaker": "TY",
+      "text": "Spending limits for AI apps. Nobody cared about the bill yet.",
+      "delivery": "a shrug in the voice",
+      "gap_before_s": 0.25,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "card 'AI SPEND LIMITS', pushed aside"
+    },
+    {
+      "id": "Y10",
+      "speaker": "FY",
+      "text": "Third?",
+      "delivery": "quicker",
+      "gap_before_s": 0.3,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "T09",
+      "speaker": "TY",
+      "text": "Safety rules for AI agents. Five months. Best thing I've ever built.",
+      "delivery": "warmest so far; he loved this one",
+      "gap_before_s": 0.25,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "card 'AGENT SAFETY · 5 MONTHS'; small codebase surrounded by gates"
+    },
+    {
+      "id": "T10",
+      "speaker": "TY",
+      "text": "You sleep at twelve, right? I was up till three. Every night. Code, customers, emails.",
+      "delivery": "half a smile",
+      "gap_before_s": 0.6,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "drawn clock, hands sweep from 12 to 3",
+      "sfx": [
+        "clock ticks"
+      ]
+    },
+    {
+      "id": "Y11",
+      "speaker": "FY",
+      "text": "So who's using it?",
+      "delivery": "expecting a big number",
+      "gap_before_s": 0.4,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "T11",
+      "speaker": "TY",
+      "text": "Fifty emails. Zero replies.",
+      "parts": [
+        "Fifty emails.",
+        "Zero replies."
+      ],
+      "beat_s": 0.9,
+      "delivery": "dry, no self-pity",
+      "gap_before_s": 0.4,
+      "shot": "TY_CU",
+      "on_camera": true,
+      "takes": 2,
+      "sound_after": "near-silence (room tone ducked) until Y12"
+    },
+    {
+      "id": "Y12",
+      "speaker": "FY",
+      "text": "Did you try—",
+      "delivery": "cut off",
+      "gap_before_s": 1.6,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "T12",
+      "speaker": "TY",
+      "text": "Articles. Reddit. One post blew up in a few hours. Mods took it down. Account too new.",
+      "parts": [
+        "Articles. Reddit. One post blew up in a few hours.",
+        "Mods took it down. Account too new."
+      ],
+      "beat_s": 0.6,
+      "delivery": "tired irony",
+      "gap_before_s": 0.05,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "generic post card, a line rising, then a flat grey 'REMOVED' stamp (no real UI, no logos, no view counts)",
+      "sfx": [
+        "soft scroll",
+        "stamp thud"
+      ]
+    },
+    {
+      "id": "Y13",
+      "speaker": "FY",
+      "text": "…Of course they did.",
+      "delivery": "a breath of a laugh, on his side",
+      "gap_before_s": 0.6,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "Y14",
+      "speaker": "FY",
+      "text": "Money?",
+      "delivery": "quiet; the question he was scared to ask",
+      "gap_before_s": 1.0,
+      "shot": "W",
+      "on_camera": true
+    },
+    {
+      "id": "T13",
+      "speaker": "TY",
+      "text": "Zero.",
+      "delivery": "flat",
+      "gap_before_s": 0.5,
+      "shot": "TY_CU",
+      "on_camera": true,
+      "takes": 2,
+      "sound_after": "near-silence until T14"
+    },
+    {
+      "id": "T14",
+      "speaker": "TY",
+      "text": "I'd promised myself five thousand dollars a month. By December.",
+      "delivery": "almost embarrassed",
+      "gap_before_s": 1.4,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "handwritten '$5K / MONTH BY DEC?' then crossed out by hand (an old target, not revenue)",
+      "sfx": [
+        "pencil strike-through"
+      ]
+    },
+    {
+      "id": "T14B",
+      "speaker": "TY",
+      "text": "Applied to YC's first Bengaluru event. 'Seats are full.'",
+      "delivery": "small, factual",
+      "gap_before_s": 0.5,
+      "shot": "TY",
+      "on_camera": true,
+      "optional": true,
+      "include": false
+    },
+    {
+      "id": "T15",
+      "speaker": "TY",
+      "text": "Placements are next July. Half of me is preparing for that. Half of me is here. Never all in.",
+      "delivery": "honest, low",
+      "gap_before_s": 0.6,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "a line down the middle of the sheet: 'PLACEMENTS · JULY' on one side, the product sketches on the other"
+    },
+    {
+      "id": "T16",
+      "speaker": "TY",
+      "text": "So two months ago, I stopped. Everything.",
+      "delivery": "very plain",
+      "gap_before_s": 0.6,
+      "shot": "W",
+      "on_camera": true,
+      "pose": "closes laptop",
+      "insert_props": "three plain book spines on the desk: Zero to One / The Hard Thing About Hard Things / The Lean Startup (titles only, no cover art)",
+      "sfx": [
+        "laptop close"
+      ]
+    },
+    {
+      "id": "Y15",
+      "speaker": "FY",
+      "text": "Was I wrong? To want it that big?",
+      "parts": [
+        "Was I wrong?",
+        "To want it that big?"
+      ],
+      "beat_s": 0.8,
+      "delivery": "looks at his hands first, then up; not melodramatic",
+      "gap_before_s": 1.2,
+      "shot": "FY",
+      "on_camera": true,
+      "pose": "looking down at hands, then up",
+      "takes": 2
+    },
+    {
+      "id": "T17",
+      "speaker": "TY",
+      "text": "No. You're the only reason I started. You just didn't know how long the middle is.",
+      "parts": [
+        "No.",
+        "You're the only reason I started. You just didn't know how long the middle is."
+      ],
+      "beat_s": 1.0,
+      "delivery": "the centre of the film; warm",
+      "gap_before_s": 0.8,
+      "shot": "TY",
+      "on_camera": true,
+      "camera": "slow push-in",
+      "pose": "leans forward into the lamp (first time)",
+      "music": "START: original sparse piano motif on 'No.'",
+      "takes": 2
+    },
+    {
+      "id": "T18",
+      "speaker": "TY",
+      "text": "I kept asking AI for ideas. But real problems don't come from prompts. They come from people. And I've been doing it all alone, in one room.",
+      "delivery": "realising it, not lecturing",
+      "gap_before_s": 0.7,
+      "shot": "PAPER",
+      "on_camera": false,
+      "insert": "a prompt box gets crossed out, then small figures of people talking (no identifiable faces)"
+    },
+    {
+      "id": "Y16",
+      "speaker": "FY",
+      "text": "So what's next?",
+      "delivery": "soft",
+      "gap_before_s": 0.6,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "T19",
+      "speaker": "TY",
+      "text": "Get out of this room. Talk to people. Maybe physical AI. Honestly, I don't know yet.",
+      "delivery": "uncertain and okay with it",
+      "gap_before_s": 0.4,
+      "shot": "TY",
+      "on_camera": true,
+      "insert": "brief flash on PAPER: unfinished pencil sketch of a sensor / robot arm (construction lines visible)"
+    },
+    {
+      "id": "Y17",
+      "speaker": "FY",
+      "text": "It's okay.",
+      "delivery": "gentle",
+      "gap_before_s": 0.8,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "T20",
+      "speaker": "TY",
+      "text": "…What?",
+      "delivery": "caught off guard",
+      "gap_before_s": 0.5,
+      "shot": "TY",
+      "on_camera": true
+    },
+    {
+      "id": "Y18",
+      "speaker": "FY",
+      "text": "It's okay. You'll do it.",
+      "delivery": "certain, the way only a first-year can be",
+      "gap_before_s": 0.4,
+      "shot": "FY",
+      "on_camera": true
+    },
+    {
+      "id": "T21",
+      "speaker": "TY",
+      "text": "How do you know?",
+      "delivery": "a real question",
+      "gap_before_s": 0.5,
+      "shot": "TY",
+      "on_camera": true
+    },
+    {
+      "id": "Y19",
+      "speaker": "FY",
+      "text": "You're still talking to me.",
+      "delivery": "simple, small smile; hold after",
+      "gap_before_s": 0.4,
+      "shot": "FY",
+      "on_camera": true,
+      "takes": 2
+    },
+    {
+      "id": "Y20",
+      "speaker": "FY",
+      "text": "Don't write it. Say it.",
+      "parts": [
+        "Don't write it.",
+        "Say it."
+      ],
+      "beat_s": 0.6,
+      "delivery": "callback to Y04, softer",
+      "gap_before_s": 2.2,
+      "shot": "FY",
+      "on_camera": true,
+      "note": "gap covers: 1.5 s hold on Y19, cut to W, TY almost smiles, FY slides the sheet back"
+    },
+    {
+      "id": "T22",
+      "speaker": "TY",
+      "text": "Okay. New idea. Hear me out.",
+      "delivery": "steadier version of VN01; NO 'um'; a smile in it",
+      "gap_before_s": 1.2,
+      "shot": "PHONE",
+      "on_camera": false,
+      "insert": "TY holds record, waveform; then PAPER: the same words write themselves onto the blank sheet as one clean line",
+      "sfx": [
+        "record blip"
+      ],
+      "takes": 2
+    }
+  ],
+  "end_card": {
+    "hold_before_s": 1.0,
+    "seconds": 5.0,
+    "text": [
+      "DID WE MAKE IT?",
+      "NOT YET.",
+      "A film by Sky · written out loud"
+    ],
+    "optional_line_only_if_true": "Every line and every build prompt was spoken, not typed — with Wispr Flow.",
+    "music": "motif resolves here"
+  },
+  "silences": [
+    "after T11 until Y12",
+    "after T13 until T14"
+  ],
+  "rules": [
+    "Never paraphrase a line. If a line cannot work, stop and report it.",
+    "No logos, no real app UIs, no brand look-alikes. 'Wispr Flow' and 'YC' as plain text only.",
+    "No invented customers, revenue, view counts or events.",
+    "Physical AI is an exploration, never shown as a built product.",
+    "No copyrighted music; the motif is original."
+  ]
+}

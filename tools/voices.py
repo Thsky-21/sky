@@ -35,14 +35,17 @@ MAX_RUNTIME = 180.0
 # (Y01's clicks, Y02's gag, Y05's title, the silences before Y12 and T14, Y14, Y15, Y20's hold, T22) and are kept
 # exactly. dialogue.json is not changed.
 TURN, PAUSE_KEEP = 0.5, 1.0
+# exact voice-to-voice silences that override the rule (Sky 2.1: "a lot of lag" after "Fifty emails. Zero replies.";
+# keep a short held beat, not the old ~1.8 s)
+SILENCE = {'Y12': 0.8}
 
-# ——— temp casting (Kokoro). One base voice (am_liam: the same person) blended toward a brighter, higher voice for the
-# First-year and a lower, darker one for the Third-year (Sky's review: "there must be some difference in the two
-# voices"). Measured median pitch: FY ~131 Hz, TY ~106 Hz (plain am_liam 122 Hz). Speeds hit the target pace.
-BLEND = {'FY': [('am_liam', .6), ('am_fenrir', .4)], 'TY': [('am_liam', .6), ('am_onyx', .4)]}
-SPEED = {'FY': 0.89, 'TY': 0.79}   # measured with the blends: FY ~170, TY ~139 wpm
-SPEED_LINE = {'VN01': 0.90}          # the late-night voice note: fast, ~180 wpm
-PAUSES = {'FY': (.2, .08), 'TY': (.3, .12)}   # Kokoro's own sentence / clause pauses inside a line
+# ——— temp casting (Kokoro). Sky's reviews: the two voices must differ, and must not sound odd. Kokoro's best-graded
+# American male voices (C+), each un-blended and near its natural speed (slowing Kokoro down is what sounds stretched):
+#   FY am_fenrir — ~136 Hz, lively melody, quick;  TY am_michael — ~118 Hz, steadier, drier.
+BLEND = {'FY': [('am_fenrir', 1.0)], 'TY': [('am_michael', 1.0)]}
+SPEED = {'FY': 0.92, 'TY': 0.96}   # measured: FY ~185, TY ~158 wpm
+SPEED_LINE = {'VN01': 1.08}          # the late-night voice note: fast
+PAUSES = {'FY': (.16, .06), 'TY': (.22, .08)}   # Kokoro's own sentence / clause pauses inside a line
 # punctuation-only steering for the TTS (words never change; checked)
 SAY = {}
 
@@ -173,7 +176,9 @@ def build_timeline(D, R):
     for i, l in enumerate(D['lines']):
         r = R[l['id']]
         gap = l['gap_before_s']
-        if i == 0 or gap >= PAUSE_KEEP:   # story pauses (clicks, gag, title, silences, holds): exactly as written
+        if l['id'] in SILENCE:
+            t0 = round(t - 2 * PAD + SILENCE[l['id']], 3)
+        elif i == 0 or gap >= PAUSE_KEEP:   # story pauses (clicks, gag, title, silences, holds): exactly as written
             t0 = round(t + gap, 3)
         else:                             # an ordinary turn: real-conversation handover, measured voice to voice
             t0 = round(t - 2 * PAD + (gap if gap < .15 else max(.15, TURN * gap)), 3)

@@ -77,7 +77,7 @@ function xMark(g, x, y, r, u, seed = 0) {
 // ——— what each line draws on the sheet (sheet-local coordinates, origin at the centre) ———
 // v(f0, f1): the line's progress mapped into a reveal window; t = absolute time (for small life)
 const DRAW = {
-  T05: (g, v) => {   // pencil laptop, then the page goes live, then a "www." box ticks
+  T05B: (g, v) => {   // pencil laptop, then the page goes live, then a "www." box ticks
     stroke(g, rect(-300, -190, 360, 220), v(.0, .25), GRAPHITE, 3.5, 1);
     stroke(g, [[-340, 30], [100, 30], [70, 70], [-310, 70], [-340, 30]], v(.15, .35), GRAPHITE, 3.5, 2);
     stroke(g, rect(-270, -160, 300, 30), v(.3, .45), GRAPHITE, 2.4, 3);
@@ -115,7 +115,7 @@ const DRAW = {
       stroke(g, [[x - 18, y + 22], [x - 18, y - 22], [x + 18, y - 22], [x + 18, y + 22]], v(.5 + k * .05, .6 + k * .05), GRAPHITE, 3, 9 + k);
     }
   },
-  T10: (g, v, u) => {   // a drawn clock, hands sweep from 12 to 3
+  T10B: (g, v, u) => {   // a drawn clock, hands sweep from 12 to 3
     stroke(g, circ(0, -10, 200), v(0, .25), GRAPHITE, 4, 1);
     for (let k = 0; k < 12; k++) { const a = k / 12 * TAU - Math.PI / 2; stroke(g, [[Math.cos(a) * 170, -10 + Math.sin(a) * 170], [Math.cos(a) * 186, -10 + Math.sin(a) * 186]], v(.15 + k * .01, .2 + k * .01), GRAPHITE, 3, k); }
     const sweep = eio(seg(u, .3, .8)), hr = -Math.PI / 2 + sweep * Math.PI / 2, mn = -Math.PI / 2 + sweep * 6 * TAU;
@@ -210,7 +210,7 @@ export function paper(g, e, T, t, shot) {
   const L = T.L[id];
   const [a, b] = T.voiced(id), u = clamp((t - a) / (b - a));
   // T05's insert starts at its part 2; T19's is a brief flash
-  const span = id === 'T05' ? [T.at('T05', 'part_2_start'), T.at('T05', 'end')] : id === 'T19' ? [shot.t0, shot.t1] : [a, b];
+  const span = id === 'T19' ? [shot.t0, shot.t1] : [a, b];
   const uu = clamp((t - span[0]) / (span[1] - span[0]));
   const v = (f0, f1) => clamp((uu - f0) / (f1 - f0));
   const fn = DRAW[id];

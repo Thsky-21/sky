@@ -9,7 +9,8 @@ npm run film:final
 ## File names
 - One file per line: `voices/clone/<ID>.wav` (for example `Y01.wav`, `T22.wav`).
 - Lines with a beat (`parts` in `dialogue.json`) get one file per part: `<ID>_p1.wav`, `<ID>_p2.wav` …
-  (Y01, T05, T06, T11, T12, Y15, T17, Y20). The build joins the parts with exactly the line's `beat_s` of silence.
+  (Y01, T06, T11, T12, Y15, T17, Y20). The build joins the parts with exactly the line's `beat_s` of silence.
+- Script v2.1 added four short lines that need takes too: `Y07B`, `T05B`, `Y10B`, `T10B` (see `dialogue.json`).
 - `.wav`, `.m4a` and `.mp3` all work. Any sample rate or channel count is fine: everything is converted to 48 kHz mono,
   trimmed to 0.1 s of silence at each end and loudness-normalised.
 - Partial swaps work: any ID without a clone file keeps its temporary Kokoro take (`voices/tmp/`).

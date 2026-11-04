@@ -120,7 +120,7 @@ export function state(T, M, t, shot) {
   };
 
   // ——————————————————— TY ———————————————————
-  const wSmile = Math.max(hold(t, A('T04', 'start', -.2), A('T04', 'end', .7)), hold(t, A('T05', 'start', -.1), A('T05', 'part_1_end', .3)),
+  const wSmile = Math.max(hold(t, A('T04', 'start', -.2), A('T04', 'end', .7)), hold(t, A('T05', 'start', -.1), A('T05', 'end', .3)),
     hold(t, A('T10', 'start', -.1), A('T10', 'end', .4)), hold(t, A('Y19', 'end', .4), A('Y20', 'start', .2), .5, .3));
   const wDrop = hold(t, A('T02', 'start', -.7), A('Y04', 'start', .2), .45, .4);
   const lidU = seg(twos(t), T.frac('T16', .38), T.frac('T16', .6));

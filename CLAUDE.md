@@ -10,15 +10,18 @@ and the build commands; this file only covers what is specific to this film.
 
 Sky's instruction: follow `CLAUDE_CODE_PROMPT_V3.md` exactly; `SCRIPT_V2.md` + `dialogue.json` v2 replace everything
 before (SCRIPT_TIMELINE, SHOT_LIST, dialogue v1 = `dialogue_v1.json`, the old clip 01 timing, the one-frame-only rule:
-v3 cuts between W / FY / TY / TY_CU / PAPER / PHONE). Never edit `dialogue.json` or `SCRIPT_V2.md`.
+v3 cuts between W / FY / TY / TY_CU / PAPER / PHONE). `dialogue.json` is now **v2.1**: Sky allowed edits to the
+0:15–1:35 stretch and the T11 lag (log in its `changes_from_2_0`; untouched v2 = `dialogue_v2.json`; new IDs Y07B,
+T05B, Y10B, T10B). Any further dialogue edit needs Sky's explicit OK. Never edit `SCRIPT_V2.md`.
 Layers: 0 audit ✓ · 1 temp voices + animatic ✓ (reviewed: turns tightened, two distinct voices, smooth line ends) · 2 performance ✓ · 3 paper inserts ·
 4 light + sound · 5 website · then the voice swap. Commit after each layer ("Layer N: …"). After the Layer 1 review,
 keep going without stopping.
 - **Build:** from PowerShell in this folder: `npm run film` (720p preview + `preview/film_CONTACT.jpg`, ~7 min),
   `npm run film:tmp` (regenerate Kokoro takes first), `npm run film:final` (1080p exports + swap report + verify;
   see `VOICE_SWAP.md`). Orchestrator `tools/film.mjs`.
-- **Timing:** `tools/voices.py` = temp Kokoro takes (`voices/tmp/`, am_liam, FY .94 / TY .79 / VN01 .90 → measured
-  FY 174, TY 147, VN01 194 wpm). Turn gaps tightened after Sky's review (TURN 0.5, story pauses ≥1.0 s kept) → 2:42.8 → resolver (`voices/clone/` first) →
+- **Timing:** `tools/voices.py` = temp Kokoro takes (`voices/tmp/`; Sky found blends of liam/onyx "odd": now pure
+  am_fenrir for FY (~136 Hz, ~190 wpm) and am_michael for TY (~118 Hz, ~158 wpm) near natural speed; untrimmed, soft
+  ends). Turns: TURN 0.5, story pauses ≥1.0 s kept, SILENCE override Y12 0.8 s → ~2:32 → resolver (`voices/clone/` first) →
   `voices/final/<ID>.wav` → `timeline.json` (generated) → `voices/mouth.json` → `subs/film.srt|vtt`.
 - **Picture:** `src/film.js` (page) · `src/tl.js` (anchors `at(id, anchor, off)` / `frac(id, f)` + cut list) ·
   `src/acting.js` (poses, mouths, blinks, eyelines, page path, lamp) · `src/stage.js` (the room under camera setups;

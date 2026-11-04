@@ -16,6 +16,8 @@
   "T04",
   "Y07",
   "T05",
+  "Y07B",
+  "T05B",
   "T06",
   "Y08",
   "T07",
@@ -24,6 +26,8 @@
   "Y10",
   "T09",
   "T10",
+  "Y10B",
+  "T10B",
   "Y11",
   "T11",
   "Y12",
@@ -50,8 +54,8 @@
  "lines": {
   "VN01": {
    "start": 0.3,
-   "end": 5.03,
-   "dur": 4.73,
+   "end": 4.84,
+   "dur": 4.54,
    "speaker": "FY",
    "shot": "PHONE",
    "on_camera": false,
@@ -59,397 +63,92 @@
    "parts": [
     [
      0.4,
-     4.93
+     4.74
     ]
    ]
   },
   "Y01": {
-   "start": 6.13,
-   "end": 8.7,
-   "dur": 2.57,
+   "start": 5.94,
+   "end": 8.22,
+   "dur": 2.28,
    "speaker": "FY",
    "shot": "FY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     6.23,
-     6.8
+     6.04,
+     6.58
     ],
     [
-     7.5,
-     8.6
+     7.28,
+     8.12
     ]
    ]
   },
   "T01": {
-   "start": 8.8,
-   "end": 9.93,
-   "dur": 1.13,
+   "start": 8.32,
+   "end": 9.36,
+   "dur": 1.04,
    "speaker": "TY",
    "shot": "PAPER",
    "on_camera": false,
    "src": "temp",
    "parts": [
     [
-     8.9,
-     9.83
+     8.42,
+     9.26
     ]
    ]
   },
   "Y02": {
-   "start": 11.73,
-   "end": 12.68,
-   "dur": 0.95,
+   "start": 11.16,
+   "end": 12.07,
+   "dur": 0.91,
    "speaker": "FY",
    "shot": "PAPER",
    "on_camera": false,
    "src": "temp",
    "parts": [
     [
-     11.83,
-     12.58
+     11.26,
+     11.97
     ]
    ]
   },
   "Y03": {
-   "start": 12.68,
-   "end": 18.37,
-   "dur": 5.69,
+   "start": 12.07,
+   "end": 18.16,
+   "dur": 6.09,
    "speaker": "FY",
    "shot": "FY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     12.78,
-     18.27
+     12.17,
+     18.06
     ]
    ]
   },
   "T02": {
-   "start": 18.62,
-   "end": 21.2,
-   "dur": 2.58,
+   "start": 18.41,
+   "end": 20.32,
+   "dur": 1.91,
    "speaker": "TY",
    "shot": "TY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     18.72,
-     21.1
+     18.51,
+     20.22
     ]
    ]
   },
   "Y04": {
-   "start": 21.25,
-   "end": 22.94,
-   "dur": 1.69,
-   "speaker": "FY",
-   "shot": "FY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     21.35,
-     22.84
-    ]
-   ]
-  },
-  "Y05": {
-   "start": 24.94,
-   "end": 26.88,
-   "dur": 1.94,
-   "speaker": "FY",
-   "shot": "FY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     25.04,
-     26.78
-    ]
-   ]
-  },
-  "T03": {
-   "start": 26.83,
-   "end": 28.35,
-   "dur": 1.52,
-   "speaker": "TY",
-   "shot": "TY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     26.93,
-     28.25
-    ]
-   ]
-  },
-  "Y06": {
-   "start": 28.3,
-   "end": 29.72,
-   "dur": 1.42,
-   "speaker": "FY",
-   "shot": "FY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     28.4,
-     29.62
-    ]
-   ]
-  },
-  "T04": {
-   "start": 29.67,
-   "end": 32.41,
-   "dur": 2.74,
-   "speaker": "TY",
-   "shot": "TY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     29.77,
-     32.31
-    ]
-   ]
-  },
-  "Y07": {
-   "start": 32.51,
-   "end": 34.12,
-   "dur": 1.61,
-   "speaker": "FY",
-   "shot": "W",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     32.61,
-     34.02
-    ]
-   ]
-  },
-  "T05": {
-   "start": 34.12,
-   "end": 46.21,
-   "dur": 12.09,
-   "speaker": "TY",
-   "shot": "TY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     34.22,
-     40.3
-    ],
-    [
-     40.8,
-     46.11
-    ]
-   ],
-   "cut_to": {
-    "shot": "PAPER",
-    "at": "part 2 start"
-   }
-  },
-  "T06": {
-   "start": 46.26,
-   "end": 50.48,
-   "dur": 4.22,
-   "speaker": "TY",
-   "shot": "PAPER",
-   "on_camera": false,
-   "src": "temp",
-   "parts": [
-    [
-     46.36,
-     48.05
-    ],
-    [
-     48.95,
-     50.38
-    ]
-   ]
-  },
-  "Y08": {
-   "start": 50.43,
-   "end": 51.7,
-   "dur": 1.27,
-   "speaker": "FY",
-   "shot": "FY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     50.53,
-     51.6
-    ]
-   ]
-  },
-  "T07": {
-   "start": 51.75,
-   "end": 57.88,
-   "dur": 6.13,
-   "speaker": "TY",
-   "shot": "PAPER",
-   "on_camera": false,
-   "src": "temp",
-   "parts": [
-    [
-     51.85,
-     57.78
-    ]
-   ]
-  },
-  "Y09": {
-   "start": 57.83,
-   "end": 58.8,
-   "dur": 0.97,
-   "speaker": "FY",
-   "shot": "FY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     57.93,
-     58.7
-    ]
-   ]
-  },
-  "T08": {
-   "start": 58.75,
-   "end": 63.95,
-   "dur": 5.2,
-   "speaker": "TY",
-   "shot": "PAPER",
-   "on_camera": false,
-   "src": "temp",
-   "parts": [
-    [
-     58.85,
-     63.85
-    ]
-   ]
-  },
-  "Y10": {
-   "start": 63.9,
-   "end": 64.8,
-   "dur": 0.9,
-   "speaker": "FY",
-   "shot": "FY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     64.0,
-     64.7
-    ]
-   ]
-  },
-  "T09": {
-   "start": 64.75,
-   "end": 70.51,
-   "dur": 5.76,
-   "speaker": "TY",
-   "shot": "PAPER",
-   "on_camera": false,
-   "src": "temp",
-   "parts": [
-    [
-     64.85,
-     70.41
-    ]
-   ]
-  },
-  "T10": {
-   "start": 70.61,
-   "end": 76.83,
-   "dur": 6.22,
-   "speaker": "TY",
-   "shot": "PAPER",
-   "on_camera": false,
-   "src": "temp",
-   "parts": [
-    [
-     70.71,
-     76.73
-    ]
-   ]
-  },
-  "Y11": {
-   "start": 76.83,
-   "end": 78.44,
-   "dur": 1.61,
-   "speaker": "FY",
-   "shot": "FY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     76.93,
-     78.34
-    ]
-   ]
-  },
-  "T11": {
-   "start": 78.44,
-   "end": 83.46,
-   "dur": 5.02,
-   "speaker": "TY",
-   "shot": "TY_CU",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     78.54,
-     80.36
-    ],
-    [
-     81.46,
-     83.36
-    ]
-   ]
-  },
-  "Y12": {
-   "start": 85.06,
-   "end": 86.27,
-   "dur": 1.21,
-   "speaker": "FY",
-   "shot": "FY",
-   "on_camera": true,
-   "src": "temp",
-   "parts": [
-    [
-     85.16,
-     86.17
-    ]
-   ]
-  },
-  "T12": {
-   "start": 86.12,
-   "end": 93.99,
-   "dur": 7.87,
-   "speaker": "TY",
-   "shot": "PAPER",
-   "on_camera": false,
-   "src": "temp",
-   "parts": [
-    [
-     86.22,
-     90.2
-    ],
-    [
-     91.0,
-     93.89
-    ]
-   ]
-  },
-  "Y13": {
-   "start": 94.09,
-   "end": 95.6,
+   "start": 20.37,
+   "end": 21.88,
    "dur": 1.51,
    "speaker": "FY",
    "shot": "FY",
@@ -457,282 +156,639 @@
    "src": "temp",
    "parts": [
     [
-     94.19,
-     95.5
+     20.47,
+     21.78
     ]
    ]
   },
-  "Y14": {
-   "start": 96.6,
-   "end": 97.49,
-   "dur": 0.89,
+  "Y05": {
+   "start": 23.88,
+   "end": 25.6,
+   "dur": 1.72,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     23.98,
+     25.5
+    ]
+   ]
+  },
+  "T03": {
+   "start": 25.55,
+   "end": 26.78,
+   "dur": 1.23,
+   "speaker": "TY",
+   "shot": "TY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     25.65,
+     26.68
+    ]
+   ]
+  },
+  "Y06": {
+   "start": 26.73,
+   "end": 27.87,
+   "dur": 1.14,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     26.83,
+     27.77
+    ]
+   ]
+  },
+  "T04": {
+   "start": 27.82,
+   "end": 29.95,
+   "dur": 2.13,
+   "speaker": "TY",
+   "shot": "TY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     27.92,
+     29.85
+    ]
+   ]
+  },
+  "Y07": {
+   "start": 29.9,
+   "end": 30.86,
+   "dur": 0.96,
    "speaker": "FY",
    "shot": "W",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     96.7,
-     97.39
+     30.0,
+     30.76
     ]
    ]
   },
-  "T13": {
-   "start": 97.54,
-   "end": 98.63,
-   "dur": 1.09,
+  "T05": {
+   "start": 30.86,
+   "end": 36.38,
+   "dur": 5.52,
+   "speaker": "TY",
+   "shot": "TY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     30.96,
+     36.28
+    ]
+   ]
+  },
+  "Y07B": {
+   "start": 36.33,
+   "end": 37.45,
+   "dur": 1.12,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     36.43,
+     37.35
+    ]
+   ]
+  },
+  "T05B": {
+   "start": 37.4,
+   "end": 42.61,
+   "dur": 5.21,
+   "speaker": "TY",
+   "shot": "PAPER",
+   "on_camera": false,
+   "src": "temp",
+   "parts": [
+    [
+     37.5,
+     42.51
+    ]
+   ]
+  },
+  "T06": {
+   "start": 42.66,
+   "end": 46.0,
+   "dur": 3.34,
+   "speaker": "TY",
+   "shot": "PAPER",
+   "on_camera": false,
+   "src": "temp",
+   "parts": [
+    [
+     42.76,
+     43.93
+    ],
+    [
+     44.83,
+     45.9
+    ]
+   ]
+  },
+  "Y08": {
+   "start": 45.95,
+   "end": 47.02,
+   "dur": 1.07,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     46.05,
+     46.92
+    ]
+   ]
+  },
+  "T07": {
+   "start": 47.07,
+   "end": 52.8,
+   "dur": 5.73,
+   "speaker": "TY",
+   "shot": "PAPER",
+   "on_camera": false,
+   "src": "temp",
+   "parts": [
+    [
+     47.17,
+     52.7
+    ]
+   ]
+  },
+  "Y09": {
+   "start": 52.75,
+   "end": 53.6,
+   "dur": 0.85,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     52.85,
+     53.5
+    ]
+   ]
+  },
+  "T08": {
+   "start": 53.55,
+   "end": 57.97,
+   "dur": 4.42,
+   "speaker": "TY",
+   "shot": "PAPER",
+   "on_camera": false,
+   "src": "temp",
+   "parts": [
+    [
+     53.65,
+     57.87
+    ]
+   ]
+  },
+  "Y10": {
+   "start": 57.92,
+   "end": 58.69,
+   "dur": 0.77,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     58.02,
+     58.59
+    ]
+   ]
+  },
+  "T09": {
+   "start": 58.64,
+   "end": 63.84,
+   "dur": 5.2,
+   "speaker": "TY",
+   "shot": "PAPER",
+   "on_camera": false,
+   "src": "temp",
+   "parts": [
+    [
+     58.74,
+     63.74
+    ]
+   ]
+  },
+  "T10": {
+   "start": 63.94,
+   "end": 65.77,
+   "dur": 1.83,
+   "speaker": "TY",
+   "shot": "TY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     64.04,
+     65.67
+    ]
+   ]
+  },
+  "Y10B": {
+   "start": 65.72,
+   "end": 66.51,
+   "dur": 0.79,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     65.82,
+     66.41
+    ]
+   ]
+  },
+  "T10B": {
+   "start": 66.46,
+   "end": 70.7,
+   "dur": 4.24,
+   "speaker": "TY",
+   "shot": "PAPER",
+   "on_camera": false,
+   "src": "temp",
+   "parts": [
+    [
+     66.56,
+     70.6
+    ]
+   ]
+  },
+  "Y11": {
+   "start": 70.7,
+   "end": 71.99,
+   "dur": 1.29,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     70.8,
+     71.89
+    ]
+   ]
+  },
+  "T11": {
+   "start": 71.99,
+   "end": 75.45,
+   "dur": 3.46,
    "speaker": "TY",
    "shot": "TY_CU",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     97.64,
-     98.53
+     72.09,
+     73.27
+    ],
+    [
+     73.97,
+     75.35
+    ]
+   ]
+  },
+  "Y12": {
+   "start": 76.05,
+   "end": 77.05,
+   "dur": 1.0,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     76.15,
+     76.95
+    ]
+   ]
+  },
+  "T12": {
+   "start": 76.9,
+   "end": 82.71,
+   "dur": 5.81,
+   "speaker": "TY",
+   "shot": "PAPER",
+   "on_camera": false,
+   "src": "temp",
+   "parts": [
+    [
+     77.0,
+     79.49
+    ],
+    [
+     80.14,
+     82.61
+    ]
+   ]
+  },
+  "Y13": {
+   "start": 82.81,
+   "end": 84.15,
+   "dur": 1.34,
+   "speaker": "FY",
+   "shot": "FY",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     82.91,
+     84.05
+    ]
+   ]
+  },
+  "Y14": {
+   "start": 85.15,
+   "end": 85.88,
+   "dur": 0.73,
+   "speaker": "FY",
+   "shot": "W",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     85.25,
+     85.78
+    ]
+   ]
+  },
+  "T13": {
+   "start": 85.93,
+   "end": 87.01,
+   "dur": 1.08,
+   "speaker": "TY",
+   "shot": "TY_CU",
+   "on_camera": true,
+   "src": "temp",
+   "parts": [
+    [
+     86.03,
+     86.91
     ]
    ]
   },
   "T14": {
-   "start": 100.03,
-   "end": 105.34,
-   "dur": 5.31,
+   "start": 88.41,
+   "end": 92.81,
+   "dur": 4.4,
    "speaker": "TY",
    "shot": "PAPER",
    "on_camera": false,
    "src": "temp",
    "parts": [
     [
-     100.13,
-     105.24
+     88.51,
+     92.71
     ]
    ]
   },
   "T15": {
-   "start": 105.44,
-   "end": 112.12,
-   "dur": 6.68,
+   "start": 92.91,
+   "end": 99.3,
+   "dur": 6.39,
    "speaker": "TY",
    "shot": "PAPER",
    "on_camera": false,
    "src": "temp",
    "parts": [
     [
-     105.54,
-     112.02
+     93.01,
+     99.2
     ]
    ]
   },
   "T16": {
-   "start": 112.22,
-   "end": 115.67,
-   "dur": 3.45,
+   "start": 99.4,
+   "end": 102.31,
+   "dur": 2.91,
    "speaker": "TY",
    "shot": "W",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     112.32,
-     115.57
+     99.5,
+     102.21
     ]
    ]
   },
   "Y15": {
-   "start": 116.87,
-   "end": 120.39,
-   "dur": 3.52,
+   "start": 103.51,
+   "end": 106.58,
+   "dur": 3.07,
    "speaker": "FY",
    "shot": "FY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     116.97,
-     117.98
+     103.61,
+     104.41
     ],
     [
-     118.98,
-     120.29
+     105.41,
+     106.48
     ]
    ]
   },
   "T17": {
-   "start": 120.59,
-   "end": 128.03,
-   "dur": 7.44,
+   "start": 106.78,
+   "end": 113.61,
+   "dur": 6.83,
    "speaker": "TY",
    "shot": "TY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     120.69,
-     121.44
+     106.88,
+     107.59
     ],
     [
-     122.64,
-     127.93
+     108.79,
+     113.51
     ]
    ]
   },
   "T18": {
-   "start": 128.18,
-   "end": 138.84,
-   "dur": 10.66,
+   "start": 113.76,
+   "end": 124.08,
+   "dur": 10.32,
    "speaker": "TY",
    "shot": "PAPER",
    "on_camera": false,
    "src": "temp",
    "parts": [
     [
-     128.28,
-     138.74
+     113.86,
+     123.98
     ]
    ]
   },
   "Y16": {
-   "start": 138.94,
-   "end": 140.26,
-   "dur": 1.32,
+   "start": 124.18,
+   "end": 125.3,
+   "dur": 1.12,
    "speaker": "FY",
    "shot": "FY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     139.04,
-     140.16
+     124.28,
+     125.2
     ]
    ]
   },
   "T19": {
-   "start": 140.26,
-   "end": 146.54,
-   "dur": 6.28,
+   "start": 125.3,
+   "end": 131.25,
+   "dur": 5.95,
    "speaker": "TY",
    "shot": "TY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     140.36,
-     146.44
+     125.4,
+     131.15
     ]
    ]
   },
   "Y17": {
-   "start": 146.74,
-   "end": 147.91,
-   "dur": 1.17,
+   "start": 131.45,
+   "end": 132.44,
+   "dur": 0.99,
    "speaker": "FY",
    "shot": "FY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     146.84,
-     147.81
+     131.55,
+     132.34
     ]
    ]
   },
   "T20": {
-   "start": 147.96,
-   "end": 149.0,
-   "dur": 1.04,
+   "start": 132.49,
+   "end": 133.34,
+   "dur": 0.85,
    "speaker": "TY",
    "shot": "TY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     148.06,
-     148.9
+     132.59,
+     133.24
     ]
    ]
   },
   "Y18": {
-   "start": 149.0,
-   "end": 150.68,
-   "dur": 1.68,
+   "start": 133.34,
+   "end": 134.74,
+   "dur": 1.4,
    "speaker": "FY",
    "shot": "FY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     149.1,
-     150.58
+     133.44,
+     134.64
     ]
    ]
   },
   "T21": {
-   "start": 150.73,
-   "end": 152.21,
-   "dur": 1.48,
+   "start": 134.79,
+   "end": 136.16,
+   "dur": 1.37,
    "speaker": "TY",
    "shot": "TY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     150.83,
-     152.11
+     134.89,
+     136.06
     ]
    ]
   },
   "Y19": {
-   "start": 152.21,
-   "end": 153.98,
-   "dur": 1.77,
+   "start": 136.16,
+   "end": 137.67,
+   "dur": 1.51,
    "speaker": "FY",
    "shot": "FY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     152.31,
-     153.88
+     136.26,
+     137.57
     ]
    ]
   },
   "Y20": {
-   "start": 156.18,
-   "end": 158.88,
-   "dur": 2.7,
+   "start": 139.87,
+   "end": 142.28,
+   "dur": 2.41,
    "speaker": "FY",
    "shot": "FY",
    "on_camera": true,
    "src": "temp",
    "parts": [
     [
-     156.28,
-     157.27
+     139.97,
+     140.79
     ],
     [
-     158.07,
-     158.78
+     141.59,
+     142.18
     ]
    ]
   },
   "T22": {
-   "start": 160.08,
-   "end": 162.71,
-   "dur": 2.63,
+   "start": 143.48,
+   "end": 145.74,
+   "dur": 2.26,
    "speaker": "TY",
    "shot": "PHONE",
    "on_camera": false,
    "src": "temp",
    "parts": [
     [
-     160.18,
-     162.61
+     143.58,
+     145.64
     ]
    ]
   }
  },
  "end_card": [
-  163.71,
-  168.71
+  146.74,
+  151.74
  ],
- "total": 168.71
+ "total": 151.74
 }
