@@ -50,6 +50,10 @@ export const SETS = {
   // 0–30 s: night room, desk-lamp amber key from screen right; midnight / ink shadows
   night: { lit: [.9, .8, .68], shade: [.46, .5, .66], line: [.72, .72, .9],
     skin: { f: '#A86F4D', s: '#5C4752', h: '#C68B60', l: '#3A2028' }, blush: '#9A5444', rim: '#D3A15F' },
+  // the one set for the whole film (Sky, 2026-11-04): a high-rise apartment at night, washed in golden lamp light;
+  // warm key from the lamps, shadows lean violet-brown, the city outside stays blue
+  golden: { lit: [1.0, .86, .66], shade: [.56, .46, .52], line: [.74, .64, .7],
+    skin: { f: '#BE7D52', s: '#7A4C46', h: '#DCA070', l: '#45261C' }, blush: '#B0583F', rim: '#F2C27C' },
   // 30–60 s: first-year memory, late-afternoon amber; warmest skin
   memory: { lit: [1.06, .96, .82], shade: [.8, .7, .7], line: [.9, .82, .8],
     skin: { f: '#C3855A', s: '#8E5A46', h: '#DEA47A', l: '#4A2A1E' }, blush: '#C0684E', rim: '#E8C38C' },

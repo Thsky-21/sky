@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akash, did we make it? · a short film</title>
+<meta name="description" content="A short film made entirely in code. First-year Akash meets third-year Akash across a blank page, high above the city at night.">
+<meta property="og:title" content="Akash, did we make it?">
+<meta property="og:description" content="A short film made in code. First year meets third year.">
+<meta property="og:image" content="media/poster.jpg">
+<meta name="theme-color" content="#111820">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap">
+<link rel="stylesheet" href="site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%23111820%22/%3E%3Ccircle cx=%2216%22 cy=%2214%22 r=%227%22 fill=%22%23F2C27C%22/%3E%3Crect x=%229%22 y=%2224%22 width=%2214%22 height=%222.5%22 rx=%221%22 fill=%22%23D3A15F%22/%3E%3C/svg%3E">
+</head>
+<body class="is-arrival">
+<a class="skip" href="#below">Skip to the transcript and notes</a>
+
+<!-- ——— the screening room: one 16:9 stage; the live room (canvas) and the film (video) share it ——— -->
+<section class="screen" aria-label="The film">
+  <div class="stage" id="stage">
+    <img class="still" id="still" src="media/arrival.jpg" alt="">
+    <canvas id="room" aria-hidden="true"></canvas>
+    <video id="film" preload="auto" playsinline poster="media/arrival.jpg" aria-label="Akash, did we make it? The film.">
+      <source src="media/film.mp4" type="video/mp4">
+      <track id="cc" kind="captions" srclang="en" label="English" src="media/film.vtt" default>
+    </video>
+    <div class="dim" aria-hidden="true"></div>
+
+    <!-- arrival: the title sits in the night sky of the window; the lamp on the table is the only way in -->
+    <header class="title" id="title">
+      <p class="eyebrow">A short film by Akash</p>
+      <h1><span class="name">Akash,</span> <span class="q">did we make it?</span></h1>
+      <p class="sub">First year meets third year.</p>
+    </header>
+    <button class="lamp-hot" id="lampHot" aria-describedby="lampNote">
+      <span class="ring" aria-hidden="true"></span><span class="ring r2" aria-hidden="true"></span>
+      <span class="label">turn on the light</span>
+    </button>
+    <p class="lamp-note" id="lampNote"><span id="lengthNote">play · 0:30 preview of a 3:00 film</span> · sound on</p>
+
+    <!-- the film's captions, drawn by the page (low, clear of both faces) -->
+    <p class="subs" id="subs" aria-live="off"></p>
+
+    <!-- controls: the lamp, the road, the voice note, the page -->
+    <div class="controls" id="controls" role="group" aria-label="Film controls">
+      <button class="c-lamp" id="cLamp" aria-label="Pause" title="The lamp: play / pause (space)">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <defs><radialGradient id="bulb"><stop offset="0" stop-color="#FFF4DC"/><stop offset=".45" stop-color="#F2C27C"/><stop offset="1" stop-color="#F2C27C" stop-opacity="0"/></radialGradient></defs>
+          <circle class="glow" cx="17" cy="23" r="15" fill="url(#bulb)"/>
+          <path class="shade" d="M6 20 L19 7 L27 12 L14 26 Z"/>
+          <path class="arm" d="M24 42 L30 22 L23 12" fill="none"/>
+          <ellipse class="base" cx="24" cy="42" rx="10" ry="2.6"/>
+        </svg>
+      </button>
+      <div class="road" id="road">
+        <svg class="road-svg" id="roadSvg" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <input class="seek" id="seek" type="range" min="0" max="180" step="0.1" value="0" aria-label="The road: seek through the film" aria-valuetext="0:00">
+      </div>
+      <span class="time" id="time" aria-hidden="true">0:00 / 3:00</span>
+      <button class="c-voice" id="cVoice" aria-label="Mute" aria-pressed="false" title="The voice note: sound on / off (M)">
+        <span></span><span></span><span></span><span></span><span></span>
+      </button>
+      <button class="c-page" id="cPage" aria-label="Captions" aria-pressed="true" title="The page: captions on / off (C)">
+        <svg viewBox="0 0 30 38" aria-hidden="true"><path class="sheet" d="M3 3 H21 L27 9 V35 H3 Z"/><path class="fold" d="M21 3 V9 H27"/><g class="lines"><path d="M8 16 H22"/><path d="M8 21 H22"/><path d="M8 26 H17"/></g></svg>
+      </button>
+    </div>
+
+    <!-- after the film: the chairs are empty, the page is still on the table -->
+    <div class="ending" id="ending" hidden>
+      <p class="question" id="question">What would your first-year self ask you today?</p>
+      <button class="page-hot" id="pageHot"><span class="ring" aria-hidden="true"></span><span class="label">pick up the page</span></button>
+      <button class="again" id="again" type="button">start at the beginning</button>
+    </div>
+    <div class="sheet" id="sheet" hidden role="dialog" aria-modal="false" aria-labelledby="sheetQ">
+      <p class="sheet-q" id="sheetQ">What would your first-year self ask you today?</p>
+      <label class="sr" for="ink">Your question, written on the page</label>
+      <textarea id="ink" rows="5" maxlength="420" placeholder="Write it here…" spellcheck="false"></textarea>
+      <div class="sheet-row">
+        <button type="button" class="s-btn" id="say" hidden>say it</button>
+        <button type="button" class="s-btn s-done" id="done">done</button>
+      </div>
+      <p class="privacy" id="privacy">Nothing you write leaves this page. It isn't saved or sent anywhere.</p>
+      <p class="privacy" id="speechNote" hidden>"Say it" uses your browser's speech recognition, which may send the audio to the browser's own speech service. Typing works the same.</p>
+      <div class="kept" id="kept" hidden>
+        <p>It's yours. Nothing was saved.</p>
+        <div class="sheet-row">
+          <button type="button" class="s-btn" id="another">write another</button>
+          <button type="button" class="s-btn" id="again2">start at the beginning</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="scroll-hint" aria-hidden="true">the transcript, the honest page, how it was made ↓</p>
+</section>
+
+<main class="below" id="below">
+  <section class="block transcript" aria-labelledby="tH">
+    <h2 id="tH"><span class="kicker">I</span> The words</h2>
+    <details>
+      <summary>Read the transcript</summary>
+      <ol class="lines" id="lines"></ol>
+      <p class="note" id="tNote"></p>
+    </details>
+  </section>
+
+  <section class="block honest" aria-labelledby="hH">
+    <h2 id="hH"><span class="kicker">II</span> The honest page</h2>
+    <p class="lede">What the film is built on. No polish, just the counts.</p>
+    <dl class="ledger">
+      <div class="row"><dt>First outreach</dt><dd><b>10</b> emails sent <span class="arrow">·</span> <b>1</b> reply</dd></div>
+      <div class="row"><dt>Later outreach, a different product</dt><dd><b>~50</b> emails sent <span class="arrow">·</span> <b>0</b> replies</dd></div>
+      <div class="row"><dt>Directions explored</dt><dd><b>3</b> website content licensing and AI scrapers <span class="arrow">·</span> LLM budget enforcement <span class="arrow">·</span> agent governance</dd></div>
+      <div class="row"><dt>Learned while building</dt><dd>TypeScript, Python, React, Redis</dd></div>
+      <div class="row"><dt>Revenue</dt><dd><b>0</b></dd></div>
+      <div class="row now"><dt>Now exploring</dt><dd>physical AI</dd></div>
+    </dl>
+    <p class="closing">Not yet. Still building.</p>
+  </section>
+
+  <section class="block made" aria-labelledby="mH">
+    <h2 id="mH"><span class="kicker">III</span> How it was made</h2>
+    <p class="lede">There is no camera and no stock art. Every frame is drawn by code: the room, the city, the two of them. This is that code, running live in your browser.</p>
+    <div class="layers">
+      <div class="layers-stage"><canvas id="layersCv" aria-label="The room drawn live, in the selected layer"></canvas></div>
+      <div class="dial" role="radiogroup" aria-label="Which layer to show">
+        <button role="radio" aria-checked="true" data-view="final">finished</button>
+        <button role="radio" aria-checked="false" data-view="raw">paint only</button>
+        <button role="radio" aria-checked="false" data-view="light">light only</button>
+      </div>
+      <p class="layer-note" id="layerNote">The finished frame: flat cel paint, then the lamplight and the city glow blooming through a soft tape pass.</p>
+    </div>
+  </section>
+
+  <footer class="block credits">
+    <p class="end">Did we make it? <span>Not yet. Still building.</span></p>
+    <ul>
+      <li>Written and directed by Akash. Made in code with Lemo-Opuscar, style cel-anime-80s.</li>
+      <li>Voices: temporary synthetic voices (Kokoro TTS) until Akash's own recordings replace them.</li>
+      <li>Sound synthesised in code. Type: Barlow Semi Condensed and Caveat (SIL Open Font License).</li>
+      <li>No logos, no stock imagery, no real-person likenesses.</li>
+    </ul>
+  </footer>
+</main>
+
+<script type="module" src="site.js"></script>
+</body>
+</html>

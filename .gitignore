@@ -6,3 +6,4 @@ out/.*_segs-*/
 out/*.lock
 out/stems/
 out/
+site/dist/
