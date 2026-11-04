@@ -2,13 +2,22 @@
  {
   "id": "Y01",
   "who": "FY",
-  "text": "So… did we make it?",
+  "script": "So… did we make it?",
+  "text": "So… did we make it?!",
   "voice": "am_liam",
-  "speed": 1.0
+  "speed": 1.2,
+  "pitch": {
+   "lift": 1.5,
+   "rise": [
+    0.5,
+    8.0
+   ]
+  }
  },
  {
   "id": "T01",
   "who": "TY",
+  "script": "Take this. Read it.",
   "text": "Take this. Read it.",
   "voice": "am_liam",
   "speed": 0.92
@@ -16,20 +25,37 @@
  {
   "id": "Y02",
   "who": "FY",
+  "script": "It's blank.",
   "text": "It's blank.",
   "voice": "am_liam",
-  "speed": 1.0
+  "speed": 1.0,
+  "pitch": {
+   "lift": 0.5,
+   "rise": [
+    0.6,
+    2.0
+   ]
+  }
  },
  {
   "id": "Y03",
   "who": "FY",
+  "script": "You used to send me voice notes—ideas, plans, all those thoughts you couldn't switch off. What happened?",
   "text": "You used to send me voice notes—ideas, plans, all those thoughts you couldn't switch off. What happened?",
   "voice": "am_liam",
-  "speed": 1.0
+  "speed": 1.14,
+  "pitch": {
+   "lift": 1.0,
+   "rise": [
+    0.86,
+    6.0
+   ]
+  }
  },
  {
   "id": "T02",
   "who": "TY",
+  "script": "I don't know how to write the ending yet.",
   "text": "I don't know how to write the ending yet.",
   "voice": "am_liam",
   "speed": 0.92
@@ -37,8 +63,12 @@
  {
   "id": "Y04",
   "who": "FY",
+  "script": "Then start at the beginning. Start with college.",
   "text": "Then start at the beginning. Start with college.",
   "voice": "am_liam",
-  "speed": 1.0
+  "speed": 1.08,
+  "pitch": {
+   "lift": 1.0
+  }
  }
 ]

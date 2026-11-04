@@ -2,23 +2,68 @@
   "note": "Single timeline for picture, sound and subtitles. 'lines' = where each dialogue.json line STARTS (s); its length comes from the measured voices/dur.json, never from the window. Shots follow SHOT_LIST.md. Built so far: clip 01 (0-30 s) only.",
   "fps": 24,
   "film_seconds": 180,
-  "clips": { "01": [0, 30] },
+  "clips": {
+    "01": [
+      0,
+      30
+    ]
+  },
   "lines": {
-    "Y01": 3.40,
+    "Y01": 3.18,
     "T01": 7.55,
-    "Y02": 11.55,
-    "Y03": 13.45,
-    "T02": 21.20,
-    "Y04": 25.45
+    "Y02": 11.2,
+    "Y03": 13.3,
+    "T02": 21.2,
+    "Y04": 25.4
   },
   "shots": [
-    { "id": "S1-01", "t0": 0.0,  "t1": 0.5,  "what": "black" },
-    { "id": "S1-02", "t0": 0.5,  "t1": 3.0,  "what": "W two-shot, slow push-in ~8%" },
-    { "id": "S1-03", "t0": 3.0,  "t1": 7.0,  "what": "MCU FY, Y01" },
-    { "id": "S1-04", "t0": 7.0,  "t1": 10.0, "what": "OS behind TY onto FY, sheet slides, T01" },
-    { "id": "S1-05", "t0": 10.0, "t1": 13.0, "what": "INS sheet in FY's hands, turned over, Y02" },
-    { "id": "S1-06", "t0": 13.0, "t1": 20.0, "what": "MCU FY, waveform flicker, Y03" },
-    { "id": "S1-07", "t0": 20.0, "t1": 25.0, "what": "CU TY, eyes drop, T02, held pause" },
-    { "id": "S1-08", "t0": 25.0, "t1": 30.0, "what": "M FY lowers the page, push into the white paper, Y04" }
+    {
+      "id": "S1-01",
+      "t0": 0.0,
+      "t1": 0.5,
+      "what": "black"
+    },
+    {
+      "id": "S1-02",
+      "t0": 0.5,
+      "t1": 3.0,
+      "what": "W two-shot, slow push-in ~8%"
+    },
+    {
+      "id": "S1-03",
+      "t0": 3.0,
+      "t1": 7.0,
+      "what": "MCU FY, Y01"
+    },
+    {
+      "id": "S1-04",
+      "t0": 7.0,
+      "t1": 10.0,
+      "what": "OS behind TY onto FY, sheet slides, T01"
+    },
+    {
+      "id": "S1-05",
+      "t0": 10.0,
+      "t1": 13.0,
+      "what": "INS sheet in FY's hands, turned over, Y02"
+    },
+    {
+      "id": "S1-06",
+      "t0": 13.0,
+      "t1": 20.0,
+      "what": "MCU FY, waveform flicker, Y03"
+    },
+    {
+      "id": "S1-07",
+      "t0": 20.0,
+      "t1": 25.0,
+      "what": "CU TY, eyes drop, T02, held pause"
+    },
+    {
+      "id": "S1-08",
+      "t0": 25.0,
+      "t1": 30.0,
+      "what": "M FY lowers the page, push into the white paper, Y04"
+    }
   ]
 }

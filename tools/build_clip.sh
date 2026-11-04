@@ -1,5 +1,5 @@
 #!/bin/sh
-# Build one 30 s clip of "Did We Make It?" end to end: dialogue gate → temp voices → lip sync → timing gate + subtitles
+# Build one 30 s clip of "Did We Make It?" end to end: dialogue gate → temp voices (+ performance) → lip sync → timing gate + subtitles
 # → events → picture (24 fps) → sound mix → mux.
 # usage: sh tools/build_clip.sh 01 [--keep-voices] [--workers 3]
 #   --keep-voices  don't run TTS (keeps voices/*.wav as they are, e.g. Sky's real recordings)
@@ -19,6 +19,7 @@ if [ $KEEP = 0 ]; then
   set -- $RANGE
   "$PY" tools/make_lines.py --from "$1" --to "$2"
   "$PY" "$LIB/core/tts/tts.py" tts/lines.json voices
+  "$PY" tools/perform.py          # temp voices only: melody reshaping from tts/lines.json (excited, rising Y01)
 fi
 "$PY" tools/lipsync.py
 "$PY" tools/check_timing.py --clip "$CLIP"
@@ -28,5 +29,7 @@ node core/render/events.mjs "$FILM" --q "clip=$CLIP" --out "$FILM/events.json"
 node core/render/video.mjs "$FILM" --q "clip=$CLIP" --fps 24 --workers "$WK" --out "$FILM/out/clip${CLIP}_picture.mp4"
 cd "$FILM"
 "$PY" tools/mix.py --clip "$CLIP"
+# mux.sh needs ffmpeg 7+ (6.x under-reports audio length); FFMPEG_DIR = a folder holding a newer ffmpeg, if the system's is 6.x
+[ -n "$FFMPEG_DIR" ] && PATH="$FFMPEG_DIR:$PATH"
 sh "$LIB/core/render/mux.sh" "out/clip${CLIP}_picture.mp4" "out/clip${CLIP}_mix.wav" "out/clip${CLIP}_preview.mp4" 24 1
 echo "→ out/clip${CLIP}_preview.mp4  (subtitles: subs/clip${CLIP}.srt)"

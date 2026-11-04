@@ -2,7 +2,7 @@
 
 usage: <LIB>/.venv/bin/python tools/lipsync.py
 Reads every voices/<ID>.wav, so it works the same for temp TTS and for Sky's real recordings (re-run after replacing).
-Mouths change on threes (8 drawings/s at 24 fps, SHOT_LIST.md). Each drawing is chosen from the audio slightly ahead of
+Mouths change on twos (12 drawings/s at 24 fps; Sky asked for smoother motion, 2026-11-04). Each drawing is chosen from the audio slightly ahead of
 it (animators lead the sound by about a frame) using loudness and a rounded-vs-bright spectral balance:
   C closed (M/B/P, pauses) · T talk (small open) · O "oh" (rounded) · A open wide (bright vowels)
 Also stores a 24 fps loudness envelope `a` (0..1) for head accents.
@@ -12,7 +12,7 @@ import numpy as np, soundfile as sf
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VOICES = os.path.join(ROOT, 'voices')
-MFPS, AFPS, LEAD = 8, 24, 0.04
+MFPS, AFPS, LEAD = 12, 24, 0.04
 
 
 def band(spec, freqs, lo, hi):

@@ -20,3 +20,5 @@ Temporary voices (placeholders until Sky records the lines; see VOICE_REPLACEMEN
 Sound
 - Ambience, foley and the e-piano note in clip 01 are synthesised in tools/mix.py with Lemo-Opuscar core/audio/sfx.py
   (MIT). No recorded samples, no music other than original synthesis.
+- Temp-voice melody reshaping (tools/perform.py): Praat (Boersma & Weenink, GPL-3.0) via praat-parselmouth
+  (Jadoul et al., GPL-3.0), used as a processing tool only; nothing of it is distributed with the film.

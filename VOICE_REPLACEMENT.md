@@ -1,8 +1,9 @@
 # VOICE_REPLACEMENT.md — swapping the temp voices for Sky's recordings
 
 The film never reads a voice from anywhere except `voices/<ID>.wav`, one file per `dialogue.json` line
-(`Y01…Y15` First-year, `T01…T14` Third-year). The temp files there now are Kokoro TTS (voice `am_liam`, both Skys,
-Third-year at 0.92 speed). Replacing a line changes nothing else by hand: the mouth shapes, the sound mix and the
+(`Y01…Y15` First-year, `T01…T14` Third-year). The temp files there now are Kokoro TTS (voice `am_liam`, both Skys;
+First-year quicker, 1.0–1.2, Third-year 0.92), with First-year's melody reshaped by `tools/perform.py` (an excited,
+rising "did we make it?!"). That reshaping only ever runs on fresh TTS, never on recordings. Replacing a line changes nothing else by hand: the mouth shapes, the sound mix and the
 subtitles are all rebuilt from the files.
 
 ## Recording

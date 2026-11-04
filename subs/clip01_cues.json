@@ -1,7 +1,7 @@
 [
  {
-  "t0": 3.4,
-  "t1": 5.086,
+  "t0": 3.18,
+  "t1": 4.745,
   "text": "So… did we make it?"
  },
  {
@@ -10,13 +10,13 @@
   "text": "Take this. Read it."
  },
  {
-  "t0": 11.55,
-  "t1": 12.75,
+  "t0": 11.2,
+  "t1": 12.4,
   "text": "It's blank."
  },
  {
-  "t0": 13.45,
-  "t1": 18.967,
+  "t0": 13.3,
+  "t1": 18.434,
   "text": "You used to send me voice notes—ideas, plans, all\nthose thoughts you couldn't switch off. What happened?"
  },
  {
@@ -25,8 +25,8 @@
   "text": "I don't know how to write the ending yet."
  },
  {
-  "t0": 25.45,
-  "t1": 28.308,
+  "t0": 25.4,
+  "t1": 28.176,
   "text": "Then start at the beginning.\nStart with college."
  }
 ]
