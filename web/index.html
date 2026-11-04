@@ -12,13 +12,38 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- the film: full screen at the top, scroll down for the page (mini player follows) -->
+<div class="theatre" id="theatre" hidden>
+  <video id="film" preload="metadata" playsinline poster="film/poster.jpg">
+    <source src="film/film.mp4" type="video/mp4">
+  </video>
+  <p class="cap" id="cap"></p>
+  <p class="now-at" id="nowAt"></p>
+  <button class="scroll-hint" id="scrollHint" type="button">Scroll for the page ↓</button>
+  <div class="bar" id="bar">
+    <button class="ctl lamp" id="pp" type="button" aria-label="Pause"><span class="bulb"></span></button>
+    <div class="line" id="line" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="152" aria-valuenow="0">
+      <div class="track"><div class="done" id="done"></div></div>
+      <div class="stations" id="stations"></div>
+      <div class="train-dot" id="dot"></div>
+    </div>
+    <span class="time" id="time">0:00</span>
+    <button class="ctl txt" id="cc" type="button" aria-pressed="true">CC</button>
+    <button class="ctl txt" id="mute" type="button" aria-pressed="false">SOUND</button>
+    <button class="ctl txt" id="fsBtn" type="button" aria-label="Toggle full screen">⤢</button>
+    <button class="ctl txt" id="close" type="button" aria-label="Close film">✕</button>
+  </div>
+</div>
+<div class="spacer" id="spacer" aria-hidden="true"></div>
 
 <nav class="top">
   <span class="mark">DID WE MAKE IT?</span>
   <span class="coords"><span lang="kn">ಬೆಂಗಳೂರು</span> · 12.97° N 77.59° E · <span id="clock">00:40</span></span>
 </nav>
 
-<header class="hero">
+<header class="hero" id="hero">
   <div class="hero-text">
     <p class="eyebrow">A SHORT FILM BY SKY</p>
     <h1>DID WE<br>MAKE IT?</h1>
@@ -27,7 +52,6 @@
       <span class="bulb" aria-hidden="true"></span><span>PLAY FILM</span>
     </button>
   </div>
-
   <svg class="city" viewBox="0 0 1200 210" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <path class="sky" d="M0 170H60V120H95V150H130V90H150V80H170V90H190V140H240V110H290V60H330V110H360V150H420V100H445V70H470V100H500V130H560V40H575V30H590V40H605V130H650V150H700V105H760V125H800V75H840V125H880V145H930V95H960V115H1010V65H1050V140H1100V120H1150V150H1200V170"/>
     <path class="sky thin" d="M870 145V28M820 34H965M870 28L820 34M940 34V50"/>
@@ -44,24 +68,25 @@
 </header>
 
 <main>
-  <section class="station" aria-labelledby="s1">
-    <p class="stop"><i></i>01 · <span id="s1">The film</span></p>
+  <section class="station reveal" id="st-film">
+    <header class="stop"><span class="num">01</span><span class="name">The film</span></header>
     <button class="screen" id="openFilm" type="button" aria-label="Play the film full screen">
       <img src="film/poster.jpg" alt="First-year Sky at the desk under a lamp, the city at night behind him.">
       <span class="screen-play"><span class="bulb" aria-hidden="true"></span> Watch · <span class="rt">2:32</span></span>
     </button>
   </section>
 
-  <section class="station" aria-labelledby="s2">
-    <p class="stop"><i></i>02 · <span id="s2">The page</span></p>
+  <section class="station reveal" id="st-page">
+    <header class="stop"><span class="num">02</span><span class="name">The page</span></header>
     <div class="paper">
+      <span class="tape l" aria-hidden="true"></span><span class="tape r" aria-hidden="true"></span>
       <p class="paper-note" id="paperNote">It's blank. Press play — it fills in as they talk. Tap a line to jump there.</p>
       <ol class="lines" id="lines"></ol>
     </div>
   </section>
 
-  <section class="station ask" id="ask" aria-labelledby="askTitle" hidden>
-    <p class="stop"><i></i>03 · Your turn</p>
+  <section class="station reveal ask" id="ask" hidden>
+    <header class="stop"><span class="num">03</span><span class="name">Your turn</span></header>
     <h2 id="askTitle">What would your first-year self ask you today?</h2>
     <div class="modes" role="group" aria-label="Answer by">
       <button type="button" class="mode" id="speakBtn">● Speak</button>
@@ -81,51 +106,47 @@
     <p class="privacy">Your browser's speech service turns your voice into text. This site stores nothing.</p>
   </section>
 
-  <section class="station" aria-labelledby="s4">
-    <p class="stop"><i></i>04 · <span id="s4">The traction slide</span></p>
+  <section class="station reveal" id="st-traction">
+    <header class="stop"><span class="num">04</span><span class="name">The traction slide</span></header>
     <p class="lede">Every pitch deck in this city has one. Here's mine, honestly.</p>
-    <dl class="ledger">
-      <div><dt>Products shipped</dt><dd data-count="3">3</dd></div>
-      <div><dt>First outreach</dt><dd><span data-count="10">10</span> emails → <span data-count="1">1</span> reply</dd></div>
-      <div><dt>Second outreach</dt><dd><span data-count="50">50</span> emails → <span data-count="0">0</span> replies</dd></div>
-      <div class="rust"><dt>Revenue</dt><dd>₹0</dd></div>
-      <div class="teal"><dt>Now</dt><dd>Exploring physical AI</dd></div>
-    </dl>
+    <div class="slide">
+      <div class="metric big">
+        <span class="k">Products shipped</span>
+        <span class="v" data-count="3">3</span>
+      </div>
+      <div class="metric">
+        <span class="k">First outreach · 10 emails → 1 reply</span>
+        <div class="dots" data-n="10" data-lit="1"></div>
+      </div>
+      <div class="metric">
+        <span class="k">Second outreach · 50 emails → 0 replies</span>
+        <div class="dots" data-n="50" data-lit="0"></div>
+      </div>
+      <div class="metric half rust"><span class="k">Revenue</span><span class="v">₹0</span></div>
+      <div class="metric half teal"><span class="k">Now</span><span class="v sm">Exploring physical AI</span></div>
+    </div>
     <p class="still">Not yet. Still building.</p>
   </section>
 
-  <section class="station" aria-labelledby="s5">
-    <p class="stop"><i></i>05 · <span id="s5">How it was made</span></p>
+  <section class="station reveal" id="st-made">
+    <header class="stop"><span class="num">05</span><span class="name">How it was made</span></header>
     <p class="placeholder">[Sky writes 2–3 lines here.]</p>
-    <p class="fine">Every frame is drawn in code — characters, light, paper and camera — at 24 fps. Temporary voices, original sound. Made for the Wispr Flow hiring challenge.</p>
+    <ul class="chips">
+      <li>Drawn in code</li><li>24 fps</li><li>Temporary voices</li><li>Original sound</li>
+    </ul>
+    <p class="fine">Every frame — characters, light, paper and camera — is drawn in code. Made for the Wispr Flow hiring challenge.</p>
   </section>
 </main>
 
-<footer>
-  <p class="links"><a href="#" id="linkedin">LinkedIn</a><a href="mailto:your@email" id="email">Email</a></p>
-  <p class="credits">Bengaluru, after midnight. Fonts: Barlow Semi Condensed &amp; Caveat (SIL OFL).</p>
+<footer class="end reveal">
+  <p class="end-q">DID WE MAKE IT?</p>
+  <p class="end-a">Not yet. Still building.</p>
+  <p class="links">
+    <a href="https://www.linkedin.com/in/akash-melavanki-40a14a349" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="mailto:akashmelavanki943@gmail.com">akashmelavanki943@gmail.com</a>
+  </p>
+  <p class="credits">Bengaluru, after midnight · Fonts: Barlow Semi Condensed &amp; Caveat (SIL OFL)</p>
 </footer>
-
-<!-- full-screen theatre -->
-<div class="theatre" id="theatre" hidden>
-  <video id="film" preload="metadata" playsinline poster="film/poster.jpg">
-    <source src="film/film.mp4" type="video/mp4">
-  </video>
-  <p class="cap" id="cap" aria-live="off"></p>
-  <div class="bar" id="bar">
-    <button class="ctl lamp" id="pp" type="button" aria-label="Pause"><span class="bulb"></span></button>
-    <div class="line" id="line" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="152" aria-valuenow="0">
-      <div class="track"><div class="done" id="done"></div></div>
-      <div class="stations" id="stations"></div>
-      <div class="train-dot" id="dot"></div>
-    </div>
-    <span class="time" id="time">0:00</span>
-    <button class="ctl txt" id="cc" type="button" aria-pressed="true">CC</button>
-    <button class="ctl txt" id="mute" type="button" aria-pressed="false">SOUND</button>
-    <button class="ctl txt" id="close" type="button" aria-label="Close film">✕</button>
-  </div>
-  <p class="now-at" id="nowAt"></p>
-</div>
 
 <script src="app.js"></script>
 </body>
