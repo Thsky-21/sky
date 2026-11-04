@@ -309,3 +309,13 @@ main::before { left: 50%; margin-left: -1px; }
 }
 .city { pointer-events: none; }
 .hero-text { position: relative; z-index: 2; }
+/* bigger city stamp, top right */
+.top { align-items: center; }
+.coords { display: flex; align-items: center; gap: 14px; font-size: 15px; letter-spacing: .18em; color: var(--ivory); }
+.coords [lang=kn] { font-size: 24px; font-weight: 700; letter-spacing: .02em; line-height: 1; color: var(--amber); }
+#clock { color: var(--teal); }
+@media (max-width: 640px) {
+  .coords { display: flex; font-size: 11px; gap: 8px; letter-spacing: .12em; }
+  .coords [lang=kn] { font-size: 18px; }
+  .mark { font-size: 11px; }
+}
